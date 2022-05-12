@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
 import {Numbers} from './numbers'
-import {Loader} from '@vasketavle/loader'
+import {Loader} from '@athino/loader'
 import {NewPopover} from '../../newpopover/newPopover'
 import { SvgTest } from './testsvg'
 
