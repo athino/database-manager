@@ -1,0 +1,5 @@
+
+export const CONSTANTS = {
+    MAIN_DATABASE_NAME: '8120698a-d5bc-4977-a0f3-9d6752e66780',
+    DATABASE_META_COLLECTION: 'db.meta'
+}
