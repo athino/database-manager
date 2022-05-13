@@ -10,7 +10,7 @@
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.15.8",
     "@types/redux-saga": "^0.10.5",
-    "@vasketavle/env-check": "^1.0.0",
+    "@athino/env-check": "^1.0.0",
     "@athino/loader": "^1.0.1",
     "ajv": "^8.11.0",
     "archiver": "^5.3.0",
