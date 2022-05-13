@@ -14,6 +14,7 @@ export default function Home() {
     dispatch(HomeActions.getHostUrl())
   }, [])
 
+  
   const {
     databases,
     activeDatabase
