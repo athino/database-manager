@@ -27,9 +27,9 @@ export const Content = () => {
   }
 
   const dispatch = useDispatch()
-
-  const npmrcLine = `@${global.document?.location?.hostname}:registry=${global.document?.location?.origin}/api/registry`
-  const installCommand = `npm install @${global.document?.location?.hostname}/${activeDatabase?.name}`
+  const scope = global.document?.location?.hostname?.split('.')[0]
+  const npmrcLine = `@${scope}:registry=${global.document?.location?.origin}/api/registry`
+  const installCommand = `npm install @${scope}/${activeDatabase?.name}`
   const authLine = `//${global.document?.location?.origin}/api/registry/:_authToken=<token>`
 
   // npm config --location=project set @localhost:registry=http://localhost:3000/api/json/registry
@@ -39,7 +39,7 @@ export const Content = () => {
     activeDatabase?.versions[0]?.version!,
     name)
   )
-
+  
   return (
     <Frame>
       {
