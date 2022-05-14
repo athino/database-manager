@@ -76,7 +76,7 @@ export const Paginator: FC<Props> = (props) => {
     const name = window.prompt('Enter new name', '')
 
     if (name) {
-      props.onCreateNew(name)
+      props.onCreateNew(name.toLowerCase())
     }
 
   }
@@ -127,7 +127,9 @@ export const Paginator: FC<Props> = (props) => {
 
       <Line margin={'0 0 10px 0'}/>
 
-      <NewPopover/>
+      <Button onClick={createNew}>Create New</Button>
+
+      {[] || <NewPopover/>}
 
     </Frame>
   )
