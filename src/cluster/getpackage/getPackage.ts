@@ -14,7 +14,7 @@ export const getPackage = (connection: Connection) => async (arg: {
 
   return {
     stream,
-    filename: `database-1.0.0.tgz`,
+    filename: `notifier-1.0.0.tgz`,
   }
 
 }
