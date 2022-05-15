@@ -21,7 +21,7 @@ const createPackageJson = (arg: {
     fileName: 'package',
     fileExtension: 'json',
     fileContent: createPackageJson({
-      name: name,
+      name: arg.name,
       version: '1.0.0',
       license: 'ISC',
       author: 'Unknown',
