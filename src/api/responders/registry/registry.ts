@@ -15,7 +15,7 @@ export const registry = new api.Responder<Input, Output>(async (context) => {
     const protocol = context.native.req.headers['x-forwarded-proto'] ?? 'http'
     const tarballUrl = `${protocol}://${context.native.req.headers.host}/api/tarball`
 
-    console.log(packageName)
+    console.log(context.native.req.headers)
 
     if (scopeName !== hostDomain) {
         // throw new Error()
