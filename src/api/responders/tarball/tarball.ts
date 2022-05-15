@@ -21,6 +21,8 @@ export const tarball = new api.Responder<Input, Output>(async (context) => {
         databaseName,
         databaseVersion
     })
+
+    console.log(payload)
     
     context.native.res.setHeader('content-disposition', `attachment; filename=${payload?.filename}`)
     context.native.res.setHeader('content-type', 'application/x-gzip')
