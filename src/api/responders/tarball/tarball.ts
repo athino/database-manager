@@ -12,6 +12,8 @@ type Output = {
 export const tarball = new api.Responder<Input, Output>(async (context) => {
     const {databaseName, databaseVersion} = context.pathVariables()
 
+    console.log(context.pathVariables())
+
     if (!databaseName) { throw new Error() }
     if (!databaseVersion) { throw new Error() }
 
