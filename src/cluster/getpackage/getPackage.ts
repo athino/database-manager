@@ -9,7 +9,7 @@ export const getPackage = (connection: Connection) => async (arg: {
     connection: connection,
     databaseName: '8120698a-d5bc-4977-a0f3-9d6752e66780',
     bucketName: 'fs',
-    fileId: '624deac9c3791b32fe3cbe34'
+    fileId: '628110989ad194ad35a61375'
   })
 
   return {
