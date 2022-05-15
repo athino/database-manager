@@ -11,7 +11,9 @@ const createPackageJson = (arg: {
     }
   }) => JSON.stringify(arg, null, 2)
   
-  export const files = [{
+  export const files = (arg: {
+    name: string
+  }) => [{
     fileName: 'index',
     fileExtension: 'js',
     fileContent: 'console.log(42);'
@@ -19,7 +21,7 @@ const createPackageJson = (arg: {
     fileName: 'package',
     fileExtension: 'json',
     fileContent: createPackageJson({
-      name: 'database',
+      name: name,
       version: '1.0.0',
       license: 'ISC',
       author: 'Unknown',

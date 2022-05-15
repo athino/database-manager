@@ -7,6 +7,7 @@ import {uploadShasum} from './utils/uploadShasum'
 export const createPackage = (connection: Connection) => async (arg: {
   databaseName: string
   version: string
+  scope: string
 }) => {
 
   const result = await uploadTgzFile({
@@ -14,7 +15,9 @@ export const createPackage = (connection: Connection) => async (arg: {
     databaseName: '8120698a-d5bc-4977-a0f3-9d6752e66780',
     bucketName: 'fs',
     fileName: `${arg.databaseName}-${arg.version}.tgz`,
-    files: files,
+    files: files({
+      name: `@${arg.scope}/${arg.databaseName}`
+    }),
     metadata: {
       description: 'Node module as .tgz file.'
     }

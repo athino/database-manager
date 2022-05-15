@@ -19,7 +19,8 @@ export const publishDatabaseVersion = new api.Responder<Input, Output>(async (co
 
     await database.createPackage({
         databaseName: context.request().databaseName,
-        version: context.request().version
+        version: context.request().version,
+        scope: 'database-manager'
     })
 
     if (result.error) {
