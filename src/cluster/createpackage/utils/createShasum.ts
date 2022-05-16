@@ -17,7 +17,6 @@ export const createShasum = async (arg: {
     fileId: arg.fileId
   })
 
-
   const buffer = await stream2buffer(tarball)
 
   const integrity = ssri.fromData(buffer, {
@@ -25,12 +24,6 @@ export const createShasum = async (arg: {
   })
 
   const shasum = integrity.hexDigest()
-
-  console.log(shasum)
-
-  //const shasum = integrity?.sha1?.[0]?.hexDigest()
-  
-  // integrity: ssri.parse(integrity.sha512[0]),
 
   return {
     shasum
