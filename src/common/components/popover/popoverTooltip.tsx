@@ -2,7 +2,6 @@ import {FC} from "react"
 import styled from "styled-components"
 
 type Props = {
-    padding?: string
 }
 
 export const PopoverTooltip: FC<Props> = (props) => {
@@ -19,7 +18,7 @@ export const PopoverTooltip: FC<Props> = (props) => {
     const backgroundPath = `M${0} ${0.5*width} L0 ${0.5*width} L${0.5*width} ${width} L${width} ${0.5*width} L${width} ${0.5*width} L${width} ${0} L${0} ${0} Z`
 
     return (
-        <Frame style={{padding: props.padding }}>
+        <Frame style={{marginBottom: `${0.5*height}px`}}>
             <div style={{
                 position: 'absolute',
                 left: `calc(50% - ${0.5*width}px)`,

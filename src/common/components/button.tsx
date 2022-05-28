@@ -6,6 +6,7 @@ export const Button = styled.button<{
   border: 1px solid #252830;
   border-radius: 6px;
   padding: 6px;
+  margin: 0;
   background: ${({red}) => red ? 'none' : 'rgb(0, 95, 204)'};
   border-color: ${({red}) => red ? '#3B3B3C' : 'rgb(0, 95, 204)'};
   color: ${({red}) => red ? '#DA3633' : '#FFFFFF'};
