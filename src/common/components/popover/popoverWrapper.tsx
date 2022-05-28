@@ -5,9 +5,9 @@ type Props = {
   target: React.ReactNode
   content: React.ReactNode
   options?: {
-    preserve3dTransformStyleOnParents: boolean
+    preserve3dTransformStyleOnParents?: boolean
     position: 'top' | 'bottom'
-    translateZPixels: number
+    translateZPixels?: number
   }
 }
 
@@ -20,7 +20,7 @@ const forEachParent = async (firstParentElement: HTMLElement | null | undefined,
   }
 }
 
-export const Popover: FC<Props> = (props) => {
+export const PopoverWrapper: FC<Props> = (props) => {
 
   const ref = useRef<HTMLDivElement>(null)
 
@@ -67,7 +67,6 @@ export const Popover: FC<Props> = (props) => {
         {props.target}
       </Target>
     </Frame>
-
   )
 }
 

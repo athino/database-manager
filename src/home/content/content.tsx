@@ -7,7 +7,8 @@ import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
 import {Select} from 'common/components/select'
 import {Table} from './table/table'
-import { Popover } from 'common/components/popover'
+import { Popover } from 'common/components/popover/popover'
+import { Loader } from '@athino/loader'
 
 export const Content = () => {
 
@@ -56,11 +57,13 @@ export const Content = () => {
 
             <Popover
               target={<Button>Test</Button>}
-              content={<Button>efw</Button>}
+              content={(
+                <div style={{margin: '10px'}}>
+                  <Loader/>
+                </div>
+              )}
               options={{
-                preserve3dTransformStyleOnParents: false,
-                position: 'bottom',
-                translateZPixels: 12
+                position: 'bottom'
               }}/>
 
             <div>
