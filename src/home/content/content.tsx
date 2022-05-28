@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useSelector} from 'common/hooks/useSelector'
 import {HomeActions} from 'home/homeActions'
 import {useDispatch} from 'react-redux'
@@ -7,6 +7,7 @@ import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
 import {Select} from 'common/components/select'
 import {Table} from './table/table'
+import { Popover } from 'common/components/popover'
 
 export const Content = () => {
 
@@ -39,7 +40,7 @@ export const Content = () => {
     activeDatabase?.versions[0]?.version!,
     name)
   )
-  
+
   return (
     <Frame>
       {
@@ -52,6 +53,15 @@ export const Content = () => {
                 {activeDatabase.isBeingDeleted ? ' deleting...' : ''}
               </h1>
             </div>
+
+            <Popover
+              target={<Button>Test</Button>}
+              content={<Button>efw</Button>}
+              options={{
+                preserve3dTransformStyleOnParents: false,
+                position: 'bottom',
+                translateZPixels: 12
+              }}/>
 
             <div>
 
@@ -196,6 +206,7 @@ const Line = styled.div`
   height: 1px;
   top: -15px;
   background: #3B3B3C;
+  z-index: 100;
 `
 
 const SectionHeaderFrame = styled.div`
