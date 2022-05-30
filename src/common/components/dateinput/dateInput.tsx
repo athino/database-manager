@@ -17,7 +17,9 @@ export const DateInput: FC = (props) => {
 
         setYear(value)
 
-        monthRef.current?.focus()
+        if (value.length === 4) {
+            monthRef.current?.focus()
+        }
     }
 
     const onYearKeyDown = (key: string) => {
@@ -40,7 +42,9 @@ export const DateInput: FC = (props) => {
 
         setMonth(value)
 
-        dateRef.current?.focus()
+        if (value.length === 2) {
+            dateRef.current?.focus()
+        }
     }
 
     const onMonthKeyDown = (key: string) => {
@@ -63,7 +67,9 @@ export const DateInput: FC = (props) => {
 
         setDate(value)
 
-        yearRef.current?.focus()
+        if (value.length === 2) {
+            yearRef.current?.focus()
+        }
     }
 
     const onDateKeyDown = (key: string) => {
