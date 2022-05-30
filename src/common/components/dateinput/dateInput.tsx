@@ -1,17 +1,39 @@
-import React, {FC} from 'react'
+import React, {FC, useRef} from 'react'
 import styled from 'styled-components'
 
 export const DateInput: FC = (props) => {
 
-  return (
+    const yearRef = useRef(null)
+    const monthRef = useRef(null)
+    const dateRef = useRef(null)
+
+    return (
     <Frame>
-      <input type={'text'} pattern={'[0-9]*'} placeholder={'YYYY'}/>
-      <div>/</div>
-      <input type={'text'} pattern={'[0-9]*'} placeholder={'MM'}/>
-      <div>/</div>
-      <input type={'text'} pattern={'[0-9]*'} placeholder={'DD'}/>
+
+        <input
+            ref={yearRef}
+            type={'text'}
+            pattern={'[0-9]*'}
+            placeholder={'YYYY'}/>
+
+        <div>/</div>
+
+        <input
+            ref={monthRef}
+            type={'text'}
+            pattern={'[0-9]*'}
+            placeholder={'MM'}/>
+
+        <div>/</div>
+
+        <input
+            ref={dateRef}
+            type={'text'}
+            pattern={'[0-9]*'}
+            placeholder={'DD'}/>
+
     </Frame>
-  )
+    )
 }
 
 const Frame = styled.div`
