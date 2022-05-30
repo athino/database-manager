@@ -49,6 +49,12 @@ export const DateInput: FC = (props) => {
     }
 
     const onMonthKeyDown = (key: string) => {
+        if (key === 'Backspace') {
+            if (month === '') {
+                yearRef.current?.focus()
+            }
+        }
+        
         if (key === 'ArrowRight') {
             dateRef.current?.focus()
 
@@ -74,6 +80,12 @@ export const DateInput: FC = (props) => {
     }
 
     const onDateKeyDown = (key: string) => {
+        if (key === 'Backspace') {
+            if (date === '') {
+                monthRef.current?.focus()
+            }
+        }
+
         if (key === 'ArrowRight') {
             yearRef.current?.focus()
 
