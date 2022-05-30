@@ -12,14 +12,15 @@ export const DateInput: FC = (props) => {
     const [date, setDate] = useState('')
 
     const onYearInput = (value: string) => {
+        if (value.length > 4) {
+            monthRef.current?.focus()
+
+            return
+        }
         const int = parseInt(value)
         if (int.toString() !== value) {return}
 
         setYear(value)
-
-        if (value.length === 4) {
-            monthRef.current?.focus()
-        }
     }
 
     const onYearKeyDown = (key: string) => {
