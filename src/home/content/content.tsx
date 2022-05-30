@@ -10,6 +10,7 @@ import {Table} from './table/table'
 import { Popover } from 'common/components/popover/popover'
 import { Loader } from '@athino/loader'
 import { Calendar } from 'common/components/calendar/calendar'
+import { DateInput } from 'common/components/dateinput/dateInput'
 
 export const Content = () => {
 
@@ -91,6 +92,7 @@ export const Content = () => {
           <br/>
           <br/>
           <br/>
+          <DateInput/>
 
           <SectionHeaderFrame>
             <div>
