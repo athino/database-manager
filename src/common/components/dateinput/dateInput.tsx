@@ -66,6 +66,21 @@ export const DateInput: FC = (props) => {
         yearRef.current?.focus()
     }
 
+    const onDateKeyDown = (key: string) => {
+        if (key === 'ArrowRight') {
+            yearRef.current?.focus()
+
+            return
+        }
+
+        if (key === 'ArrowLeft') {
+            monthRef.current?.focus()
+
+            return
+        }
+    }
+
+
     return (
     <Frame>
 
@@ -95,6 +110,7 @@ export const DateInput: FC = (props) => {
             onChange={({target}) => onDateInput(target.value)}
             value={date}
             ref={dateRef}
+            onKeyDown={({key}) => onDateKeyDown(key)}
             type={'text'}
             pattern={'[0-9]*'}
             placeholder={'DD'}/>
