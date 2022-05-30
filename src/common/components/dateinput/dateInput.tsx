@@ -106,7 +106,9 @@ export const DateInput: FC = (props) => {
 const Frame = styled.div`
     position: relative;
     display: flex;
+    max-width: 450px;
     border: 1px solid #1A1A1A;
+    border-radius: 4px;
     background-color: #1F1F1F;
     &:focus-within {
         border: 1px solid rgb(0, 95, 204);
@@ -117,5 +119,8 @@ const Frame = styled.div`
         border: none;
         outline: none;
         color: white;
+    }
+    input {
+        flex-grow: 1;
     }
 `
