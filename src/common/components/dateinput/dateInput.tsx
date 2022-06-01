@@ -58,7 +58,8 @@ export const DateInput: FC = () => {
                 value={year}
                 ref={yearRef}
                 onKeyDown={onYearKeyDown}
-                type={'text'}/>
+                type={'text'}
+                placeholder={'YYYY'}/>
 
             <div>/</div>
 
@@ -67,7 +68,8 @@ export const DateInput: FC = () => {
                 value={month}
                 ref={monthRef}
                 onKeyDown={onMonthKeyDown}
-                type={'text'}/>
+                type={'text'}
+                placeholder={'MM'}/>
 
             <div>/</div>
 
@@ -76,7 +78,8 @@ export const DateInput: FC = () => {
                 value={date}
                 ref={dateRef}
                 onKeyDown={onDateKeyDown}
-                type={'text'}/>
+                type={'text'}
+                placeholder={'DD'}/>
 
         </Frame>
     )
