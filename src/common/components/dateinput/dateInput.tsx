@@ -27,15 +27,13 @@ export const DateInput: FC = () => {
         }
     }
 
-
-
-
     const [year, setYear] = useState('')
     const [month, setMonth] = useState('')
     const [date, setDate] = useState('')
 
     const yearRef = useRef<HTMLInputElement>(null)
     const monthRef = useRef<HTMLInputElement>(null)
+    const dateRef = useRef<HTMLInputElement>(null)
 
     return (
         <Frame>
@@ -44,6 +42,7 @@ export const DateInput: FC = () => {
                 onChange={({target}) => setYear(target.value)}
                 value={year}
                 ref={yearRef}
+                onKeyDown={() => 1}
                 type={'text'}/>
 
             <input
@@ -56,6 +55,7 @@ export const DateInput: FC = () => {
             <input
                 onChange={({target}) => setDate(target.value)}
                 value={date}
+                ref={dateRef}
                 onKeyDown={onDateKeyDown}
                 type={'text'}/>
 
