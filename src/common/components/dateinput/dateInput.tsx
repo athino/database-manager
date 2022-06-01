@@ -104,11 +104,12 @@ const Frame = styled.div`
         border: 1px solid rgb(0, 95, 204);
     }
     * {
-    background-color: #1F1F1F;
+        background-color: #1F1F1F;
         appearance: none;
         border: none;
         outline: none;
         color: white;
+        -webkit-appearance: none;
     }
     input {
         flex-grow: 1;
