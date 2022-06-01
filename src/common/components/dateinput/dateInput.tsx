@@ -88,6 +88,7 @@ export const DateInput: FC = () => {
 const Frame = styled.div`
     position: relative;
     display: flex;
+    padding: 5px;
     max-width: 450px;
     border: 1px solid #1A1A1A;
     border-radius: 4px;
