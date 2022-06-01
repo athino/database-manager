@@ -2,6 +2,14 @@ import React, {FC, useRef, useState} from 'react'
 import styled from 'styled-components'
 
 export const DateInput: FC = () => {
+    
+    const [year, setYear] = useState('')
+    const [month, setMonth] = useState('')
+    const [date, setDate] = useState('')
+
+    const yearRef = useRef<HTMLInputElement>(null)
+    const monthRef = useRef<HTMLInputElement>(null)
+    const dateRef = useRef<HTMLInputElement>(null)
 
     const onYearKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (['ArrowRight'].includes(event.key)) {
@@ -41,14 +49,6 @@ export const DateInput: FC = () => {
             }
         }
     }
-
-    const [year, setYear] = useState('')
-    const [month, setMonth] = useState('')
-    const [date, setDate] = useState('')
-
-    const yearRef = useRef<HTMLInputElement>(null)
-    const monthRef = useRef<HTMLInputElement>(null)
-    const dateRef = useRef<HTMLInputElement>(null)
 
     return (
         <Frame>
