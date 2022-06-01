@@ -24,6 +24,13 @@ export const DateInput: FC = () => {
             }
         }
 
+        if (['Tab'].includes(event.key)) {
+            event.preventDefault()
+            monthRef.current?.setSelectionRange(0,0)
+            monthRef.current?.focus()
+        }
+        
+
     }
 
     const onMonthKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
