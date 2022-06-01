@@ -5,21 +5,10 @@ export const DateInput: FC = () => {
 
     const onMonthKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
 
-        if (event.key === 'ArrowLeft') {
+        if (['ArrowLeft', 'Backspace'].includes(event.key)) {
             if (month === '') {
                 event.preventDefault()
-                ref.current?.setSelectionRange(4,4)
-                ref.current?.focus()
-    
-                return
-            }
-        }
-
-
-        if (event.key === 'Backspace') {
-            if (month === '') {
-                event.preventDefault()
-                ref.current?.setSelectionRange(4,4)
+                ref.current?.setSelectionRange(year.length,year.length)
                 ref.current?.focus()
     
                 return
