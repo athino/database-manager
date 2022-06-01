@@ -3,6 +3,20 @@ import styled from 'styled-components'
 
 export const DateInput: FC = () => {
 
+    const onYearKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (['ArrowRight'].includes(event.key)) {
+            if (yearRef.current?.selectionEnd === yearRef.current?.selectionEnd) {
+                if (yearRef.current?.selectionEnd === year.length) {
+                    event.preventDefault()
+                    monthRef.current?.setSelectionRange(0,0)
+                    monthRef.current?.focus()
+        
+                    return
+                }
+            }
+        }
+    }
+
     const onMonthKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (['ArrowLeft', 'Backspace'].includes(event.key)) {
             if (month === '') {
@@ -42,7 +56,7 @@ export const DateInput: FC = () => {
                 onChange={({target}) => setYear(target.value)}
                 value={year}
                 ref={yearRef}
-                onKeyDown={() => 1}
+                onKeyDown={onYearKeyDown}
                 type={'text'}/>
 
             <input
