@@ -15,6 +15,7 @@ export const DateInput: FC = () => {
                 }
             }
         }
+
     }
 
     const onMonthKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -59,12 +60,16 @@ export const DateInput: FC = () => {
                 onKeyDown={onYearKeyDown}
                 type={'text'}/>
 
+            <div>/</div>
+
             <input
                 onChange={({target}) => setMonth(target.value)}
                 value={month}
                 ref={monthRef}
                 onKeyDown={onMonthKeyDown}
                 type={'text'}/>
+
+            <div>/</div>
 
             <input
                 onChange={({target}) => setDate(target.value)}
@@ -78,7 +83,23 @@ export const DateInput: FC = () => {
 }
 
 const Frame = styled.div`
-* {
-    color: black;
-}
+    position: relative;
+    display: flex;
+    max-width: 450px;
+    border: 1px solid #1A1A1A;
+    border-radius: 4px;
+    background-color: #1F1F1F;
+    &:focus-within {
+        border: 1px solid rgb(0, 95, 204);
+    }
+    * {
+    background-color: #1F1F1F;
+        appearance: none;
+        border: none;
+        outline: none;
+        color: white;
+    }
+    input {
+        flex-grow: 1;
+    }
 `
