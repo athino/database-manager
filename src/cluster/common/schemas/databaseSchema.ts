@@ -11,7 +11,7 @@ type Database = {
             tableName: string,
             columns: Array<{
                 columnName: string,
-                type: 'string' | 'boolean' | 'number' | 'undefined'
+                type: 'boolean' | 'number' | 'string'
             }>
         }>
         latestUsage: Array<{
@@ -72,7 +72,10 @@ export const databaseSchema: JSONSchemaType<Database> = {
                                         minProperties: 2,
                                         properties: {
                                             columnName: {type: 'string'},
-                                            type: {type: 'string'}  // 'string' | 'boolean' | 'number' | 'undefined'
+                                            type: {
+                                                type: 'string',
+                                                enum: ['boolean', 'number', 'string']
+                                            } 
                                         }
                                     }
                                 }
