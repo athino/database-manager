@@ -1,6 +1,6 @@
-import {JSONSchemaType} from 'ajv'
+import Ajv, {JSONSchemaType} from 'ajv'
 
-type Database = {
+export type Database = {
     name: string
     id: string
     packument: string
@@ -116,3 +116,5 @@ export const databaseSchema: JSONSchemaType<Database> = {
         }
     }
 }
+
+export const isDatabase = new Ajv().compile(databaseSchema)
