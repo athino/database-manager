@@ -1,4 +1,4 @@
-import {JSONSchemaType} from "ajv"
+import {JSONSchemaType} from 'ajv'
 
 type Database = {
     name: string
