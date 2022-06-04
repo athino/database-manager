@@ -45,6 +45,8 @@ export const databaseSchema: JSONSchemaType<Database> = {
                     version: {type: 'string', pattern: ''},
                     tarball: {
                         type: 'object',
+                        nullable: true,
+                        required: [],
                         additionalProperties: false,
                         minProperties: 2,
                         properties: {
