@@ -4,7 +4,8 @@ import {Connection} from 'common/external/database'
 
 export const getPackument = (connection: Connection) => async (arg: {
   databaseName: string,
-  tarballUrl: string
+  tarballUrl: string,
+  scopeName: string
 }) => {
 
   const db = connection().db(CONSTANTS.MAIN_DATABASE_NAME)
@@ -32,7 +33,7 @@ export const getPackument = (connection: Connection) => async (arg: {
       "latest": latestVersion
     },
     "modified": lastModified,
-    "name": arg.databaseName,
+    "name": `${arg.scopeName}/${arg.databaseName}`,
     "versions": versions.reduce((acc, cur) => {
       return {
         ...acc,
@@ -42,7 +43,7 @@ export const getPackument = (connection: Connection) => async (arg: {
           dist: {
             tarball: getTarballUrl(cur)
           },
-          name: arg.databaseName,
+          name: `${arg.scopeName}/${arg.databaseName}`,
           version: cur
         }
       }

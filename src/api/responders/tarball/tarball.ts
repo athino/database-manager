@@ -10,9 +10,11 @@ type Output = {
 }
 
 export const tarball = new api.Responder<Input, Output>(async (context) => {
-    const {databaseName, databaseVersion} = context.pathVariables()
+    context.native.res.end()
 
-    console.log(context.pathVariables())
+    return
+
+    const {databaseName, databaseVersion} = context.pathVariables()
 
     if (!databaseName) { throw new Error() }
     if (!databaseVersion) { throw new Error() }
@@ -21,8 +23,6 @@ export const tarball = new api.Responder<Input, Output>(async (context) => {
         databaseName,
         databaseVersion
     })
-
-    console.log(payload)
     
     context.native.res.setHeader('content-disposition', `attachment; filename=${payload?.filename}`)
     context.native.res.setHeader('content-type', 'application/x-gzip')
