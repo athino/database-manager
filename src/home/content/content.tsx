@@ -40,6 +40,8 @@ export const Content = () => {
     name)
   )
 
+  const downloadLink = `/api/tarball/@${scope}/${activeDatabase?.name}/-/${activeDatabase?.name}-${activeDatabase?.activeVersion?.version}.tgz`
+
   return (
     <Frame>
       {
@@ -124,7 +126,7 @@ export const Content = () => {
           </SectionHeaderFrame>
 
           <div style={{display: 'inline-block'}}>
-            <a download href={`/api/tarball/${activeDatabase.name}/${activeDatabase.activeVersion?.version}`}><Button>Download package</Button></a>
+            <a download href={downloadLink}><Button>Download package</Button></a>
           </div><br/><br/>
 
           <TextInput
