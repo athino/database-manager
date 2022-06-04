@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {useSelector} from 'common/hooks/useSelector'
 import {HomeActions} from 'home/homeActions'
 import {useDispatch} from 'react-redux'
@@ -7,10 +7,6 @@ import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
 import {Select} from 'common/components/select'
 import {Table} from './table/table'
-import { Popover } from 'common/components/popover/popover'
-import { Loader } from '@athino/loader'
-import { Calendar } from 'common/components/calendar/calendar'
-import { DateInput } from 'common/components/dateinput/dateInput'
 
 export const Content = () => {
 
@@ -92,7 +88,6 @@ export const Content = () => {
           <br/>
           <br/>
           <br/>
-          <DateInput/>
 
           <SectionHeaderFrame>
             <div>
@@ -160,21 +155,6 @@ export const Content = () => {
                 key={idx}/>
             )
           })}
-
-
-          <Popover
-            target={<Button>Test</Button>}
-            content={(
-              <div style={{margin: '10px'}}>
-                            <Calendar
-            year={2022}
-            month={5}
-            date={29}/>
-              </div>
-            )}
-            options={{
-              position: 'bottom'
-            }}/>
 
           <SectionHeaderFrame>
             <div>
