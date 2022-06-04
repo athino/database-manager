@@ -1,32 +1,7 @@
-import Ajv, {JSONSchemaType} from 'ajv'
+import {JSONSchemaType} from 'ajv'
+import {DatabaseType} from './databaseType'
 
-export type Database = {
-    name: string
-    id: string
-    packument: string
-    versions: Array<{
-        version: string
-        tarball?: {
-            filename: string
-            shasum: string
-        }
-        status: 'unpublished' | 'published' | 'depricated'
-        methods: Array<{query: string}>
-        tables: Array<{
-            tableName: string,
-            columns: Array<{
-                columnName: string,
-                type: 'boolean' | 'number' | 'string'
-            }>
-        }>
-        latestUsage: Array<{
-            timestamp: number
-            usedBy: string
-        }>
-    }>
-}
-
-export const databaseSchema: JSONSchemaType<Database> = {
+export const databaseSchema: JSONSchemaType<DatabaseType> = {
     type: 'object',
     required: [],
     additionalProperties: false,
@@ -116,5 +91,3 @@ export const databaseSchema: JSONSchemaType<Database> = {
         }
     }
 }
-
-export const isDatabase = new Ajv().compile(databaseSchema)
