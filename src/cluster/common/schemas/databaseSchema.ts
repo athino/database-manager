@@ -50,7 +50,7 @@ export const databaseSchema: JSONSchemaType<Database> = {
                         additionalProperties: false,
                         minProperties: 2,
                         properties: {
-                            filename: {type: 'string'},
+                            filename: {type: 'string', pattern: '^*\.tgz$'},
                             shasum: {type: 'string'}
                         }
                     },
