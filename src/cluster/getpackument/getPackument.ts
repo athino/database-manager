@@ -29,12 +29,12 @@ export const getPackument = (connection: Connection) => async (arg: {
   const lastModified = '2015-05-16T22:27:54.741Z'
 
   const packument = {
-    "dist-tags": {
-      "latest": latestVersion
+    'dist-tags': {
+      latest: latestVersion
     },
-    "modified": lastModified,
-    "name": `${arg.scopeName}/${arg.databaseName}`,
-    "versions": versions.reduce((acc, cur) => {
+    modified: lastModified,
+    name: `${arg.scopeName}/${arg.databaseName}`,
+    versions: versions.reduce((acc, cur) => {
       return {
         ...acc,
         [cur]: {
