@@ -38,7 +38,14 @@ export const databaseSchema: JSONSchemaType<Database> = {
                 minProperties: 5,
                 properties: {
                     version: {type: 'string', pattern: ''},
-                    status: {type: 'string'},
+                    status: {
+                        type: 'string',
+                        oneOf: [
+                            {const: 'unpublished'},
+                            {const: 'published'},
+                            {const: 'depricated'}
+                        ]
+                    },
                     methods: {
                         type: 'array',
                         items: {
