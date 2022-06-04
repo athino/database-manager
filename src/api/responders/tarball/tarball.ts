@@ -10,9 +10,6 @@ type Output = {
 }
 
 export const tarball = new api.Responder<Input, Output>(async (context) => {
-    context.native.res.end()
-
-    return
 
     const {databaseName, databaseVersion} = context.pathVariables()
 
