@@ -10,10 +10,10 @@ type Database = {
         tables: Array<{
             tableName: string,
             columns: Array<{
-              columnName: string,
-              type: 'string' | 'boolean' | 'number' | 'undefined'
+                columnName: string,
+                type: 'string' | 'boolean' | 'number' | 'undefined'
             }>
-          }>
+        }>
         latestUsage: Array<{
             timestamp: number
             usedBy: string
@@ -40,11 +40,7 @@ export const databaseSchema: JSONSchemaType<Database> = {
                     version: {type: 'string', pattern: ''},
                     status: {
                         type: 'string',
-                        oneOf: [
-                            {const: 'unpublished'},
-                            {const: 'published'},
-                            {const: 'depricated'}
-                        ]
+                        enum: ['unpublished', 'published', 'depricated']
                     },
                     methods: {
                         type: 'array',
