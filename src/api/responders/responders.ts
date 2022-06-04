@@ -17,7 +17,7 @@ export class Responders {
         return registry
     }
 
-    '/api/tarball/:databaseName/:databaseVersion'() {
+    '/api/tarball/:scopeName/:databaseName/-/:fileName'() {
         return tarball
     }
     
