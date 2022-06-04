@@ -42,7 +42,7 @@ export const databaseSchema: JSONSchemaType<Database> = {
                 required: ['version', 'status', 'methods', 'tables', 'latestUsage'],
                 additionalProperties: false,
                 properties: {
-                    version: {type: 'string', pattern: ''},
+                    version: {type: 'string', pattern: '^[1-9][0-9]?\.[0-9]?\.[0-9]?$'},
                     tarball: {
                         type: 'object',
                         nullable: true,
