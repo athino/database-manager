@@ -3,8 +3,13 @@ import {JSONSchemaType} from 'ajv'
 type Database = {
     name: string
     id: string
+    packument: string
     versions: Array<{
         version: string
+        tarball?: {
+            filename: string
+            shasum: string
+        }
         status: 'unpublished' | 'published' | 'depricated'
         methods: Array<{query: string}>
         tables: Array<{
@@ -25,19 +30,28 @@ export const databaseSchema: JSONSchemaType<Database> = {
     type: 'object',
     required: [],
     additionalProperties: false,
-    minProperties: 3,
+    minProperties: 4,
     properties: {
         name: {type: 'string'},
         id: {type: 'string'},
+        packument: {type: 'string'},
         versions: {
             type: 'array',
             items: {
                 type: 'object',
-                required: [],
+                required: ['version', 'status', 'methods', 'tables', 'latestUsage'],
                 additionalProperties: false,
-                minProperties: 5,
                 properties: {
                     version: {type: 'string', pattern: ''},
+                    tarball: {
+                        type: 'object',
+                        additionalProperties: false,
+                        minProperties: 2,
+                        properties: {
+                            filename: {type: 'string'},
+                            shasum: {type: 'string'}
+                        }
+                    },
                     status: {
                         type: 'string',
                         enum: ['unpublished', 'published', 'depricated']
