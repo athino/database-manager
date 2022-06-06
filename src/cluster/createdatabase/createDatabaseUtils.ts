@@ -1,4 +1,4 @@
-import {schemas} from "schemas/schemas"
+import {schemas} from 'schemas/schemas'
 
 export const createNewDatabase = (arg: {
   name: string

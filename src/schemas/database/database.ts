@@ -1,4 +1,4 @@
-import {createSchema} from "../external/createSchema";
+import Schema from "common/external/schema";
 
 type Database = {
     name: string
@@ -26,7 +26,7 @@ type Database = {
     }>
 }
 
-export const schema = createSchema<Database>()({
+export const schema = new Schema<Database>({
     type: 'object',
     required: [],
     additionalProperties: false,
