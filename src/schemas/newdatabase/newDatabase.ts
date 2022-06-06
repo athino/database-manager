@@ -30,74 +30,30 @@ export const schema = new Schema<NewDatabase>({
                 required: ['version', 'status', 'methods', 'tables', 'latestUsage'],
                 additionalProperties: false,
                 properties: {
-                    version: {type: 'string', pattern: '^[1-9][0-9]?\.[0-9]?\.[0-9]?$'},
+                    version: {
+                        type: 'string',
+                        const: '1.0.0'
+                    },
                     tarball: {
-                        type: 'object',
-                        nullable: true,
-                        required: [],
-                        additionalProperties: false,
-                        minProperties: 2,
-                        properties: {
-                            filename: {type: 'string', pattern: '^*\.tgz$'},
-                            shasum: {type: 'string'}
-                        }
+                        type: 'undefined',
+                        const: undefined
                     },
                     status: {
                         type: 'string',
-                        enum: ['unpublished', 'published', 'depricated']
+                        const: 'unpublished'
                     },
                     methods: {
                         type: 'array',
-                        items: {
-                            type: 'object',
-                            required: [],
-                            additionalProperties: false,
-                            minProperties: 1,
-                            properties: {
-                                query: {type: 'string'}
-                            }
-                        }
+                        const: []
+
                     },
                     tables: {
                         type: 'array',
-                        items: {
-                            type: 'object',
-                            required: [],
-                            additionalProperties: false,
-                            minProperties: 2,
-                            properties: {
-                                tableName: {type: 'string'},
-                                columns: {
-                                    type: 'array',
-                                    items: {
-                                        type: 'object',
-                                        required: [],
-                                        additionalProperties: false,
-                                        minProperties: 2,
-                                        properties: {
-                                            columnName: {type: 'string'},
-                                            type: {
-                                                type: 'string',
-                                                enum: ['boolean', 'number', 'string']
-                                            } 
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        const: []
                     },
                     latestUsage: {
                         type: 'array',
-                        items: {
-                            type: 'object',
-                            required: [],
-                            additionalProperties: false,
-                            minProperties: 3,
-                            properties: {
-                                timestamp: {type: 'integer'},
-                                usedBy: {type: 'string'}
-                            }
-                        }
+                        const: []
                     }
                 }
             }
