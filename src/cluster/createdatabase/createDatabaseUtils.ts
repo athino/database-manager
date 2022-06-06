@@ -2,10 +2,11 @@ import {schemas} from 'schemas/schemas'
 
 export const createNewDatabase = (arg: {
   name: string
+  id: string
 }) => {
   const result = schemas.database.build({
     name: arg.name,
-    id: '',
+    id: arg.id,
     packument: '',
     versions: [{
       status: 'unpublished',
@@ -27,5 +28,6 @@ export const createNewDatabase = (arg: {
       latestUsage: []
     }]
   })
-
+  
+  return result
 }
