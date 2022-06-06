@@ -32,7 +32,7 @@ export const schema = new Schema<Database>({
     additionalProperties: false,
     minProperties: 4,
     properties: {
-        name: {type: 'string'},
+        name: {type: 'string', pattern: '^[a-z]+(-[a-z]+)*$'},
         id: {type: 'string'},
         packument: {type: 'string'},
         versions: {
