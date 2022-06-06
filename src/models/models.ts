@@ -1,9 +1,7 @@
-import {databaseValidator} from 'models/database/databaseValidator'
+import {schema} from 'models/database/database'
 
 export const models = {
 
-    database: {
-        validate: databaseValidator
-    }
+    database: schema
 
 }
