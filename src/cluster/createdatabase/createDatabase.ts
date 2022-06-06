@@ -1,15 +1,17 @@
 import {Connection, mongodb} from 'common/external/database'
 import {CONSTANTS} from 'cluster/common/constants'
 import {insertOne} from 'cluster/common/insertOne'
-import { createNewDatabase } from './createDatabaseUtils'
+import {createNewDatabase} from './createDatabaseUtils'
 
 export const createDatabase = (connection: Connection) => async (arg: {
   name: string
 }) => {
 
-  const database = createNewDatabase({
+  const newId = new mongodb.ObjectId().toString()
+
+  const createNewDatabaseResult = createNewDatabase({
     name: arg.name,
-    id: new mongodb.ObjectId().toString()
+    id: newId
   })
 
   const result = await insertOne({
