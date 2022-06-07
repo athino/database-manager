@@ -1,5 +1,4 @@
 import {Connection, mongodb} from 'common/external/database'
-import {Model} from 'cluster/common/model/model'
 import {CONSTANTS} from 'cluster/common/constants'
 
 export const createDatabaseVersion = (connection: Connection) => async (arg: {
@@ -13,17 +12,6 @@ export const createDatabaseVersion = (connection: Connection) => async (arg: {
   const potentialDatabase = await collection.findOne({ _id: new mongodb.ObjectID(arg.databaseId) })
 
   const index = typeToIndex(arg.type)
-
-  const model = new Model({
-    type: 'Database',
-    payload: potentialDatabase
-  })
-
-  if (model.error) {
-    throw new Error()
-  }
-
-
 
   return { value: 12 }
 
