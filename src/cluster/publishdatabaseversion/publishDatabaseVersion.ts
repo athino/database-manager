@@ -1,18 +1,28 @@
-import {CONSTANTS} from 'cluster/common/constants'
+import {database} from 'cluster/database'
 import {Connection} from 'common/external/database'
 
-export const publishDatabaseVersion = (connection: Connection) => async (arg: {
+export const publishDatabaseVersion = (_connection: Connection) => async (arg: {
   databaseName: string
-  version: string
+  databaseVersion: string
 }) => {
 
-  const db = connection().db(CONSTANTS.MAIN_DATABASE_NAME)
-  const collection = db.collection(CONSTANTS.DATABASE_META_COLLECTION)
+  const result = await database.checkVersionIsUnpublished({
+    databaseName: arg.databaseName,
+    databaseVersion: arg.databaseVersion
+  })
 
-  const updateOneResult = await collection.updateOne(
-    { 'name': arg.databaseName, 'versions.version': arg.version },
-    { '$set': { 'versions.$.status': 'published' } }
-  )
+  // if (result.error || !result.payload.isUnpublished) { return }
 
-  return updateOneResult.acknowledged
+  await database.setVersionStatusToPublished({
+    databaseName: arg.databaseName,
+    databaseVersion: arg.databaseVersion
+  })
+
+  await database.createPackage({
+    databaseName: arg.databaseName,
+    version: arg.databaseVersion,
+    scope: 'database-manager'
+  })
+
+  return true
 }

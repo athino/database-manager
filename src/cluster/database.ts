@@ -11,6 +11,8 @@ import {createDatabaseTable} from 'cluster/createdatabasetable/createDatabaseTab
 import {deleteDatabaseTable} from 'cluster/deletedatabasetable/deleteDatabaseTable'
 import {getPackument} from './getpackument/getPackument'
 import {publishDatabaseVersion} from './publishdatabaseversion/publishDatabaseVersion'
+import {setVersionStatusToPublished} from './setversionstatustopublished/setVersionStatusToPublished'
+import {checkVersionIsUnpublished} from './checkversionisunpublished/checkVersionIsUnpublished'
 
 export const database = new Database({
   uri: ENV.MONGODB_URI,
@@ -25,6 +27,8 @@ export const database = new Database({
     createDatabaseTable: createDatabaseTable(connection),
     deleteDatabaseTable: deleteDatabaseTable(connection),
     getPackument: getPackument(connection),
-    publishDatabaseVersion: publishDatabaseVersion(connection)
+    publishDatabaseVersion: publishDatabaseVersion(connection),
+    setVersionStatusToPublished: setVersionStatusToPublished(connection),
+    checkVersionIsUnpublished: checkVersionIsUnpublished(connection)
   })
 })

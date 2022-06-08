@@ -12,23 +12,14 @@ type Output = {
 
 export const publishDatabaseVersion = new api.Responder<Input, Output>(async (context) => {
 
+    const {version, databaseName} = context.request()
+
     const result = await database.publishDatabaseVersion({
-        databaseName: context.request().databaseName,
-        version: context.request().version
+        databaseName: databaseName,
+        databaseVersion: version
     })
-
-    await database.createPackage({
-        databaseName: context.request().databaseName,
-        version: context.request().version,
-        scope: 'database-manager'
-    })
-
-    if (result.error) {
-        throw new Error()
-    }
 
     context.send({
-        wasPublished: true
+        wasPublished: result.error === false
     })
-
 })
