@@ -50,7 +50,7 @@ export const schema = new Schema<NewDatabaseMongoInputDocument>({
                         additionalProperties: false,
                         minProperties: 2,
                         properties: {
-                            filename: {type: 'string', pattern: '^*\.tgz$'},
+                            filename: {type: 'string', pattern: '\.tgz$'},
                             shasum: {type: 'string'}
                         }
                     },
