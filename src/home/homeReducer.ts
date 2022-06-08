@@ -166,11 +166,11 @@ export const homeReducer = (
             status: 'published',
             isBeingPublished: ver.version === version ? false : ver.isBeingPublished
           })),
-          activeVersion: state.activeDatabase.activeVersion ? {
+          activeVersion: {
             ...state.activeDatabase.activeVersion,
             status: 'published',
             isBeingPublished: false
-          } : undefined
+          }
         } : undefined,
         databases: state.databases.map((database) => {
           return database.name !== databaseName ? database : {
