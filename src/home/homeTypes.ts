@@ -4,7 +4,7 @@ export type ClientDatabase = {
   id: string
   isBeingDeleted: boolean
   isBeingUpdated: boolean
-  activeVersion?: ClientVersion
+  activeVersion: ClientVersion
   versions: Array<ClientVersion>
 }
 

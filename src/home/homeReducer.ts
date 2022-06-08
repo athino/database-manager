@@ -136,10 +136,10 @@ export const homeReducer = (
             ...ver,
             isBeingPublished: ver.version === version ? true : ver.isBeingPublished
           })),
-          activeVersion: state.activeDatabase.activeVersion ? {
+          activeVersion: {
             ...state.activeDatabase.activeVersion,
             isBeingPublished: true
-          } : undefined
+          }
         } : undefined,
         databases: state.databases.map((database) => {
           return database.name !== databaseName ? database : {

@@ -13,11 +13,9 @@ export const Content = () => {
   const {
     activeDatabase,
     isCreatingDatabaseVersion,
-    hostDomain
   } = useSelector(({home}) => ({
     activeDatabase: home.activeDatabase,
     isCreatingDatabaseVersion: home.isCreatingDatabaseVersion,
-    hostDomain: home.hostDomain
   }))
 
   const publishDatabase = () => {
