@@ -23,6 +23,7 @@ export const initializeDatabases = new api.Responder<Input, Output>(async (conte
         limit: context.request().limit
     })
 
+
     if (result.error) {
         throw new Error()
     }
