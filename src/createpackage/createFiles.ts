@@ -1,3 +1,6 @@
+import {index$d$ts} from "./files/index$d$ts"
+import {index$js} from "./files/index$js"
+import {package$json} from "./files/package$json"
 
 type Files = Array<{
   name: string
@@ -12,15 +15,9 @@ export const createFiles = (arg: {
 }) => {
   const files: Files = []
 
-  files.push({
-    name: 'dejdwe',
-    content: 'ewfwef'
-  })
-
-  files.push({
-    name: 'dejewfwefdwe',
-    content: 'ewfwefwefwef'
-  })
+  files.push(index$js())
+  files.push(package$json())
+  files.push(index$d$ts())
 
   return {
     files
