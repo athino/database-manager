@@ -1,14 +1,20 @@
 import {createShasum} from './createShasum';
-import { createStream } from './createStream';
-import {createTarBuffer} from './createTarBuffer';
+import {createStream} from './createStream';
+import {createBuffer} from './createBuffer';
+import {createFiles} from './createFiles';
 
 export const createPackage = async (arg: {
-  files: Array<{
+  methods: Array<{
     name: string
     content: string
   }>
 }) => {
-  const {tarBuffer} = await createTarBuffer(arg)
+
+  const {files} = createFiles(arg)
+
+  const {tarBuffer} = await createBuffer({
+    files: files
+  })
 
   const {shasum} = createShasum({
     buffer: tarBuffer

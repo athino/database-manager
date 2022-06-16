@@ -1,6 +1,6 @@
 import archiver from 'archiver';
 
-export const createTarBuffer = async (arg: {
+export const createBuffer = async (arg: {
   files: Array<{
     name: string
     content: string

@@ -21,8 +21,8 @@ type Output = {
 export const initializeDatabases = new api.Responder<Input, Output>(async (context) => {
 
     await createPackage({
-        files: [{
-            name: 'test.js',
+        methods: [{
+            name: 'getUser',
             content: 'console.log(1)'
         }]
     })
