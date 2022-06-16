@@ -1,5 +1,6 @@
 import {api} from 'api/api'
 import {database} from 'cluster/database'
+import {createPackage} from 'createpackage/createPackage'
 
 type Input = {
     limit?: number
@@ -18,6 +19,13 @@ type Output = {
 }
 
 export const initializeDatabases = new api.Responder<Input, Output>(async (context) => {
+
+    await createPackage({
+        files: [{
+            name: 'test.js',
+            content: 'console.log(1)'
+        }]
+    })
 
     const result = await database.getDatabases({
         limit: context.request().limit
