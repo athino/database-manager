@@ -1,4 +1,5 @@
 import {createShasum} from './createShasum';
+import { createStream } from './createStream';
 import {createTarBuffer} from './createTarBuffer';
 
 export const createPackage = async (arg: {
@@ -13,6 +14,13 @@ export const createPackage = async (arg: {
     buffer: tarBuffer
   })
 
-  console.log(shasum)
-  
+  const {stream} = createStream({
+    buffer: tarBuffer
+  })
+
+  return {
+    tarStream: stream,
+    tarBuffer: tarBuffer,
+    tarShasum: shasum
+  }
 }
