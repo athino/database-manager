@@ -24,6 +24,5 @@ export const createPackage = (connection: Connection) => async (arg: {
 
   return {
     shasum: wasUploaded ? tarShasum : undefined,
-    filename
   }
 }

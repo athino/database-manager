@@ -15,7 +15,7 @@ export const publishDatabaseVersion = (connection: Connection) => async (arg: {
 
   // if (result.error || !result.payload.isUnpublished) { return }
 
-  const {shasum, filename} = await createPackage(connection)({
+  const {shasum} = await createPackage(connection)({
     databaseName: arg.databaseName,
     version: arg.databaseVersion,
     scope: 'database-manager'
