@@ -16,7 +16,7 @@ export const createFiles = (arg: {
   const files: Files = []
 
   files.push(index$js())
-  files.push(package$json())
+  files.push(package$json({ name: 'hui' }))
   files.push(index$d$ts())
 
   return {

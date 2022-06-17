@@ -15,8 +15,8 @@ export const createPackage = (_connection: Connection) => async (arg: {
       }]
   })
 
-  database.uploadFile({
-    filename: '',
+  const result = await database.uploadFile({
+    filename: 'ewfw',
     buffer: tarBuffer,
     contentType: 'application/x-gzip'
   })

@@ -24,19 +24,17 @@ export const uploadFile = (connection: Connection) => async (arg: {
 
     const readStream = Readable.from(arg.buffer.toString())
 
-    readStream.on('error', () => {
+    writeStream.on('error', () => {
       resolve({
         wasUploaded: false
       })
     })
 
-    readStream.on('finish', async () => {
+    writeStream.on('finish', async () => {
       resolve({
         wasUploaded: true
       })
     })
-
-    console.log(readStream.readableFlowing)
 
     readStream.pipe(writeStream)
   })
