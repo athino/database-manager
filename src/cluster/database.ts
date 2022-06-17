@@ -13,6 +13,7 @@ import {getPackument} from './getpackument/getPackument'
 import {publishDatabaseVersion} from './publishdatabaseversion/publishDatabaseVersion'
 import {setVersionStatusToPublished} from './setversionstatustopublished/setVersionStatusToPublished'
 import {checkVersionIsUnpublished} from './checkversionisunpublished/checkVersionIsUnpublished'
+import {uploadFile} from './uploadfile/uploadFile'
 
 export const database = new Database({
   uri: ENV.MONGODB_URI,
@@ -29,6 +30,7 @@ export const database = new Database({
     getPackument: getPackument(connection),
     publishDatabaseVersion: publishDatabaseVersion(connection),
     setVersionStatusToPublished: setVersionStatusToPublished(connection),
-    checkVersionIsUnpublished: checkVersionIsUnpublished(connection)
+    checkVersionIsUnpublished: checkVersionIsUnpublished(connection),
+    uploadFile: uploadFile(connection)
   })
 })

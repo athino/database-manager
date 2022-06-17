@@ -1,42 +1,23 @@
 import {Connection} from 'common/external/database'
-import {uploadTgzFile} from './utils/uploadTgzFile'
-import {files} from './utils/files'
-import {createShasum} from './utils/createShasum'
-import {uploadShasum} from './utils/uploadShasum'
+import {database} from 'cluster/database'
+import {createTar} from 'createtar/createTar'
 
-export const createPackage = (connection: Connection) => async (arg: {
+export const createPackage = (_connection: Connection) => async (arg: {
   databaseName: string
   version: string
   scope: string
 }) => {
 
-  const result = await uploadTgzFile({
-    connection: connection,
-    databaseName: '8120698a-d5bc-4977-a0f3-9d6752e66780',
-    bucketName: 'fs',
-    fileName: `${arg.databaseName}-${arg.version}.tgz`,
-    files: files({
-      name: `@${arg.scope}/${arg.databaseName}`
-    }),
-    metadata: {
-      description: 'Node module as .tgz file.'
-    }
+  const {tarBuffer} = await createTar({
+      methods: [{
+          name: 'getUser',
+          content: ''
+      }]
   })
 
-  const {shasum} = await createShasum({
-    connection: connection,
-    databaseName: '8120698a-d5bc-4977-a0f3-9d6752e66780',
-    bucketName: 'fs',
-    fileId: result.fileId!
+  database.uploadFile({
+    filename: '',
+    buffer: tarBuffer,
+    contentType: 'application/x-gzip'
   })
-
-  await uploadShasum({
-    connection: connection,
-    databaseName: arg.databaseName,
-    version: arg.version,
-    shasum: shasum!,
-  })
-
-  return result.fileId
-
 }

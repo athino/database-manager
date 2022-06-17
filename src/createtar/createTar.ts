@@ -3,7 +3,7 @@ import {createStream} from './createStream';
 import {createBuffer} from './createBuffer';
 import {createFiles} from './createFiles';
 
-export const createPackage = async (arg: {
+export const createTar = async (arg: {
   methods: Array<{
     name: string
     content: string
