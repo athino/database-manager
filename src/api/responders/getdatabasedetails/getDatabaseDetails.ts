@@ -1,13 +1,12 @@
 import {api} from 'api/api'
 import {database} from 'cluster/database'
-import {Database} from 'cluster/common/model/models/database'
 
 type Input = {
     id: string
 }
 
 type Output = {
-    database: Database
+    database: any
 }
 
 export const getDatabaseDetails = new api.Responder<Input, Output>(async (context) => {

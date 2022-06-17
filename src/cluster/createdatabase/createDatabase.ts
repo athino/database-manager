@@ -19,8 +19,7 @@ export const createDatabase = (connection: Connection) => async (arg: {
     collectionName: CONSTANTS.DATABASE_META_COLLECTION,
     databaseName: CONSTANTS.MAIN_DATABASE_NAME,
     document: {
-      _id: id,
-      ...rest
+      _id: newId
     }
   })
 
