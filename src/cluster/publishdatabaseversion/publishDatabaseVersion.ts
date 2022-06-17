@@ -21,9 +21,12 @@ export const publishDatabaseVersion = (connection: Connection) => async (arg: {
     scope: 'database-manager'
   })
 
+  if (!shasum) { throw new Error() }
+
   await setVersionStatusToPublished(connection)({
     databaseName: arg.databaseName,
-    databaseVersion: arg.databaseVersion
+    databaseVersion: arg.databaseVersion,
+    shasum: shasum
   })
 
   return true

@@ -4,11 +4,20 @@ import {Connection} from 'common/external/database'
 export const setVersionStatusToPublished = (connection: Connection) => async (arg: {
   databaseName: string
   databaseVersion: string
+  shasum: string
 }) => {
-    const updateOneResult = await getMainCollections(connection).meta.updateOne(
+    const {acknowledged} = await getMainCollections(connection).meta.updateOne(
         { 'name': arg.databaseName, 'versions.version': arg.databaseVersion },
-        { '$set': { 'versions.$.status': 'published' } }
+        {
+          '$set': {
+            'versions.$.status': 'published',
+            'versions.$.tarball': {
+              filename: `${arg.databaseName}-${arg.databaseVersion}.tgz`,
+              shasum: arg.shasum
+            }
+          } 
+        }
     )
 
-    return updateOneResult.acknowledged
+    return acknowledged
 }
