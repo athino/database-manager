@@ -1,36 +1,16 @@
 import {Connection, mongodb} from 'common/external/database'
 
 export const getPackage = (connection: Connection) => async (arg: {
-  databaseName: string
-  databaseVersion: string
+  fileName: string
 }) => {
-
-  const stream = await getFile({
-    connection: connection,
-    databaseName: '8120698a-d5bc-4977-a0f3-9d6752e66780',
-    bucketName: 'fs',
-    fileId: '628110989ad194ad35a61375'
-  })
+  const filename = arg.fileName
+  const db = connection().db('8120698a-d5bc-4977-a0f3-9d6752e66780')
+  const bucket = new mongodb.GridFSBucket(db, { bucketName: 'fs' })
+  const stream = bucket.openDownloadStreamByName(filename)
 
   return {
     stream,
-    filename: `notifier-1.0.0.tgz`,
+    filename
   }
 
-}
-
-export const getFile = async (arg: {
-  connection: Connection
-  databaseName: string
-  bucketName: string
-  fileId: string
-}) => {
-
-  const db = arg.connection().db(arg.databaseName)
-  const bucket = new mongodb.GridFSBucket(db, { bucketName: arg.bucketName })
-  const objectId = new mongodb.ObjectId(arg.fileId)
-
-  const stream = bucket.openDownloadStream(objectId)
-
-  return stream
 }

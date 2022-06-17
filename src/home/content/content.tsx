@@ -38,7 +38,7 @@ export const Content = () => {
     name)
   )
 
-  const downloadLink = `/api/tarball/@${scope}/${activeDatabase?.name}/-/${activeDatabase?.name}-${activeDatabase?.activeVersion?.version}.tgz`
+  const downloadLink = `/api/tarball/@${scope}/${activeDatabase?.name}/-/${activeDatabase?.name}-${'1.0.0'}.tgz`
 
   return (
     <Frame>

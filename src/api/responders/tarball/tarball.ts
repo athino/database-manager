@@ -10,9 +10,6 @@ type Output = {
 }
 
 export const tarball = new api.Responder<Input, Output>(async (context) => {
-
-    console.log(1221)
-
     const {scopeName, databaseName, fileName} = context.pathVariables()
 
     if (!scopeName) { throw new Error() }
@@ -24,8 +21,7 @@ export const tarball = new api.Responder<Input, Output>(async (context) => {
     if (!version) { throw new Error() }
 
     const {payload} = await database.getPackage({
-        databaseName,
-        databaseVersion: version
+        fileName: fileName
     })
     
     context.native.res.setHeader('content-disposition', `attachment; filename=${payload?.filename}`)
