@@ -1,6 +1,6 @@
-import { createPackage } from 'cluster/createpackage/createPackage'
+import {createPackage} from 'cluster/createpackage/createPackage'
 import {database} from 'cluster/database'
-import { setVersionStatusToPublished } from 'cluster/setversionstatustopublished/setVersionStatusToPublished'
+import {setVersionStatusToPublished} from 'cluster/setversionstatustopublished/setVersionStatusToPublished'
 import {Connection} from 'common/external/database'
 
 export const publishDatabaseVersion = (connection: Connection) => async (arg: {
