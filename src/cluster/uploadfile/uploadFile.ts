@@ -22,7 +22,7 @@ export const uploadFile = (connection: Connection) => async (arg: {
       contentType: arg.contentType
     })
 
-    const readStream = Readable.from(arg.buffer.toString())
+    const readStream = Readable.from(arg.buffer)
 
     writeStream.on('error', () => {
       resolve({
