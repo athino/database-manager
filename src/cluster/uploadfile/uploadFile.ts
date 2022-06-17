@@ -6,7 +6,7 @@ export const uploadFile = (connection: Connection) => async (arg: {
   filename: string
   contentType: string
 }) => {
-  return new Promise<{}>(async (resolve) => {
+  return new Promise<{ wasUploaded: boolean }>(async (resolve) => {
     const db = connection().db('8120698a-d5bc-4977-a0f3-9d6752e66780')
     const bucket = new mongodb.GridFSBucket(db, { bucketName: 'fs' })
     const cursor = bucket.find({})
@@ -39,6 +39,5 @@ export const uploadFile = (connection: Connection) => async (arg: {
     console.log(readStream.readableFlowing)
 
     readStream.pipe(writeStream)
-
   })
 }

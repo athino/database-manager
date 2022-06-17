@@ -11,7 +11,7 @@ export const createPackage = (_connection: Connection) => async (arg: {
   const {tarBuffer} = await createTar({
       methods: [{
           name: 'getUser',
-          content: ''
+          content: 'foo'
       }]
   })
 
