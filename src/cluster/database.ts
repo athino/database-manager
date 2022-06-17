@@ -31,6 +31,5 @@ export const database = new Database({
     publishDatabaseVersion: publishDatabaseVersion(connection),
     setVersionStatusToPublished: setVersionStatusToPublished(connection),
     checkVersionIsUnpublished: checkVersionIsUnpublished(connection),
-    uploadFile: uploadFile(connection)
   })
 })

@@ -1,7 +1,9 @@
+import { createPackage } from 'cluster/createpackage/createPackage'
 import {database} from 'cluster/database'
+import { setVersionStatusToPublished } from 'cluster/setversionstatustopublished/setVersionStatusToPublished'
 import {Connection} from 'common/external/database'
 
-export const publishDatabaseVersion = (_connection: Connection) => async (arg: {
+export const publishDatabaseVersion = (connection: Connection) => async (arg: {
   databaseName: string
   databaseVersion: string
 }) => {
@@ -13,15 +15,15 @@ export const publishDatabaseVersion = (_connection: Connection) => async (arg: {
 
   // if (result.error || !result.payload.isUnpublished) { return }
 
-  await database.setVersionStatusToPublished({
-    databaseName: arg.databaseName,
-    databaseVersion: arg.databaseVersion
-  })
-
-  await database.createPackage({
+  const {shasum, filename} = await createPackage(connection)({
     databaseName: arg.databaseName,
     version: arg.databaseVersion,
     scope: 'database-manager'
+  })
+
+  await setVersionStatusToPublished(connection)({
+    databaseName: arg.databaseName,
+    databaseVersion: arg.databaseVersion
   })
 
   return true
