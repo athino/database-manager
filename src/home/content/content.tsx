@@ -73,7 +73,7 @@ export const Content = () => {
               </div>
 
               <div>
-                <Button red onClick={() => dispatch(HomeActions.deleteDatabase(activeDatabase.id))}>
+                <Button red onClick={() => dispatch(HomeActions.deleteDatabase(activeDatabase.name))}>
                   {activeDatabase.isBeingDeleted
                     ? `Deleting ${activeDatabase.name}...`
                     : `Delete ${activeDatabase.name}`}

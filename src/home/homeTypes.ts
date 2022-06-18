@@ -1,7 +1,6 @@
 
 export type ClientDatabase = {
   name: string
-  id: string
   isBeingDeleted: boolean
   isBeingUpdated: boolean
   activeVersion: ClientVersion
@@ -9,7 +8,7 @@ export type ClientDatabase = {
 }
 
 export type ClientVersion = {
-  version: string
+  semver: string
   packageUrl: string
   status: string
   isBeingPublished: boolean
