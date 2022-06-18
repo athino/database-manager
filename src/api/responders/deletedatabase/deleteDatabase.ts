@@ -2,7 +2,7 @@ import {api} from 'api/api'
 import {database} from 'cluster/database'
 
 type Input = {
-    id: string
+    name: string
 }
 
 type Output = {
@@ -12,7 +12,7 @@ type Output = {
 export const deleteDatabase = new api.Responder<Input, Output>(async (context) => {
 
     const result = await database.deleteDatabase({
-        id: context.request().id
+        name: context.request().name
     })
 
     if (result.error) {

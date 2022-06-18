@@ -64,10 +64,10 @@ export const Content = () => {
               <Status>{activeDatabase.versions[0]?.status}</Status>
 
               <Select>
-                {activeDatabase.versions.map(({version}) => <option key={version.toString()}>version {version}</option>)}
+                {activeDatabase.versions.map(({semver}) => <option key={semver}>version {semver}</option>)}
               </Select>
               <div style={{display: 'inline-block'}}>
-                <Button onClick={() => dispatch(HomeActions.createDatabaseVersion(activeDatabase.id))}>
+                <Button onClick={() => dispatch(HomeActions.createDatabaseVersion(activeDatabase.name))}>
                   {isCreatingDatabaseVersion ? 'Creating version...' : 'Create New Version'}
                 </Button>
               </div>

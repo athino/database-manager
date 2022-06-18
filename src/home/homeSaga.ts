@@ -180,7 +180,7 @@ function* deleteDatabaseSaga(action: ReturnType<typeof HomeActions.deleteDatabas
   const request = new Request({
     path: '/api/delete-database',
     body: {
-      id: action.payload.id
+      name: action.payload.name
     }
   })
 

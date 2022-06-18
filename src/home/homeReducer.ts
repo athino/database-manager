@@ -86,8 +86,8 @@ export const homeReducer = (
       }
 
     case HomeActionsTypes.SELECT_DATABASE:
-      const index = state.databases.findIndex(({id}) => {
-        return id === action.payload.id
+      const index = state.databases.findIndex(({name}) => {
+        return name === action.payload.name
       })
 
       const db = state.databases[index]
@@ -134,7 +134,7 @@ export const homeReducer = (
           ...state.activeDatabase,
           versions: state.activeDatabase.versions.map((ver) => ({
             ...ver,
-            isBeingPublished: ver.version === version ? true : ver.isBeingPublished
+            isBeingPublished: ver.semver === version ? true : ver.isBeingPublished
           })),
           activeVersion: {
             ...state.activeDatabase.activeVersion,
@@ -146,7 +146,7 @@ export const homeReducer = (
             ...database,
             versions: database.versions.map((ver) => ({
               ...ver,
-              isBeingPublished: ver.version === version
+              isBeingPublished: ver.semver === version
                 ? true : ver.isBeingPublished
             }))
           }
@@ -164,7 +164,7 @@ export const homeReducer = (
           versions: state.activeDatabase.versions.map((ver) => ({
             ...ver,
             status: 'published',
-            isBeingPublished: ver.version === version ? false : ver.isBeingPublished
+            isBeingPublished: ver.semver === version ? false : ver.isBeingPublished
           })),
           activeVersion: {
             ...state.activeDatabase.activeVersion,
@@ -178,7 +178,7 @@ export const homeReducer = (
             versions: database.versions.map((ver) => ({
               ...ver,
               status: 'published',
-              isBeingPublished: ver.version === version
+              isBeingPublished: ver.semver === version
                 ? false : ver.isBeingPublished
             }))
           }
@@ -187,6 +187,8 @@ export const homeReducer = (
     }
 
     case HomeActionsTypes.CREATE_DATABASE_VERSION:
+      action.payload.name
+      
       return {
         ...state,
         isCreatingDatabaseVersion: true

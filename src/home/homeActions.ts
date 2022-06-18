@@ -70,8 +70,8 @@ export const HomeActions = {
   publishDatabaseFinish: (databaseName: string, version: string) =>
     createAction(HomeActionsTypes.PUBLISH_DATABASE_FINISH, {databaseName, version}),
 
-  createDatabaseVersion: (databaseId: string) =>
-    createAction(HomeActionsTypes.CREATE_DATABASE_VERSION, {databaseId}),
+  createDatabaseVersion: (name: string) =>
+    createAction(HomeActionsTypes.CREATE_DATABASE_VERSION, {name}),
 
   createDatabaseVersionFinish: () =>
     createAction(HomeActionsTypes.CREATE_DATABASE_VERSION_FINISH),
