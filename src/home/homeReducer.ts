@@ -110,11 +110,11 @@ export const homeReducer = (
     case HomeActionsTypes.GET_DATABASE_DETAILS_FINISH:
       return {
         ...state,
-        activeDatabase: state.activeDatabase?.id === action.payload.database.id
+        activeDatabase: state.activeDatabase?.name === action.payload.database.name
           ? action.payload.database
           : state.activeDatabase,
         databases: state.databases.map((database) => {
-          return action.payload.database.id === database.id
+          return action.payload.database.name === database.name
             ? action.payload.database
             : database
         })
