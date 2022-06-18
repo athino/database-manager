@@ -11,10 +11,7 @@ export const setVersionStatusToPublished = (connection: Connection) => async (ar
         {
           '$set': {
             'versions.$.status': 'published',
-            'versions.$.tarball': {
-              filename: `${arg.databaseName}-${arg.databaseVersion}.tgz`,
-              shasum: arg.shasum
-            }
+            'versions.$.shasum': arg.shasum
           } 
         }
     )
