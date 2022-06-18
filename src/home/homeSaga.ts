@@ -96,7 +96,7 @@ function* createDatabaseVersionSaga(action: ReturnType<typeof HomeActions.create
   const request = new Request({
     path: '/api/create-database-version',
     body: {
-      databaseId: action.payload.name,
+      name: action.payload.name,
       type: 'major'
     }
   })
