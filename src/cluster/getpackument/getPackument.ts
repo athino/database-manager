@@ -1,46 +1,22 @@
-import {CONSTANTS} from 'cluster/common/constants'
+import {getMainCollections} from 'cluster/common/getMainCollections'
 import {Connection} from 'common/external/database'
+import {createPackument} from 'createpackument/createPackument'
 
 export const getPackument = (connection: Connection) => async (arg: {
-  databaseName: string,
-  tarballUrl: string,
+  databaseName: string
   scopeName: string
+  tarballBaseUrl: string
 }) => {
 
-  const db = connection().db(CONSTANTS.MAIN_DATABASE_NAME)
-  const collection = db.collection(CONSTANTS.DATABASE_META_COLLECTION)
+  const database = await getMainCollections(connection).meta.findOne({
+    name: arg.databaseName
+  })
 
-  const potentialDatabase = await collection.findOne({ name: arg.databaseName })
-
-
-  const getTarballUrl = (version: string) => `${arg.tarballUrl}/${arg.scopeName}/${arg.databaseName}/-/${arg.databaseName}-${version}.tgz`
-
-  const versions = potentialDatabase?.versions.map(({version}) => version)
-  const latestVersion = '1.0.0'
-  const lastModified = '2015-05-16T22:27:54.741Z'
-
-  const packument = {
-    'dist-tags': {
-      latest: latestVersion
-    },
-    modified: lastModified,
-    name: `${arg.scopeName}/${arg.databaseName}`,
-    versions: versions.reduce((acc, cur) => {
-      return {
-        ...acc,
-        [cur]: {
-          _hasShrinkwrap: false,
-          directories: {},
-          dist: {
-            shasum: 'bbf102d5ae73afe2c553895e0fb02230216f65b1',
-            tarball: getTarballUrl(cur)
-          },
-          name: `${arg.scopeName}/${arg.databaseName}`,
-          version: cur
-        }
-      }
-    }, {})
-  }
+  const packument = createPackument({
+    scopeName: arg.scopeName,
+    packageName: arg.databaseName,
+    versions: []
+  })
 
   return {
     packument

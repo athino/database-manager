@@ -1,8 +1,8 @@
 import {Version} from "createpackument/createPackumentTypes"
 import {findLatestSemver} from "createpackument/findLatestSemver"
 import {findModifiedIsoDate} from "createpackument/findModifiedIsoDate"
-import {joinName} from "./joinName"
-import {reduceVersions} from "./reduceVersions"
+import {joinName} from "createpackument/joinName"
+import {reduceVersions} from "createpackument/reduceVersions"
 
 export const createPackument = (arg: {
     scopeName: string
@@ -23,15 +23,17 @@ export const createPackument = (arg: {
     })
 
     const {versions} = reduceVersions({
-        versions: arg.versions
+        packageName: arg.packageName,
+        versions: arg.versions,
+        scopeName: arg.scopeName
     })
 
-    return {
+    return JSON.stringify({
         'modified': modifiedIsoDate,
         'name': name,
         'versions': versions,
         'dist-tags': {
           'latest': latestSemver
         }
-    }
+    }, undefined, 2)
 }

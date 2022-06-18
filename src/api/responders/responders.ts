@@ -10,6 +10,7 @@ import {publishDatabaseVersion} from './publishdatabaseversion/publishDatabaseVe
 import {getHostDomain} from './gethostdomain/getHostDomain'
 import {tarball} from './tarball/tarball'
 import {registry} from './registry/registry'
+import {tarballSource} from 'tarballsource/tarballSource'
 
 export class Responders {
     
@@ -17,7 +18,7 @@ export class Responders {
         return registry
     }
 
-    '/api/tarball/:scopeName/:databaseName/-/:fileName'() {
+    [tarballSource.staticPath]() {
         return tarball
     }
     
