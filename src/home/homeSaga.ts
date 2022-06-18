@@ -57,11 +57,11 @@ function* createDatabaseSaga(action: ReturnType<typeof HomeActions.createDatabas
 
   } else {
     yield put(HomeActions.createDatabaseFinish({
-      id: request.response.id,
       name: action.payload.name,
       versions: [],
       isBeingUpdated: false,
-      isBeingDeleted: false
+      isBeingDeleted: false,
+      activeVersion: undefined
     }))
   }
 
