@@ -43,8 +43,8 @@ export const HomeActions = {
   deleteDatabase: (name: string) =>
     createAction(HomeActionsTypes.DELETE_DATABASE, {name}),
 
-  deleteDatabaseFinish: (id: string) =>
-    createAction(HomeActionsTypes.DELETE_DATABASE_FINISH, {id}),
+  deleteDatabaseFinish: (name: string) =>
+    createAction(HomeActionsTypes.DELETE_DATABASE_FINISH, {name}),
 
   createDatabase: (name: string) =>
     createAction(HomeActionsTypes.CREATE_DATABASE, {name}),

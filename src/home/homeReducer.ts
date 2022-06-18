@@ -58,11 +58,11 @@ export const homeReducer = (
       }
 
     case HomeActionsTypes.DELETE_DATABASE_FINISH:
-      const updatedDatabaseList = state.databases.filter(({id}) => {
-        return id !== action.payload.id
+      const updatedDatabaseList = state.databases.filter(({name}) => {
+        return name !== action.payload.name
       })
 
-      const newActiveDatabase = state.activeDatabase?.id === action.payload.id
+      const newActiveDatabase = state.activeDatabase?.name === action.payload.name
         ? updatedDatabaseList[0]
         : state.activeDatabase
 
