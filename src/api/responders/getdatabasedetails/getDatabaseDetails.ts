@@ -1,12 +1,13 @@
 import {api} from 'api/api'
 import {database} from 'cluster/database'
+import { schemas } from 'schemas/schemas'
 
 type Input = {
     id: string
 }
 
 type Output = {
-    database: any
+    database: ReturnType<typeof schemas.database.build>
 }
 
 export const getDatabaseDetails = new api.Responder<Input, Output>(async (context) => {

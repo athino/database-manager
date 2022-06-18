@@ -1,5 +1,6 @@
 import {Connection} from 'common/external/database'
 import {CONSTANTS} from 'cluster/common/constants'
+import { schemas } from 'schemas/schemas'
 
 export const getDatabase = (connection: Connection) => async (arg: {
   id: string
@@ -8,7 +9,9 @@ export const getDatabase = (connection: Connection) => async (arg: {
   const db = connection().db(CONSTANTS.MAIN_DATABASE_NAME)
   const collection = db.collection(CONSTANTS.DATABASE_META_COLLECTION)
 
-  const potentialDatabase = await collection.findOne({ _id: arg.id })
+  const database = await collection.findOne({ _id: arg.id })
 
-  return potentialDatabase
+  if (!schemas.database.validate(database)) { throw new Error() }
+
+  return database
 }

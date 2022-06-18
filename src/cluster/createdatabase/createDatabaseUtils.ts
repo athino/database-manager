@@ -2,15 +2,12 @@ import {schemas} from 'schemas/schemas'
 
 export const createNewDatabase = (arg: {
   name: string
-  id: string
 }) => {
-  const result = schemas.database.build({
+  const result = schemas.newDatabase.build({
     name: arg.name,
-    id: arg.id,
-    packument: '',
     versions: [{
       status: 'unpublished',
-      version: '1.0.0',
+      semver: '1.0.0',
       methods: [],
       tables: [{
         tableName: 'table1',

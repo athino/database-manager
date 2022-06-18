@@ -1,6 +1,6 @@
 import Schema from "common/external/schema";
 
-type NewDatabaseMongoInputDocument = {
+type NewDatabase = {
     name: string
     versions: Array<{
         semver: string
@@ -20,7 +20,7 @@ type NewDatabaseMongoInputDocument = {
     }>
 }
 
-export const schema = new Schema<NewDatabaseMongoInputDocument>({
+export const schema = new Schema<NewDatabase>({
     type: 'object',
     required: [],
     additionalProperties: false,
