@@ -13,7 +13,7 @@ import {registry} from './registry/registry'
 
 export class Responders {
     
-    '/api/registry/:scopeName/:packageName'() {
+    '/api/registry/@:scopeName/:packageName'() {
         return registry
     }
 
