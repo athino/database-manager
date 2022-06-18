@@ -23,14 +23,16 @@ export default function Home() {
     activeDatabase: home.activeDatabase,
   }))
 
+  const list = databases.map(({name, isBeingUpdated}) => ({id: name, name, isBeingUpdated}))
+
   return (
     <ViewA
       headerComponent={<></>}
       contentComponent={<Content/>}
       sidebarContent={{
-        onSelectItem: (item) => dispatch(HomeActions.selectDatabase(item.id.toString())),
-        selectedId: activeDatabase?.id!,
-        list: databases,
+        onSelectItem: (item) => dispatch(HomeActions.selectDatabase(item.name)),
+        selectedId: activeDatabase?.name!,
+        list: list,
         onCreateNew: (name) => dispatch(HomeActions.createDatabase(name))
       }}
     />

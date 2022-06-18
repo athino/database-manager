@@ -52,8 +52,8 @@ export const HomeActions = {
   createDatabaseFinish: (database: ClientDatabase) =>
     createAction(HomeActionsTypes.CREATE_DATABASE_FINISH, {database}),
 
-  selectDatabase: (id: string) =>
-    createAction(HomeActionsTypes.SELECT_DATABASE, {id}),
+  selectDatabase: (name: string) =>
+    createAction(HomeActionsTypes.SELECT_DATABASE, {name}),
 
   getDatabaseDetails: (id: string) =>
     createAction(HomeActionsTypes.GET_DATABASE_DETAILS, {id}),
