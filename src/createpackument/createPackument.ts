@@ -1,42 +1,37 @@
-import {objectFromEntries} from "common/utils/objectFromEntries"
+import {Version} from "createpackument/createPackumentTypes"
+import {findLatestSemver} from "createpackument/findLatestSemver"
+import {findModifiedIsoDate} from "createpackument/findModifiedIsoDate"
+import {joinName} from "./joinName"
+import {reduceVersions} from "./reduceVersions"
 
 export const createPackument = (arg: {
     scopeName: string
     packageName: string
-    versions: Array<{
-        major: number
-        minor: number
-        patch: number
-        semver: string
-        published: number
-        shasum: string
-    }>
+    versions: Version[]
 }) => {
-    const name = `@${arg.scopeName}/${arg.packageName}`
-    const modified = 'iso-date-str'
-    const latest = '1.0.0'
+   const {name} = joinName({
+       scopeName: arg.scopeName,
+       packageName: arg.packageName
+   })
 
-    const versions = objectFromEntries(arg.versions, (version) => ({
-        key: version.semver,
-        value: {
-            _hasShrinkwrap: false,
-            directories: {},
-            version: version.semver,
-            name: name,
-            dist: {
-                shasum: version.shasum,
-                tarball: ''
-            }
-        }
-    }))
+    const {latestSemver} = findLatestSemver({
+        versions: arg.versions
+    })
+
+    const {modifiedIsoDate} = findModifiedIsoDate({
+        versions: arg.versions
+    })
+
+    const {versions} = reduceVersions({
+        versions: arg.versions
+    })
 
     return {
-        modified,
-        name,
-        versions,
+        'modified': modifiedIsoDate,
+        'name': name,
+        'versions': versions,
         'dist-tags': {
-          latest
+          'latest': latestSemver
         }
     }
-    
 }
