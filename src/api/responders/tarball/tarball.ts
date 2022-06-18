@@ -1,5 +1,6 @@
 import {api} from 'api/api'
 import {database} from 'cluster/database'
+import {urlInfo} from 'urlinfo/urlInfo'
 
 type Input = {
 
@@ -10,22 +11,27 @@ type Output = {
 }
 
 export const tarball = new api.Responder<Input, Output>(async (context) => {
-    const {scopeName, databaseName, fileName} = context.pathVariables()
+    const {scopeName, packageName, databaseName, major, minor, patch} = context.pathVariables()
+    const {hostname} = urlInfo.getHostname({ req: context.native.req })
 
-    if (!scopeName) { throw new Error() }
-    if (!databaseName) { throw new Error() }
-    if (!fileName) { throw new Error() }
+    if (!hostname)                    { throw new Error() }
+    if (!scopeName)                   { throw new Error() }
+    if (!packageName)                 { throw new Error() }
+    if (!databaseName)                { throw new Error() }
+    if (!major)                       { throw new Error() }
+    if (!minor)                       { throw new Error() }
+    if (!patch)                       { throw new Error() }
+    if (scopeName !== hostname)       { throw new Error() }
+    if (databaseName !== packageName) { throw new Error() }
 
-    const version = fileName.split('-').at(-1)
-
-    if (!version) { throw new Error() }
+    const filename = `${databaseName}-${major}.${minor}.${patch}.tgz`
 
     const {payload} = await database.getPackage({
-        fileName: fileName
+        filename: filename
     })
     
     context.native.res.setHeader('content-disposition', `attachment; filename=${payload?.filename}`)
     context.native.res.setHeader('content-type', 'application/x-gzip')
   
-    payload?.stream.pipe(context.native.res) ?? context.native.res.end()
+    payload?.stream.pipe(context.native.res) ?? context.native.res.status(500).end()
 })

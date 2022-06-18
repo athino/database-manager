@@ -5,6 +5,7 @@ import {joinName} from "createpackument/joinName"
 import {reduceVersions} from "createpackument/reduceVersions"
 
 export const createPackument = (arg: {
+    baseUrl: string
     scopeName: string
     packageName: string
     versions: Version[]
@@ -23,17 +24,18 @@ export const createPackument = (arg: {
     })
 
     const {versions} = reduceVersions({
+        baseUrl: arg.baseUrl,
         packageName: arg.packageName,
         versions: arg.versions,
         scopeName: arg.scopeName
     })
 
-    return JSON.stringify({
+    return {
         'modified': modifiedIsoDate,
         'name': name,
         'versions': versions,
         'dist-tags': {
           'latest': latestSemver
         }
-    }, undefined, 2)
+    }
 }

@@ -4,6 +4,7 @@ import {tarballSource} from "tarballsource/tarballSource"
 import {joinName} from "createpackument/joinName"
 
 export const reduceVersions = (arg: {
+    baseUrl: string
     scopeName: string
     packageName: string
     versions: Version[]
@@ -21,7 +22,8 @@ export const reduceVersions = (arg: {
                 }),
                 dist: {
                     shasum: version.shasum,
-                    tarball: tarballSource.buildPath({
+                    tarball: tarballSource.buildUrl({
+                        baseUrl: arg.baseUrl,
                         databaseName: arg.packageName,
                         packageName: arg.packageName,        
                         major: version.major,
