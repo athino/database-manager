@@ -4,6 +4,9 @@ type NewDatabase = {
     name: string
     versions: Array<{
         semver: string
+        major: number
+        minor: number
+        patch: number
         status: 'unpublished'
         methods: Array<{query: string}>
         tables: Array<{
@@ -37,6 +40,18 @@ export const schema = new Schema<NewDatabase>({
                 additionalProperties: false,
                 properties: {
                     semver: {type: 'string', pattern: '^[1-9]d*.d+.d+$'},
+                    major: {
+                        type: 'integer',
+                        minimum: 1
+                    },
+                    minor: {
+                        type: 'integer',
+                        minimum: 0
+                    },
+                    patch: {
+                        type: 'integer',
+                        minimum: 0,
+                    },
                     status: {
                         type: 'string',
                         const: 'unpublished'

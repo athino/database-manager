@@ -7,6 +7,9 @@ export const createNewDatabase = (arg: {
     name: arg.name,
     versions: [{
       status: 'unpublished',
+      major: 1,
+      minor: 0,
+      patch: 0,
       semver: '1.0.0',
       methods: [],
       tables: [{

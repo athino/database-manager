@@ -8,7 +8,7 @@ export const getDatabase = (connection: Connection) => async (arg: {
   const result = await getMainCollections(connection).meta.findOne({
     name: arg.name
   })
-
+  
   if (!result) { return }
 
   const {_id, ...database} = result

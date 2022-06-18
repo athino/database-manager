@@ -5,11 +5,8 @@ type Database = {
     id: string
     packument: string
     versions: Array<{
-        version: string
-        tarball?: {
-            filename: string
-            shasum: string
-        }
+        semver: string
+        shasum: string
         status: 'unpublished' | 'published' | 'depricated'
         methods: Array<{query: string}>
         tables: Array<{
@@ -39,21 +36,11 @@ export const schema = new Schema<Database>({
             type: 'array',
             items: {
                 type: 'object',
-                required: ['version', 'status', 'methods', 'tables', 'latestUsage'],
+                required: ['semver', 'status', 'methods', 'tables', 'latestUsage'],
                 additionalProperties: false,
                 properties: {
-                    version: {type: 'string', pattern: '^[1-9][0-9]?\.[0-9]?\.[0-9]?$'},
-                    tarball: {
-                        type: 'object',
-                        nullable: true,
-                        required: [],
-                        additionalProperties: false,
-                        minProperties: 2,
-                        properties: {
-                            filename: {type: 'string', pattern: '\.tgz$'},
-                            shasum: {type: 'string'}
-                        }
-                    },
+                    semver: {type: 'string', pattern: '^[1-9][0-9]?\.[0-9]?\.[0-9]?$'},
+                    shasum: {type: 'string'},
                     status: {
                         type: 'string',
                         enum: ['unpublished', 'published', 'depricated']
