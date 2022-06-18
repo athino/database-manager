@@ -121,13 +121,13 @@ const watchList = () => fork(function*() {
   const tasks: Record<string, Task> = {}
   while (true) {
     const action: ReturnType<typeof HomeActions.selectDatabase> = yield take(HomeActionsTypes.SELECT_DATABASE)
-    const task = tasks[action.payload.id]
+    const task = tasks[action.payload.name]
 
     if (task) {
       yield cancel(task)
     }
 
-    tasks[action.payload.id] = yield fork(function*() {
+    tasks[action.payload.name] = yield fork(function*() {
       yield call(getDatabaseDetailsSaga, action)
     })
   }
