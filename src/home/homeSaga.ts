@@ -1,4 +1,4 @@
-import {takeLatest, delay, put, all, call, takeEvery, fork, take, cancel} from 'redux-saga/effects'
+import {takeLatest, delay, put, all, call, fork, take, cancel} from 'redux-saga/effects'
 import {HomeActionsTypes, HomeActions} from 'home/homeActions'
 import {Request} from 'api/apiRequest'
 import {Task} from 'redux-saga'
@@ -96,7 +96,7 @@ function* createDatabaseVersionSaga(action: ReturnType<typeof HomeActions.create
   const request = new Request({
     path: '/api/create-database-version',
     body: {
-      databaseId: action.payload.databaseId,
+      databaseId: action.payload.name,
       type: 'major'
     }
   })

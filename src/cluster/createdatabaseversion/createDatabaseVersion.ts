@@ -1,15 +1,11 @@
-import {Connection, mongodb} from 'common/external/database'
-import {CONSTANTS} from 'cluster/common/constants'
+import {Connection} from 'common/external/database'
+import {getMainCollections} from 'cluster/common/getMainCollections'
 
 export const createDatabaseVersion = (connection: Connection) => async (arg: {
-  databaseId: string,
+  name: string,
   type: 'major' | 'minor' | 'patch'
 }) => {
-
-  const db = connection().db(CONSTANTS.MAIN_DATABASE_NAME)
-  const collection = db.collection(CONSTANTS.DATABASE_META_COLLECTION)
-
-  const potentialDatabase = await collection.findOne({ _id: new mongodb.ObjectID(arg.databaseId) })
+  const potentialDatabase = await getMainCollections(connection).meta.findOne({ name: arg.name })
 
   const index = typeToIndex(arg.type)
 

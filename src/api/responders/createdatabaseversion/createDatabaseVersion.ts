@@ -2,7 +2,7 @@ import {api} from 'api/api'
 import {database} from 'cluster/database'
 
 type Input = {
-    databaseId: string
+    name: string
     type: 'major' | 'minor' | 'patch'
 }
 
@@ -13,7 +13,7 @@ type Output = {
 export const createDatabaseVersion = new api.Responder<Input, Output>(async (context) => {
 
     const result = await database.createDatabaseVersion({
-        databaseId: context.request().databaseId,
+        name: context.request().name,
         type: context.request().type
     })
 
