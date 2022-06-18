@@ -138,7 +138,7 @@ function* getDatabaseDetailsSaga(action: ReturnType<typeof HomeActions.selectDat
   const request = new Request({
     path: '/api/get-database-details',
     body: {
-      id: action.payload.id
+      id: action.payload.name
     }
   })
 

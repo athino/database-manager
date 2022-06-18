@@ -3,7 +3,7 @@ import {database} from 'cluster/database'
 import { schemas } from 'schemas/schemas'
 
 type Input = {
-    id: string
+    name: string
 }
 
 type Output = {
@@ -13,7 +13,7 @@ type Output = {
 export const getDatabaseDetails = new api.Responder<Input, Output>(async (context) => {
 
     const result = await database.getDatabase({
-        id: context.request().id
+        name: context.request().name
     })
 
     if (result.error) {
