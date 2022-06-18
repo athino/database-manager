@@ -192,9 +192,9 @@ function* deleteDatabaseSaga(action: ReturnType<typeof HomeActions.deleteDatabas
   })
 
   if (request.error) {
-    yield put(HomeActions.deleteDatabaseFinish(action.payload.id))
+    yield put(HomeActions.deleteDatabaseFinish(action.payload.name))
   } else {
-    yield put(HomeActions.deleteDatabaseFinish(action.payload.id))
+    yield put(HomeActions.deleteDatabaseFinish(action.payload.name))
   }
 
 }
