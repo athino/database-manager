@@ -152,7 +152,7 @@ export const Content = () => {
               </Button>
             </div>
           </SectionHeaderFrame>
-          {version?.tables.map((table, idx) => {
+          {/*version?.tables.map((table, idx) => {
             return (
               <Table
                 onRequestDeleteTable={() => deleteTable(table.tableName)}
@@ -160,7 +160,7 @@ export const Content = () => {
                 columns={table.columns}
                 key={idx}/>
             )
-          })}
+          })*/}
 
           <SectionHeaderFrame>
             <div>
@@ -173,7 +173,7 @@ export const Content = () => {
               </Button>
             </div>
           </SectionHeaderFrame>
-          {version?.methods}
+          {/*version?.methods*/}
 
         </>
       }
