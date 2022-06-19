@@ -1,9 +1,11 @@
 import Schema from "common/external/schema";
 
 type DatatabseVersionsCheck = {
-    versions: Array<{
-        status: 'unpublished' | 'published' | 'depricated'
-    }>
+    versions: {
+        [semver: string]: {
+            status: string
+        }
+    }
 }
 
 export const schema = new Schema<DatatabseVersionsCheck>({
@@ -12,15 +14,16 @@ export const schema = new Schema<DatatabseVersionsCheck>({
     additionalProperties: true,
     properties: {
         versions: {
-            type: 'array',
-            items: {
-                type: 'object',
-                required: ['status'],
-                additionalProperties: true,
-                properties: {
-                    status: {
-                        type: 'string',
-                        enum: ['unpublished', 'published', 'depricated']
+            type: 'object',
+            required: [],
+            additionalProperties: false,
+            minProperties: 1,
+            patternProperties: {
+                '^[1-9]d*.d+.d+$': {
+                    type: 'object',
+                    required: [],
+                    properties: {
+                        status: {type: 'string'}
                     }
                 }
             }

@@ -15,7 +15,7 @@ export const schema = new Schema<PackumentCheck>({
     items: {
         type: 'object',
         required: ['status', 'major', 'minor', 'patch', 'semver', 'published', 'shasum'],
-        additionalProperties: true,
+        additionalProperties: false,
         properties: {
             status: {
                 type: 'string',

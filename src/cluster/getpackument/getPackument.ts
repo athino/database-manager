@@ -10,14 +10,12 @@ export const getPackument = (connection: Connection) => async (arg: {
 }) => {
 
   const database = await getMainCollections(connection).meta.findOne({
-    name: arg.databaseName
+    name: arg.databaseName,
   })
 
   if (!schemas.datatabseVersionsCheck.validate(database)) { throw new Error() }
 
-  const versions = database.versions.filter(({status}) => {
-    return status === 'published' || status === 'depricated'
-  })
+  const versions = Object.entries(database.versions).map(([_key, value]) => value)
 
   if (!schemas.packumentCheck.validate(versions)) { throw new Error() }
 
