@@ -1,13 +1,12 @@
 import {HomeActionsType, HomeActionsTypes} from 'home/homeActions'
-import {ClientDatabase} from './homeTypes'
+import {Database} from 'home/homeTypes'
 
 type HomeState = {
-  databases: ClientDatabase[]
-  activeDatabase?: ClientDatabase
+  databases: Database[]
+  activeDatabase?: Database
 
   isFetchingDatabases: boolean
   isCreatingDatabase: boolean
-  idsOfDatabasesBeingDeleted: Array<string>
   isCreatingDatabaseVersion: boolean
   hostDomain?: string
 }
@@ -18,7 +17,6 @@ const initialHomeState: HomeState = {
 
   isFetchingDatabases: false,
   isCreatingDatabase: false,
-  idsOfDatabasesBeingDeleted: [],
   isCreatingDatabaseVersion: false,
   hostDomain: undefined
 }

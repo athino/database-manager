@@ -1,5 +1,5 @@
 
-export type ClientDatabase = {
+export type Database = {
   name: string
   isBeingDeleted: boolean
   isBeingUpdated: boolean
