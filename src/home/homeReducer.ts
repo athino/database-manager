@@ -1,8 +1,10 @@
 import {HomeActionsType, HomeActionsTypes} from 'home/homeActions'
-import {Databases} from 'home/homeTypes'
+import {Database} from 'home/homeTypes'
 
 type HomeState = {
-  databases: Databases
+  databases: {
+    [name: string]: Database
+  }
   activeDatabase?: string
   isFetchingDatabases: boolean
   isCreatingDatabase: boolean
@@ -34,7 +36,7 @@ export const homeReducer = (
         ...state,
         isFetchingDatabases: false,
         databases: action.payload.databases,
-        activeDatabase: action.payload.databases[0]
+        activeDatabase: 'test'
       }
 
     case HomeActionsTypes.DELETE_DATABASE:

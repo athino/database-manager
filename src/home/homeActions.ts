@@ -1,5 +1,5 @@
 import {ActionsUnion, createAction} from 'common/utils/actionUtils'
-import {ClientDatabase} from './homeTypes'
+import {Database, Databases} from 'home/homeTypes'
 
 export enum HomeActionsTypes {
   INITIALIZE_DATABASES = 'INITIALIZE_DATABASES',
@@ -37,7 +37,7 @@ export const HomeActions = {
   initializeDatabases: () =>
     createAction(HomeActionsTypes.INITIALIZE_DATABASES),
 
-  initializeDatabasesFinish: (databases:  ClientDatabase[]) =>
+  initializeDatabasesFinish: (databases:  Databases) =>
     createAction(HomeActionsTypes.INITIALIZE_DATABASES_FINISH, {databases}),
 
   deleteDatabase: (name: string) =>
@@ -49,7 +49,7 @@ export const HomeActions = {
   createDatabase: (name: string) =>
     createAction(HomeActionsTypes.CREATE_DATABASE, {name}),
 
-  createDatabaseFinish: (database: ClientDatabase) =>
+  createDatabaseFinish: (database: Database) =>
     createAction(HomeActionsTypes.CREATE_DATABASE_FINISH, {database}),
 
   selectDatabase: (name: string) =>
@@ -58,7 +58,7 @@ export const HomeActions = {
   getDatabaseDetails: (id: string) =>
     createAction(HomeActionsTypes.GET_DATABASE_DETAILS, {id}),
 
-  getDatabaseDetailsFinish: (database: ClientDatabase) =>
+  getDatabaseDetailsFinish: (database: Database) =>
     createAction(HomeActionsTypes.GET_DATABASE_DETAILS_FINISH, {database}),
 
   selectDatabaseVersion: (id: string) =>
