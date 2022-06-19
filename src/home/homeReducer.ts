@@ -40,7 +40,7 @@ export const homeReducer = (
     case HomeActionsTypes.DELETE_DATABASE:
       return {
         ...state,
-        activeDatabase: state.activeDatabase?.name === action.payload.name
+        activeDatabase: state.activeDatabase === action.payload.name
           ? { ...state.activeDatabase, isBeingDeleted: true }
           : state.activeDatabase,
         databases: state.databases.map((database) => ({
