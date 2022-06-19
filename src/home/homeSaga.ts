@@ -266,8 +266,8 @@ function* getHostDomainSaga() {
 }
 
 export function* homeSaga() {
-  yield takeLatest(HomeActionsTypes.INITIALIZE_DATABASES, initializeDatabasesSaga)
   yield watchList()
+  yield takeLatest(HomeActionsTypes.INITIALIZE_DATABASES, initializeDatabasesSaga)
   yield takeLatest(HomeActionsTypes.DELETE_DATABASE, deleteDatabaseSaga)
   yield takeLatest(HomeActionsTypes.CREATE_DATABASE, createDatabaseSaga)
   yield takeLatest(HomeActionsTypes.CREATE_DATABASE_TABLE, createDatabaseTableSaga)
