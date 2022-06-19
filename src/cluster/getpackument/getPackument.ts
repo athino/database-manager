@@ -23,14 +23,7 @@ export const getPackument = (connection: Connection) => async (arg: {
     baseUrl: arg.baseUrl,
     scopeName: arg.scopeName,
     packageName: arg.databaseName,
-    versions: versions.map((version) => ({
-      major: version.major,
-      minor: version.minor,
-      patch: version.patch,
-      semver: version.semver,
-      published: version.published,
-      shasum: version.shasum
-    }))
+    versions: versions
   })
 
   return {
