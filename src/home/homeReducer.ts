@@ -109,31 +109,15 @@ export const homeReducer = (
       }
 
     case HomeActionsTypes.PUBLISH_DATABASE: {
-      const {databaseName, version} = action.payload
+      const {databaseName, semver} = action.payload
+      const version = state.databases[databaseName]?.versions[semver]
+
+      if (version) {
+        version.isBeingPublished = true
+      }
 
       return {
-        ...state,
-        activeDatabase: state.activeDatabase ? {
-          ...state.activeDatabase,
-          versions: state.activeDatabase.versions.map((ver) => ({
-            ...ver,
-            isBeingPublished: ver.semver === version ? true : ver.isBeingPublished
-          })),
-          activeVersion: {
-            ...state.activeDatabase.activeVersion,
-            isBeingPublished: true
-          }
-        } : undefined,
-        databases: state.databases.map((database) => {
-          return database.name !== databaseName ? database : {
-            ...database,
-            versions: database.versions.map((ver) => ({
-              ...ver,
-              isBeingPublished: ver.semver === version
-                ? true : ver.isBeingPublished
-            }))
-          }
-        })
+        ...state
       }
     }
 

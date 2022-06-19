@@ -1,6 +1,5 @@
 import {api} from 'api/api'
 import {database} from 'cluster/database'
-import {createTar} from 'createtar/createTar'
 
 type Input = {
     limit?: number

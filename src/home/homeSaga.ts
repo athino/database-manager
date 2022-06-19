@@ -2,6 +2,7 @@ import {takeLatest, delay, put, all, call, fork, take, cancel} from 'redux-saga/
 import {HomeActionsTypes, HomeActions} from 'home/homeActions'
 import {Request} from 'api/apiRequest'
 import {Task} from 'redux-saga'
+import { forEachEntry } from 'common/utils/forEachEntry'
 
 function* initializeDatabasesSaga() {
 
@@ -23,14 +24,9 @@ function* initializeDatabasesSaga() {
     yield put(HomeActions.initializeDatabasesFinish([]))
   } else {
 
-    const databases = request.response.databases.map((database) => ({
-      isBeingDeleted: false,
-      isBeingUpdated: false,
-      versions: [],
-      ...(database.id === request.response.selected.id
-        ? request.response.selected
-        : database),
-    }))
+    const databases = forEachEntry(request.response.databases, (database) => {
+      return database
+    })
 
     yield put(HomeActions.initializeDatabasesFinish(databases))
   }

@@ -64,8 +64,8 @@ export const HomeActions = {
   selectDatabaseVersion: (id: string) =>
     createAction(HomeActionsTypes.SELECT_DATABASE_VERSION, {id}),
 
-  publishDatabase: (databaseName: string, version: string) =>
-    createAction(HomeActionsTypes.PUBLISH_DATABASE, {databaseName, version}),
+  publishDatabase: (databaseName: string, semver: string) =>
+    createAction(HomeActionsTypes.PUBLISH_DATABASE, {databaseName, semver}),
 
   publishDatabaseFinish: (databaseName: string, version: string) =>
     createAction(HomeActionsTypes.PUBLISH_DATABASE_FINISH, {databaseName, version}),
