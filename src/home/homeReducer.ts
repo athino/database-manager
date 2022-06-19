@@ -39,63 +39,54 @@ export const homeReducer = (
         activeDatabase: 'test'
       }
 
-    case HomeActionsTypes.DELETE_DATABASE:
+    case HomeActionsTypes.DELETE_DATABASE: {
+      const database = state.databases[action.payload.name]
+      
+      if (!database) { return state}
+
+      return {
+        ...state,
+        databases: {
+          ...state.databases,
+          [database.name]: {
+            ...database,
+            isBeingDeleted: true
+          }
+        }
+      }
+    }
+
+    case HomeActionsTypes.DELETE_DATABASE_FINISH: {
+      delete state.databases[action.payload.name]
+
       return {
         ...state,
         activeDatabase: state.activeDatabase === action.payload.name
-          ? { ...state.activeDatabase, isBeingDeleted: true }
-          : state.activeDatabase,
-        databases: state.databases.map((database) => ({
-          ...database,
-          isBeingDeleted: action.payload.name === database.name
-            ? true
-            : database.isBeingDeleted
-        }))
-      }
-
-    case HomeActionsTypes.DELETE_DATABASE_FINISH:
-      const updatedDatabaseList = state.databases.filter(({name}) => {
-        return name !== action.payload.name
-      })
-
-      const newActiveDatabase = state.activeDatabase?.name === action.payload.name
-        ? updatedDatabaseList[0]
-        : state.activeDatabase
-
-      return {
-        ...state,
-        databases: updatedDatabaseList,
-        activeDatabase: newActiveDatabase
-      }
+          ? Object.keys(state.databases).at(0)
+          : state.activeDatabase
+      } 
+    }
 
     case HomeActionsTypes.CREATE_DATABASE:
       return {
         ...state,
-        isCreatingDatabase: true,
+        isCreatingDatabase: true
       }
 
     case HomeActionsTypes.CREATE_DATABASE_FINISH:
       return {
         ...state,
-        databases: [...state.databases, action.payload.database],
         isCreatingDatabase: false,
+        databases: {
+          ...state.databases,
+          [action.payload.database.name]: action.payload.database
+        }
       }
 
     case HomeActionsTypes.SELECT_DATABASE:
-      const index = state.databases.findIndex(({name}) => {
-        return name === action.payload.name
-      })
-
-      const db = state.databases[index]
-
-      if (db) {
-        db.isBeingUpdated = true
-        state.databases[index] = db
-      }
-
       return {
         ...state,
-        activeDatabase: db
+        activeDatabase: action.payload.name
       }
 
     case HomeActionsTypes.GET_DATABASE_DETAILS:
@@ -106,14 +97,10 @@ export const homeReducer = (
     case HomeActionsTypes.GET_DATABASE_DETAILS_FINISH:
       return {
         ...state,
-        activeDatabase: state.activeDatabase?.name === action.payload.database.name
-          ? action.payload.database
-          : state.activeDatabase,
-        databases: state.databases.map((database) => {
-          return action.payload.database.name === database.name
-            ? action.payload.database
-            : database
-        })
+        databases: {
+          ...state.databases,
+          [action.payload.database.name]: action.payload.database
+        }
       }
 
     case HomeActionsTypes.SELECT_DATABASE_VERSION:
