@@ -1,121 +1,42 @@
 import Schema from "common/external/schema";
 
-type NewDatabase = {
+type Database = {
     name: string
-    versions: Array<{
-        semver: string
-        major: number
-        minor: number
-        patch: number
-        status: 'unpublished'
-        methods: Array<{query: string}>
-        tables: Array<{
-            tableName: string,
-            columns: Array<{
-                columnName: string,
-                type: 'boolean' | 'number' | 'string'
-            }>
-        }>
-        latestUsage: Array<{
-            timestamp: number
-            usedBy: string
-        }>
-    }>
+    versions: {
+        ['1.0.0']: {
+            semver: '1.0.0'
+            major: 1
+            minor: 0
+            patch: 0
+            status: 'unpublished'
+        }
+    }
 }
 
-export const schema = new Schema<NewDatabase>({
+export const schema = new Schema<Database>({
     type: 'object',
-    required: [],
+    required: ['name', 'versions'],
     additionalProperties: false,
-    minProperties: 4,
     properties: {
         name: {type: 'string', pattern: '^[a-z]+(-[a-z]+)*$'},
         versions: {
-            type: 'array',
-            maxItems: 1,
-            minItems: 1,
-            items: {
-                type: 'object',
-                required: ['semver', 'status', 'methods', 'tables', 'latestUsage'],
-                additionalProperties: false,
-                properties: {
-                    semver: {type: 'string', pattern: '^[1-9]d*.d+.d+$'},
-                    major: {
-                        type: 'integer',
-                        minimum: 1
-                    },
-                    minor: {
-                        type: 'integer',
-                        minimum: 0
-                    },
-                    patch: {
-                        type: 'integer',
-                        minimum: 0,
-                    },
-                    status: {
-                        type: 'string',
-                        const: 'unpublished'
-                    },
-                    methods: {
-                        type: 'array',
-                        maxItems: 0,
-                        minItems: 0,
-                        items: {
-                            type: 'object',
-                            required: [],
-                            additionalProperties: false,
-                            minProperties: 1,
-                            properties: {
-                                query: {type: 'string'}
-                            }
-                        }
-                    },
-                    tables: {
-                        type: 'array',
-                        maxItems: 0,
-                        minItems: 0,
-                        items: {
-                            type: 'object',
-                            required: [],
-                            additionalProperties: false,
-                            minProperties: 2,
-                            properties: {
-                                tableName: {type: 'string'},
-                                columns: {
-                                    type: 'array',
-                                    items: {
-                                        type: 'object',
-                                        required: [],
-                                        additionalProperties: false,
-                                        minProperties: 2,
-                                        properties: {
-                                            columnName: {type: 'string'},
-                                            type: {
-                                                type: 'string',
-                                                enum: ['boolean', 'number', 'string']
-                                            } 
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    latestUsage: {
-                        type: 'array',
-                        maxItems: 0,
-                        minItems: 0,
-                        items: {
-                            type: 'object',
-                            required: [],
-                            additionalProperties: false,
-                            minProperties: 3,
-                            properties: {
-                                timestamp: {type: 'integer'},
-                                usedBy: {type: 'string'}
-                            }
-                        }
+            type: 'object',
+            required: ['1.0.0'],
+            additionalProperties: false,
+            minProperties: 1,
+            properties: {
+                '1.0.0': {
+                    type: 'object',
+                    required: ['semver', 'major', 'minor', 'patch', 'status'],
+                    additionalProperties: false,
+                    properties: {
+                        semver: {type: 'string', const: '1.0.0'},
+                        major: {type: 'integer', const: 1},
+                        minor: {type: 'integer', const: 0},
+                        patch: {type: 'integer', const: 0},
+                        status: {type: 'string', const: 'unpublished'},
                     }
-                }
+                },
             }
         }
     }

@@ -5,28 +5,15 @@ export const createNewDatabase = (arg: {
 }) => {
   const result = schemas.newDatabase.build({
     name: arg.name,
-    versions: [{
-      status: 'unpublished',
-      major: 1,
-      minor: 0,
-      patch: 0,
-      semver: '1.0.0',
-      methods: [],
-      tables: [{
-        tableName: 'table1',
-        columns: [{
-          columnName: 'column1',
-          type: 'string'
-        },{
-          columnName: 'column2',
-          type: 'boolean'
-        },{
-          columnName: 'column3',
-          type: 'number'
-        }]
-      }],
-      latestUsage: []
-    }]
+    versions: {
+      '1.0.0': {
+        status: 'unpublished',
+        major: 1,
+        minor: 0,
+        patch: 0,
+        semver: '1.0.0'
+      }
+    }
   })
   
   return result
