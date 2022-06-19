@@ -3,7 +3,7 @@ import {schemas} from 'schemas/schemas'
 export const createNewDatabase = (arg: {
   name: string
 }) => {
-  const result = schemas.newDatabase.build({
+  return schemas.newDatabase.build({
     name: arg.name,
     versions: {
       '1.0.0': {
@@ -15,6 +15,4 @@ export const createNewDatabase = (arg: {
       }
     }
   })
-  
-  return result
 }
