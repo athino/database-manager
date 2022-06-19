@@ -1,23 +1,19 @@
 import {HomeActionsType, HomeActionsTypes} from 'home/homeActions'
-import {Database} from 'home/homeTypes'
+import {Databases} from 'home/homeTypes'
 
 type HomeState = {
-  databases: Database[]
-  activeDatabase?: Database
-
+  databases: Databases
+  activeDatabase?: string
   isFetchingDatabases: boolean
   isCreatingDatabase: boolean
-  isCreatingDatabaseVersion: boolean
   hostDomain?: string
 }
 
 const initialHomeState: HomeState = {
-  databases: [],
+  databases: {},
   activeDatabase: undefined,
-
   isFetchingDatabases: false,
   isCreatingDatabase: false,
-  isCreatingDatabaseVersion: false,
   hostDomain: undefined
 }
 

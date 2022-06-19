@@ -9,47 +9,53 @@ import {Select} from 'common/components/select'
 import {Table} from './table/table'
 
 export const Content = () => {
+  const dispatch = useDispatch()
 
   const {
-    activeDatabase,
-    isCreatingDatabaseVersion,
-  } = useSelector(({home}) => ({
-    activeDatabase: home.activeDatabase,
-    isCreatingDatabaseVersion: home.isCreatingDatabaseVersion,
-  }))
+    version,
+    database,
+  } = useSelector(({home}) => {
+    const database = home.databases[`${home.activeDatabase}`]
+    return {
+      version: database?.versions[`${database?.activeVersionSemver}`],
+      database: database
+    }
+  })
 
   const publishDatabase = () => {
-    if (activeDatabase) {
-      dispatch(HomeActions.publishDatabase(activeDatabase.name, '1.0.0'))
+    if (database) {
+      dispatch(HomeActions.publishDatabase(database.name, database.activeVersionSemver))
     }
   }
-
-  const dispatch = useDispatch()
   const scope = global.document?.location?.hostname?.split('.')[0]
   const npmrcLine = `@${scope}:registry=${global.document?.location?.origin}/api/registry`
-  const installCommand = `npm install @${scope}/${activeDatabase?.name}`
+  const installCommand = `npm install @${scope}/${database?.name}`
   const authLine = `//${global.document?.location?.origin}/api/registry/:_authToken=<token>`
 
   // npm config --location=project set @localhost:registry=http://localhost:3000/api/json/registry
 
-  const deleteTable = (name: string) => () => dispatch(HomeActions.deleteDatabaseTable(
-    activeDatabase?.id!,
-    activeDatabase?.versions[0]?.version!,
-    name)
-  )
+  const deleteTable = (name: string) => () => {
+    if (database && version) {
+      dispatch(HomeActions.deleteDatabaseTable(
+        database?.name,
+        version?.semver,
+        name)
+      )
+    }
+  }
 
-  const downloadLink = `/api/tarball/@${scope}/${activeDatabase?.name}/-/${activeDatabase?.name}-${'1.0.0'}.tgz`
+  const downloadLink = `/api/tarball/@${scope}/${database?.name}/-/${database?.name}-${'1.0.0'}.tgz`
 
   return (
     <Frame>
       {
-        activeDatabase && <>
+        database && <>
           <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 
             <div>
-              <h1>{activeDatabase.name}
-                {activeDatabase.isBeingUpdated ? ' loading...' : ''}
-                {activeDatabase.isBeingDeleted ? ' deleting...' : ''}
+              <h1>{database.name}
+                {database.isBeingUpdated ? ' loading...' : ''}
+                {database.isBeingDeleted ? ' deleting...' : ''}
               </h1>
             </div>
 
@@ -57,26 +63,26 @@ export const Content = () => {
 
               <div style={{display: 'inline-block'}}>
                 <Button onClick={publishDatabase}>
-                  {activeDatabase.activeVersion?.isBeingPublished ? 'Publishing...' : 'Publish Database'}
+                  {version?.isBeingPublished ? 'Publishing...' : 'Publish Database'}
                 </Button>
               </div>
 
-              <Status>{activeDatabase.versions[0]?.status}</Status>
+              <Status>{version?.status}</Status>
 
               <Select>
-                {activeDatabase.versions.map(({semver}) => <option key={semver}>version {semver}</option>)}
+                {Object.keys(database.versions).map((semver) => <option key={semver}>version {semver}</option>)}
               </Select>
               <div style={{display: 'inline-block'}}>
-                <Button onClick={() => dispatch(HomeActions.createDatabaseVersion(activeDatabase.name))}>
-                  {isCreatingDatabaseVersion ? 'Creating version...' : 'Create New Version'}
+                <Button onClick={() => dispatch(HomeActions.createDatabaseVersion(database.name))}>
+                  {'isCreatingDatabaseVersion' ? 'Creating version...' : 'Create New Version'}
                 </Button>
               </div>
 
               <div>
-                <Button red onClick={() => dispatch(HomeActions.deleteDatabase(activeDatabase.name))}>
-                  {activeDatabase.isBeingDeleted
-                    ? `Deleting ${activeDatabase.name}...`
-                    : `Delete ${activeDatabase.name}`}
+                <Button red onClick={() => dispatch(HomeActions.deleteDatabase(database.name))}>
+                  {database.isBeingDeleted
+                    ? `Deleting ${database.name}...`
+                    : `Delete ${database.name}`}
                 </Button>
               </div>
             </div>
@@ -146,7 +152,7 @@ export const Content = () => {
               </Button>
             </div>
           </SectionHeaderFrame>
-          {activeDatabase.versions[0]?.tables.map((table, idx) => {
+          {version?.tables.map((table, idx) => {
             return (
               <Table
                 onRequestDeleteTable={() => deleteTable(table.tableName)}
@@ -167,7 +173,7 @@ export const Content = () => {
               </Button>
             </div>
           </SectionHeaderFrame>
-          {activeDatabase.versions[0]?.methods}
+          {version?.methods}
 
         </>
       }

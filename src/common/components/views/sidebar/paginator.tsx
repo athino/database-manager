@@ -5,10 +5,9 @@ import {TextInput} from 'common/components/textInput'
 import {Numbers} from './numbers'
 import {Loader} from '@athino/loader'
 import {NewPopover} from '../../newpopover/newPopover'
-import { SvgTest } from './testsvg'
 
 type Props = {
-  selectedId: string | number
+  selectedId: string | number | undefined
   onSelectItem(item: any): void
   onCreateNew(name: string): void
   list: Array<{

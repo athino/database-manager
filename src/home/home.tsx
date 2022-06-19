@@ -23,7 +23,7 @@ export default function Home() {
     activeDatabase: home.activeDatabase,
   }))
 
-  const list = databases.map(({name, isBeingUpdated}) => ({id: name, name, isBeingUpdated}))
+  const list = Object.entries(databases).map(([_, {name, isBeingUpdated}]) => ({id: name, name, isBeingUpdated}))
 
   return (
     <ViewA
@@ -31,7 +31,7 @@ export default function Home() {
       contentComponent={<Content/>}
       sidebarContent={{
         onSelectItem: (item) => dispatch(HomeActions.selectDatabase(item.name)),
-        selectedId: activeDatabase?.name!,
+        selectedId: activeDatabase,
         list: list,
         onCreateNew: (name) => dispatch(HomeActions.createDatabase(name))
       }}

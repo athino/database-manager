@@ -2,7 +2,7 @@ import React, {FC} from 'react'
 import styled from 'styled-components'
 import {Sidebar} from './sidebar/sidebar'
 
-type ListItemId = string | number
+type ListItemId = string | number | undefined
 
 type ListItem = {
     id: ListItemId
