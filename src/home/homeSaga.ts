@@ -157,17 +157,12 @@ function* getDatabaseDetailsSaga(action: ReturnType<typeof HomeActions.selectDat
 
     const database = {
       name: db.name,
-      id: db.id,
       isBeingDeleted: false,
       isBeingUpdated: false,
-      versions: db.versions.map((vers) => ({
-        isBeingPublished: false,
-        version: vers.version,
-        packageUrl: `database-${vers.version}`,
-        status: vers.status,
-        tables: vers.tables,
-        methods: vers.methods
-      }))
+      versions: {
+        ...db.versions,
+        isBeingPublished: false
+      }
     }
 
     yield put(HomeActions.getDatabaseDetailsFinish(database))
