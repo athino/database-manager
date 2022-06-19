@@ -22,7 +22,6 @@ export const schema = new Schema<Database>({
         versions: {
             type: 'object',
             required: [],
-            additionalProperties: false,
             minProperties: 1,
             patternProperties: {
                 '^[1-9]d*.d+.d+$': {
