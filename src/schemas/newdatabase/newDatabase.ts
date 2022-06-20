@@ -2,6 +2,7 @@ import Schema from "common/external/schema";
 
 type Database = {
     name: string
+    createdAt: number
     versions: {
         ['1.0.0']: {
             semver: '1.0.0'
@@ -19,6 +20,7 @@ export const schema = new Schema<Database>({
     additionalProperties: false,
     properties: {
         name: {type: 'string', pattern: '^[a-z]+(-[a-z]+)*$'},
+        createdAt: {type: 'integer'},
         versions: {
             type: 'object',
             required: ['1.0.0'],

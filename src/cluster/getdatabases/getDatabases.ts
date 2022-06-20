@@ -1,43 +1,26 @@
 import {Connection} from 'common/external/database'
-import {CONSTANTS} from 'cluster/common/constants'
+import {getMainCollections} from 'cluster/common/getMainCollections'
+import {schemas} from 'schemas/schemas'
+import {objectFromEntries} from 'common/utils/objectFromEntries'
 
 export const getDatabases = (connection: Connection) => async (arg: {
   limit?: number
 }) => {
     
-  const db = connection().db(CONSTANTS.MAIN_DATABASE_NAME)
-  const collection = db.collection(CONSTANTS.DATABASE_META_COLLECTION)
-  const databases = await collection.aggregate([
-    {$facet: { 
+  const result = await getMainCollections(connection).meta
+    .find()
+    .sort({ createdAt: 1 })
+    .limit(50)
+    .toArray()
 
-      selected: [
-        {$limit: 1},
-        {$addFields: {id: '$_id'}},
-        {$unset: '_id'}
-      ],
+  if (!schemas.databases.validate(result)) { throw new Error() }
 
-      list: [
-        {$project: {id: '$_id', name: '$name', _id: 0}}
-      ]
-
-    }}
-  ]).toArray()
-
-
-  const selected = databases[0]?.selected[0] as {
-    id: string
-    name: string
-    versions: any[]
-  }
-
-  const list = databases[0]?.list as Array<{
-    id: string
-    name: string
-  }>
-  
+  const databases = objectFromEntries(result, (database) => ({
+    key: database.name,
+    value: database
+  }))
 
   return {
-    selected: selected,
-    databases: list
+    databases
   }
 }

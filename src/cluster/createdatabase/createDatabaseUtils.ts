@@ -5,6 +5,7 @@ export const createNewDatabase = (arg: {
 }) => {
   return schemas.newDatabase.build({
     name: arg.name,
+    createdAt: new Date().getTime(),
     versions: {
       '1.0.0': {
         status: 'unpublished',

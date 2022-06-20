@@ -18,19 +18,13 @@ type Output = {
 }
 
 export const initializeDatabases = new api.Responder<Input, Output>(async (context) => {
-
     const result = await database.getDatabases({
         limit: context.request().limit
     })
 
-
-    if (result.error) {
-        throw new Error()
-    }
+    if (result.error) { throw new Error() }
 
     context.send({
         databases: result.payload.databases,
-        selected: result.payload.selected
     })
-
 })
