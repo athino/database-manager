@@ -5,9 +5,7 @@ type Input = {
     limit?: number
 }
 
-type Output = {
-    databases: (Awaited<ReturnType<typeof database.getDatabases>> & { error: false })['payload']['databases']
-}
+type Output = (Awaited<ReturnType<typeof database.getDatabases>> & { error: false })['payload']
 
 export const initializeDatabases = new api.Responder<Input, Output>(async (context) => {
     const result = await database.getDatabases({
@@ -16,7 +14,5 @@ export const initializeDatabases = new api.Responder<Input, Output>(async (conte
 
     if (result.error) { throw new Error() }
 
-    context.send({
-        databases: result.payload.databases,
-    })
+    context.send(result.payload)
 })
