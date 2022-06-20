@@ -6,15 +6,7 @@ type Input = {
 }
 
 type Output = {
-    selected: {
-        id: string
-        name: string
-        versions: any[]
-    }
-    databases: Array<{
-        id: string
-        name: string
-    }>
+    databases: (Awaited<ReturnType<typeof database.getDatabases>> & { error: false })['payload']['databases']
 }
 
 export const initializeDatabases = new api.Responder<Input, Output>(async (context) => {
