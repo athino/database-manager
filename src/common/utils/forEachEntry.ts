@@ -1,10 +1,12 @@
 
 
-export const forEachEntry = <P, K, T extends { [key: string]: K }>(obj: T, iterator: (key: string, value: K) => P) => {
+export const forEachEntry = <N, T extends Record<string, any>>(obj: T, iterator: (key: keyof T, val: T[keyof T]) => N) => {
     return Object.entries(obj).reduce((acc, cur) => {
         return {
             ...acc,
             [cur[0]]: iterator(...cur)
         }
-    }, {}) as { [N in keyof T]: P }
+    }, {}) as {
+        [K in keyof T]: N
+    }
 }

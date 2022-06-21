@@ -21,26 +21,19 @@ function* initializeDatabasesSaga() {
   })
 
   if (request.error) {
-    yield put(HomeActions.initializeDatabasesFinish([]))
+    yield put(HomeActions.initializeDatabasesFinish({}))
   } else {
 
-    {
-      name: string
-      isBeingDeleted: boolean
-      isBeingUpdated: boolean
-      activeVersionSemver: string
-      versions: {
-        [semver: string]: {
-          semver: string
-          status: string
-          isBeingPublished: boolean
-        }
-      }
-    }
-
-    const databases = forEachEntry(request.response.databases, (database) => {
-      return database
-    })
+    const databases = forEachEntry(request.response.databases, (_name, database) => ({
+      ...database,
+      isBeingDeleted: false,
+      isBeingUpdated: false,
+      activeVersionSemver: '',
+      versions: forEachEntry(database.versions, (_semver, version) => ({
+        ...version,
+        isBeingPublished: false
+      }))
+    }))
 
     yield put(HomeActions.initializeDatabasesFinish(databases))
   }
