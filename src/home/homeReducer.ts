@@ -150,13 +150,11 @@ export const homeReducer = (
       
       return {
         ...state,
-        isCreatingDatabaseVersion: true
       }
 
     case HomeActionsTypes.CREATE_DATABASE_VERSION_FINISH:
       return {
         ...state,
-        isCreatingDatabaseVersion: false
       }
 
     case HomeActionsTypes.GET_HOST_DOMAIN_FINISH:
