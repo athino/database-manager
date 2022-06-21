@@ -28,7 +28,7 @@ function* initializeDatabasesSaga() {
       ...database,
       isBeingDeleted: false,
       isBeingUpdated: false,
-      activeVersionSemver: '',
+      activeVersionSemver: Object.keys(database.versions).at(0)!,
       versions: forEachEntry(database.versions, (_semver, version) => ({
         ...version,
         isBeingPublished: false
@@ -61,10 +61,10 @@ function* createDatabaseSaga(action: ReturnType<typeof HomeActions.createDatabas
   } else {
     yield put(HomeActions.createDatabaseFinish({
       name: action.payload.name,
-      versions: [],
+      versions: {},
       isBeingUpdated: false,
       isBeingDeleted: false,
-      activeVersion: undefined
+      activeVersionSemver: '1.0.0'
     }))
   }
 
