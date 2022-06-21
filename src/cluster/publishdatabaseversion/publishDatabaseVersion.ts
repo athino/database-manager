@@ -4,28 +4,28 @@ import {setVersionStatusToPublished} from 'cluster/setversionstatustopublished/s
 import {Connection} from 'common/external/database'
 
 export const publishDatabaseVersion = (connection: Connection) => async (arg: {
-  databaseName: string
-  databaseVersion: string
+  name: string
+  semver: string
 }) => {
 
   const result = await database.checkVersionIsUnpublished({
-    databaseName: arg.databaseName,
-    databaseVersion: arg.databaseVersion
+    databaseName: arg.name,
+    databaseVersion: arg.semver
   })
 
   // if (result.error || !result.payload.isUnpublished) { return }
 
   const {shasum} = await createPackage(connection)({
-    databaseName: arg.databaseName,
-    version: arg.databaseVersion,
+    databaseName: arg.name,
+    version: arg.semver,
     scope: 'database-manager'
   })
 
   if (!shasum) { throw new Error() }
 
   await setVersionStatusToPublished(connection)({
-    databaseName: arg.databaseName,
-    databaseVersion: arg.databaseVersion,
+    name: arg.name,
+    semver: arg.semver,
     shasum: shasum
   })
 

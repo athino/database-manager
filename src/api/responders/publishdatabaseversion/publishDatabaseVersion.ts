@@ -11,12 +11,11 @@ type Output = {
 }
 
 export const publishDatabaseVersion = new api.Responder<Input, Output>(async (context) => {
-
     const {version, databaseName} = context.request()
 
     const result = await database.publishDatabaseVersion({
-        databaseName: databaseName,
-        databaseVersion: version
+        name: databaseName,
+        semver: version
     })
 
     context.send({
