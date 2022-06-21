@@ -109,8 +109,8 @@ export const homeReducer = (
       }
 
     case HomeActionsTypes.PUBLISH_DATABASE: {
-      const {databaseName, semver} = action.payload
-      const version = state.databases[databaseName]?.versions[semver]
+      const {databaseName, id} = action.payload
+      const version = state.databases[databaseName]?.versions[id]
 
       if (version) {
         version.isBeingPublished = true
@@ -122,10 +122,10 @@ export const homeReducer = (
     }
 
     case HomeActionsTypes.PUBLISH_DATABASE_FINISH: {
-      const {databaseName, version: semver} = action.payload
+      const {databaseName, id} = action.payload
 
       const database = state.databases[databaseName]!
-      const version = database.versions[semver]!
+      const version = database.versions[id]!
 
       return {
         ...state,
@@ -135,7 +135,7 @@ export const homeReducer = (
             ...database,
             versions: {
               ...database.versions,
-              [semver]: {
+              [id]: {
                 ...version,
                 isBeingPublished: false
               }

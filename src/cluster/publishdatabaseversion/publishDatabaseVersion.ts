@@ -5,19 +5,19 @@ import {Connection} from 'common/external/database'
 
 export const publishDatabaseVersion = (connection: Connection) => async (arg: {
   name: string
-  semver: string
+  id: string
 }) => {
 
   const result = await database.checkVersionIsUnpublished({
     databaseName: arg.name,
-    databaseVersion: arg.semver
+    databaseVersion: arg.id
   })
 
   // if (result.error || !result.payload.isUnpublished) { return }
 
   const {shasum} = await createPackage(connection)({
     databaseName: arg.name,
-    version: arg.semver,
+    version: arg.id,
     scope: 'database-manager'
   })
 
@@ -25,7 +25,7 @@ export const publishDatabaseVersion = (connection: Connection) => async (arg: {
 
   await setVersionStatusToPublished(connection)({
     name: arg.name,
-    semver: arg.semver,
+    semver: arg.id,
     shasum: shasum
   })
 

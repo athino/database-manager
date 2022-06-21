@@ -6,8 +6,9 @@ export type Database = {
   activeVersionSemver: string
   createdAt: number
   versions: {
-    [semver: string]: {
+    [id: string]: {
       semver: string
+      id: string
       status: string
       isBeingPublished: boolean
     }

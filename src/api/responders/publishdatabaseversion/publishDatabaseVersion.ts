@@ -2,8 +2,8 @@ import {api} from 'api/api'
 import {database} from 'cluster/database'
 
 type Input = {
-    databaseName: string
-    version: string
+    name: string
+    id: string
 }
 
 type Output = {
@@ -11,11 +11,11 @@ type Output = {
 }
 
 export const publishDatabaseVersion = new api.Responder<Input, Output>(async (context) => {
-    const {version, databaseName} = context.request()
+    const {id, name} = context.request()
 
     const result = await database.publishDatabaseVersion({
-        name: databaseName,
-        semver: version
+        name: name,
+        id: id
     })
 
     context.send({

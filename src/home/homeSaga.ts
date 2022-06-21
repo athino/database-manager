@@ -3,7 +3,6 @@ import {HomeActionsTypes, HomeActions} from 'home/homeActions'
 import {Request} from 'api/apiRequest'
 import {Task} from 'redux-saga'
 import {forEachEntry} from 'common/utils/forEachEntry'
-import { keyframes } from 'styled-components'
 
 function* initializeDatabasesSaga() {
 
@@ -74,13 +73,13 @@ function* createDatabaseSaga(action: ReturnType<typeof HomeActions.createDatabas
 
 
 function* publishDatabaseSaga(action: ReturnType<typeof HomeActions.publishDatabase>) {
-  const {databaseName, semver} = action.payload
+  const {databaseName, id} = action.payload
   
   const request = new Request({
     path: '/api/publish-database-version',
     body: {
-      databaseName: databaseName,
-      version: semver
+      name: databaseName,
+      id: id
     }
   })
 

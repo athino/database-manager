@@ -24,7 +24,7 @@ export const Content = () => {
 
   const publishDatabase = () => {
     if (database && version) {
-      dispatch(HomeActions.publishDatabase(database.name, version.semver))
+      dispatch(HomeActions.publishDatabase(database.name, version.id))
     }
   }
   const scope = global.document?.location?.hostname?.split('.')[0]
