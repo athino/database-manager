@@ -21,7 +21,7 @@ export const tarball = new api.Responder<Input, Output>(async (context) => {
     if (!major)                       { throw new Error() }
     if (!minor)                       { throw new Error() }
     if (!patch)                       { throw new Error() }
-    if (scopeName !== hostname)       { throw new Error() }
+    if (scopeName !== `@${hostname}`) { throw new Error() }
     if (databaseName !== packageName) { throw new Error() }
 
     const filename = `${databaseName}-${major}.${minor}.${patch}.tgz`
