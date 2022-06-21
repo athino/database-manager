@@ -9,7 +9,7 @@ function* initializeDatabasesSaga() {
   const request = new Request({
     path: '/api/initialize-databases',
     body: {
-      limit: 1
+      limit: 50
     }
   })
 

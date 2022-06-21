@@ -10,7 +10,7 @@ export const getDatabases = (connection: Connection) => async (arg: {
   const result = await getMainCollections(connection).meta
     .find()
     .sort({ createdAt: 1 })
-    .limit(50)
+    .limit(arg.limit ?? NaN)
     .toArray()
 
   const items = result.map(({_id, ...database}) => database)
