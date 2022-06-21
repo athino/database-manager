@@ -129,9 +129,11 @@ export const Content = () => {
             </div>
           </SectionHeaderFrame>
 
-          <div style={{display: 'inline-block'}}>
-            <a download href={downloadLink}><Button>Download package</Button></a>
-          </div><br/><br/>
+          {version?.status === 'published' &&
+          <><div style={{ display: 'inline-block' }}>
+              <a download href={downloadLink}><Button>Download package</Button></a>
+            </div><br /><br /></>
+          }
 
           <TextInput
             onChange={() => 1}
