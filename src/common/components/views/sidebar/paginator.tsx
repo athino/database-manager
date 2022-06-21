@@ -11,7 +11,7 @@ type Props = {
   onSelectItem(item: any): void
   onCreateNew(name: string): void
   list: Array<{
-    id: string | number
+    id: string | number | undefined
     name: string
     isBeingUpdated: boolean
   }>
