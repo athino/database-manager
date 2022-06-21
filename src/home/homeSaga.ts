@@ -90,7 +90,7 @@ function* publishDatabaseSaga(action: ReturnType<typeof HomeActions.publishDatab
     })
   })
 
-  yield put(HomeActions.publishDatabaseFinish(databaseName, semver))
+  yield put(HomeActions.publishDatabaseFinish(databaseName, id))
 
 
 }
