@@ -137,6 +137,7 @@ export const homeReducer = (
               ...database.versions,
               [id]: {
                 ...version,
+                status: 'published',
                 isBeingPublished: false
               }
             }

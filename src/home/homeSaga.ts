@@ -91,8 +91,6 @@ function* publishDatabaseSaga(action: ReturnType<typeof HomeActions.publishDatab
   })
 
   yield put(HomeActions.publishDatabaseFinish(databaseName, id))
-
-
 }
 
 function* createDatabaseVersionSaga(action: ReturnType<typeof HomeActions.createDatabaseVersion>) {
