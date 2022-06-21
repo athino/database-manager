@@ -1,19 +1,19 @@
 import {Connection} from 'common/external/database'
-import {CONSTANTS} from 'cluster/common/constants'
+import {getMainCollections} from 'cluster/common/getMainCollections'
+import { deleteFile } from 'cluster/deletefile/deleteFile'
 
 export const deleteDatabase = (connection: Connection) => async (arg: {
   name: string
 }) => {
+  const result = await getMainCollections(connection).meta.deleteOne({
+    name: arg.name
+  })
 
-  const db = connection().db(CONSTANTS.MAIN_DATABASE_NAME)
-  const collection = db.collection(CONSTANTS.DATABASE_META_COLLECTION)
-  
-  const deleteResult = await collection.deleteOne({ name: arg.name })
+  deleteFile(connection)({
+    name: arg.name
+  })
 
-  if (deleteResult.deletedCount !== 1) {
-    throw new Error()
-  }
+  if (result.deletedCount !== 1) { throw new Error() }
 
   return true
-
 }
