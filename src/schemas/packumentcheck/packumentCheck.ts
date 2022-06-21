@@ -5,6 +5,7 @@ type PackumentCheck = Array<{
     major: number
     minor: number
     patch: number
+    id: string
     semver: string
     published: number
     shasum: string
@@ -14,7 +15,7 @@ export const schema = new Schema<PackumentCheck>({
     type: 'array',
     items: {
         type: 'object',
-        required: ['status', 'major', 'minor', 'patch', 'semver', 'published', 'shasum'],
+        required: ['status', 'major', 'minor', 'patch', 'id', 'semver', 'published', 'shasum'],
         additionalProperties: false,
         properties: {
             status: {
@@ -32,6 +33,10 @@ export const schema = new Schema<PackumentCheck>({
             patch: {
                 type: 'integer',
                 minimum: 0,
+            },
+            id: {
+                type: 'string',
+                pattern: '^[1-9]d*-d+-d+$'
             },
             semver: {
                 type: 'string',

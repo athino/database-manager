@@ -4,8 +4,9 @@ type Database = {
     name: string
     createdAt: number
     versions: {
-        [semver: string]: {
+        [id: string]: {
             semver: string
+            id: string
             major: number
             minor: number
             patch: number
@@ -28,10 +29,11 @@ export const schema = new Schema<Database>({
             patternProperties: {
                 '^[1-9]d*.d+.d+$': {
                     type: 'object',
-                    required: ['semver', 'major', 'minor', 'patch', 'status'],
+                    required: ['semver', 'id', 'major', 'minor', 'patch', 'status'],
                     additionalProperties: false,
                     properties: {
                         semver: {type: 'string', pattern: '^[1-9]d*.d+.d+$'},
+                        id: {type: 'string', pattern: '^[1-9]d*-d+-d+$'},
                         major: {type: 'integer', minimum: 1},
                         minor: {type: 'integer', minimum: 0},
                         patch: {type: 'integer', minimum: 0},

@@ -75,7 +75,7 @@ function* createDatabaseSaga(action: ReturnType<typeof HomeActions.createDatabas
 
 function* publishDatabaseSaga(action: ReturnType<typeof HomeActions.publishDatabase>) {
   const {databaseName, semver} = action.payload
-
+  
   const request = new Request({
     path: '/api/publish-database-version',
     body: {

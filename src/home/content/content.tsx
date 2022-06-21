@@ -24,7 +24,6 @@ export const Content = () => {
 
   const publishDatabase = () => {
     if (database && version) {
-      console.log(version)
       dispatch(HomeActions.publishDatabase(database.name, version.semver))
     }
   }

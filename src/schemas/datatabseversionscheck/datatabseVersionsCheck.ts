@@ -2,7 +2,7 @@ import Schema from "common/external/schema";
 
 type DatatabseVersionsCheck = {
     versions: {
-        [semver: string]: {
+        [id: string]: {
             status: string
         }
     }
@@ -19,7 +19,7 @@ export const schema = new Schema<DatatabseVersionsCheck>({
             additionalProperties: false,
             minProperties: 1,
             patternProperties: {
-                '^[1-9]d*.d+.d+$': {
+                '^[1-9]d*-d+-d+$': {
                     type: 'object',
                     required: [],
                     properties: {
