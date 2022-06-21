@@ -70,7 +70,7 @@ export const Content = () => {
               <Status>{version?.status}</Status>
 
               <Select>
-                {Object.keys(database.versions).map((semver) => <option key={semver}>version {semver}</option>)}
+                {Object.entries(database.versions).map(([_key, {semver}]) => <option key={semver}>version {semver}</option>)}
               </Select>
               <div style={{display: 'inline-block'}}>
                 <Button onClick={() => dispatch(HomeActions.createDatabaseVersion(database.name))}>
