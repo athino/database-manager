@@ -63,6 +63,7 @@ function* createDatabaseSaga(action: ReturnType<typeof HomeActions.createDatabas
     yield put(HomeActions.createDatabaseFinish({
       name: action.payload.name,
       versions: {},
+      createdAt: 0,
       isBeingUpdated: false,
       isBeingDeleted: false,
       activeVersionSemver: '1.0.0'
