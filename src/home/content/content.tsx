@@ -123,25 +123,27 @@ export const Content = () => {
           <br/>
           <br/>
 
-          <SectionHeaderFrame>
-            <div>
-              <h3>Install</h3>
-            </div>
-          </SectionHeaderFrame>
-
           {version?.status === 'published' &&
-          <><div style={{ display: 'inline-block' }}>
-              <a download href={downloadLink}><Button>Download package</Button></a>
-            </div><br /><br /></>
+            <>
+              <SectionHeaderFrame>
+                <div>
+                  <h3>Install</h3>
+                </div>
+              </SectionHeaderFrame>
+              <div style={{ display: 'inline-block' }}>
+                <a download href={downloadLink}><Button>Download package</Button></a>
+              </div>
+              <br/>
+              <br/>
+              <TextInput
+                onChange={() => 1}
+                value={installCommand}/>
+
+              <br/>
+              <br/>
+              <br/>
+            </>
           }
-
-          <TextInput
-            onChange={() => 1}
-            value={installCommand}/>
-
-          <br/>
-          <br/>
-          <br/>
 
           <SectionHeaderFrame>
             <div>
