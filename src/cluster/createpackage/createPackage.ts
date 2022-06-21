@@ -4,7 +4,7 @@ import {createTar} from 'createtar/createTar'
 
 export const createPackage = (connection: Connection) => async (arg: {
   databaseName: string
-  version: string
+  id: string
   scope: string
 }) => {
   const {tarBuffer, tarShasum} = await createTar({
@@ -14,7 +14,7 @@ export const createPackage = (connection: Connection) => async (arg: {
       }]
   })
 
-  const filename = `${arg.databaseName}-${arg.version}.tgz`
+  const filename = `${arg.databaseName}-${arg.id.replaceAll('-', '.')}.tgz`
 
   const {wasUploaded} = await uploadFile(connection)({
     filename: filename,

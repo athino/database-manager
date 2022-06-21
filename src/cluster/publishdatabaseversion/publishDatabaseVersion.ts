@@ -17,7 +17,7 @@ export const publishDatabaseVersion = (connection: Connection) => async (arg: {
 
   const {shasum} = await createPackage(connection)({
     databaseName: arg.name,
-    version: arg.id,
+    id: arg.id,
     scope: 'database-manager'
   })
 
