@@ -3,6 +3,7 @@ import {HomeActionsTypes, HomeActions} from 'home/homeActions'
 import {Request} from 'api/apiRequest'
 import {Task} from 'redux-saga'
 import {forEachEntry} from 'common/utils/forEachEntry'
+import { keyframes } from 'styled-components'
 
 function* initializeDatabasesSaga() {
 
@@ -72,13 +73,13 @@ function* createDatabaseSaga(action: ReturnType<typeof HomeActions.createDatabas
 
 
 function* publishDatabaseSaga(action: ReturnType<typeof HomeActions.publishDatabase>) {
-  const {databaseName, version} = action.payload
+  const {databaseName, semver} = action.payload
 
   const request = new Request({
     path: '/api/publish-database-version',
     body: {
       databaseName: databaseName,
-      version: version
+      version: semver
     }
   })
 
@@ -89,7 +90,7 @@ function* publishDatabaseSaga(action: ReturnType<typeof HomeActions.publishDatab
     })
   })
 
-  yield put(HomeActions.publishDatabaseFinish(databaseName, version))
+  yield put(HomeActions.publishDatabaseFinish(databaseName, semver))
 
 
 }
@@ -156,16 +157,15 @@ function* getDatabaseDetailsSaga(action: ReturnType<typeof HomeActions.selectDat
 
   } else {
 
-    const db = request.response.database
-
     const database = {
-      name: db.name,
+      ...request.response.database,
       isBeingDeleted: false,
       isBeingUpdated: false,
-      versions: {
-        ...db.versions,
-        isBeingPublished: false
-      }
+      activeVersionSemver: Object.keys(request.response.database.versions).at(0)!,
+      versions: forEachEntry(request.response.database.versions, (_key, value) => ({
+        isBeingPublished: false,
+        ...value
+      }))
     }
 
     yield put(HomeActions.getDatabaseDetailsFinish(database))

@@ -4,6 +4,7 @@ export type Database = {
   isBeingDeleted: boolean
   isBeingUpdated: boolean
   activeVersionSemver: string
+  createdAt: number
   versions: {
     [semver: string]: {
       semver: string
