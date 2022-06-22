@@ -18,7 +18,7 @@ export const schema = new Schema<DatatabseVersionsCheck>({
             required: ['1-0-0'],
             minProperties: 1,
             patternProperties: {
-                '^[1-9]d*-d+-d+$': {
+                '^[1-9][0-9]*-[0-9]+-[0-9]+$': {
                     type: 'object',
                     required: ['status'],
                     properties: {

@@ -36,11 +36,11 @@ export const schema = new Schema<PackumentCheck>({
             },
             id: {
                 type: 'string',
-                pattern: '^[1-9]d*-d+-d+$'
+                pattern: '^[1-9][0-9]*-[0-9]+-[0-9]+$'
             },
             semver: {
                 type: 'string',
-                pattern: '^[1-9]d*.d+.d+$'
+                pattern: '^[1-9][0-9]*.[0-9]+.[0-9]+$'
             },
             shasum: {
                 type: 'string'

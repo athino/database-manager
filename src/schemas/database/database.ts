@@ -27,13 +27,13 @@ export const schema = new Schema<Database>({
             required: [],
             minProperties: 1,
             patternProperties: {
-                '^[1-9]d*.d+.d+$': {
+                '^[1-9][0-9]*.[0-9]+.[0-9]+$': {
                     type: 'object',
                     required: ['semver', 'id', 'major', 'minor', 'patch', 'status'],
                     additionalProperties: false,
                     properties: {
-                        semver: {type: 'string', pattern: '^[1-9]d*.d+.d+$'},
-                        id: {type: 'string', pattern: '^[1-9]d*-d+-d+$'},
+                        semver: {type: 'string', pattern: '^[1-9][0-9]*.[0-9]+.[0-9]+$'},
+                        id: {type: 'string', pattern: '^[1-9][0-9]*-[0-9]+-[0-9]+$'},
                         major: {type: 'integer', minimum: 1},
                         minor: {type: 'integer', minimum: 0},
                         patch: {type: 'integer', minimum: 0},

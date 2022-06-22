@@ -19,7 +19,8 @@ export const getPackument = (connection: Connection) => async (arg: {
     .map(([_key, value]) => value)
     .filter(({status}) => ['published', 'depricated'].includes(status))
 
-  if (!schemas.packumentCheck.validate(versions)) { throw new Error() }
+  if (!schemas.packumentCheck.validate(versions)) { console.log(schemas.packumentCheck.validate.errors); throw new Error() }
+
 
   const packument = createPackument({
     baseUrl: arg.baseUrl,
