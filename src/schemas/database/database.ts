@@ -11,6 +11,8 @@ type Database = {
             minor: number
             patch: number
             status: 'unpublished' | 'published' | 'depricated'
+            published?: number
+            shasum?: number
         }
     }
 }
@@ -38,6 +40,8 @@ export const schema = new Schema<Database>({
                         minor: {type: 'integer', minimum: 0},
                         patch: {type: 'integer', minimum: 0},
                         status: {type: 'string', enum: ['unpublished', 'published', 'depricated']},
+                        published: {type: 'integer', nullable: true},
+                        shasum: {type: 'integer', nullable: true}
                     }
                 },
             }
