@@ -19,7 +19,7 @@ export const reduceVersions = (arg: {
                 name: joinName({
                     scopeName: arg.scopeName,
                     packageName: arg.packageName
-                }),
+                }).name,
                 dist: {
                     shasum: version.shasum,
                     tarball: tarballSource.buildUrl({
