@@ -2,12 +2,14 @@
 
 export const package$json = (arg: {
     name: string
+    scope: string
+    semver: string
 }) => {
     return {
         name: 'package.json',
         content: JSON.stringify({
-            name: arg.name,
-            version: '1.0.0',
+            name: `@${arg.scope}/${arg.name}`,
+            version: arg.semver,
             license: 'ISC',
             author: 'Unknown',
             description: '',
