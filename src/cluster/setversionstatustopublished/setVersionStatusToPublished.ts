@@ -11,8 +11,9 @@ export const setVersionStatusToPublished = (connection: Connection) => async (ar
       {
         '$set': {
           [`versions.${arg.semver}.status`]: 'published',
-          [`versions.${arg.semver}.shasum`]: arg.shasum
-        } 
+          [`versions.${arg.semver}.shasum`]: arg.shasum,
+          [`versions.${arg.semver}.published`]: new Date().getTime()
+        }
       }
   )
 

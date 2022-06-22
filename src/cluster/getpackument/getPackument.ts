@@ -15,7 +15,9 @@ export const getPackument = (connection: Connection) => async (arg: {
 
   if (!schemas.datatabseVersionsCheck.validate(database)) { throw new Error() }
 
-  const versions = Object.entries(database.versions).map(([_key, value]) => value)
+  const versions = Object.entries(database.versions)
+    .map(([_key, value]) => value)
+    .filter(({status}) => ['published', 'depricated'].includes(status))
 
   if (!schemas.packumentCheck.validate(versions)) { throw new Error() }
 

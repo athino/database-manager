@@ -7,15 +7,15 @@ type PackumentCheck = Array<{
     patch: number
     id: string
     semver: string
-    published: number
     shasum: string
+    published: number
 }>
 
 export const schema = new Schema<PackumentCheck>({
     type: 'array',
     items: {
         type: 'object',
-        required: ['status', 'major', 'minor', 'patch', 'id', 'semver', 'shasum'],
+        required: ['status', 'major', 'minor', 'patch', 'id', 'semver', 'shasum', 'published'],
         additionalProperties: false,
         properties: {
             status: {
