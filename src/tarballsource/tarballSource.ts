@@ -14,11 +14,15 @@ export const tarballSource = {
         const posMajor = arg.major < 0 ? -arg.major : arg.major
         const posMinor = arg.minor < 0 ? -arg.minor : arg.minor
         const posPatch = arg.patch < 0 ? -arg.patch : arg.patch
+        const a = arg.scopeName
+        const b = arg.databaseName
+        const c = arg.databaseName
+        const d = posMajor
+        const e = posMinor
+        const f = posPatch
 
         const path =
-            `/api/tarball/${arg.scopeName}/\
-            ${arg.databaseName}/-/${arg.databaseName}\
-            -${posMajor}.${posMinor}.${posPatch}.tgz`
+            `/api/tarball/${a}/${b}/-/${c}-${d}.${e}.${f}.tgz`
 
         return {
             url: `${arg.baseUrl}${path}`
