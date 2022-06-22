@@ -8,25 +8,17 @@ export const getPackument = (connection: Connection) => async (arg: {
   scopeName: string
   databaseName: string
 }) => {
-
   const database = await getMainCollections(connection).meta.findOne({
     name: arg.databaseName,
   })
 
-  console.log(`11-${JSON.stringify(database)}`)
-
-  if (!schemas.datatabseVersionsCheck.validate(database)) { console.log(schemas.datatabseVersionsCheck.validate.errors); throw new Error() }
-
-  console.log(`12-${JSON.stringify(database)}`)
+  if (!schemas.datatabseVersionsCheck.validate(database)) { throw new Error() }
 
   const versions = Object.entries(database.versions)
     .map(([_key, value]) => value)
     .filter(({status}) => ['published', 'depricated'].includes(status))
 
-  console.log(`13-${JSON.stringify(versions)}`)
-
-  if (!schemas.packumentCheck.validate(versions)) { console.log(schemas.packumentCheck.validate.errors); throw new Error() }
-
+  if (!schemas.packumentCheck.validate(versions)) { throw new Error() }
 
   const packument = createPackument({
     baseUrl: arg.baseUrl,
@@ -34,8 +26,6 @@ export const getPackument = (connection: Connection) => async (arg: {
     packageName: arg.databaseName,
     versions: versions
   })
-
-  console.log(`14-${JSON.stringify(packument)}`)
 
   return {
     packument

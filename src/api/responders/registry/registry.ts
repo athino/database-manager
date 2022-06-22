@@ -15,26 +15,11 @@ export const registry = new api.Responder<Input, Output>(async (context) => {
     const {hostname} = urlInfo.getHostname({ req: context.native.req })
     const {scopeName, packageName} = context.pathVariables()
 
-    console.log(`1-${baseUrl}`)
-    console.log(`2-${hostname}`)
-    console.log(`3-${scopeName}`)
-    console.log(`4-${packageName}`)
-
     if (!baseUrl)                     { throw new Error() }
-    console.log(`5`)
-
     if (!hostname)                    { throw new Error() }
-    console.log(`6`)
-
     if (!scopeName)                   { throw new Error() }
-    console.log(`7`)
-
     if (!packageName)                 { throw new Error() }
-    console.log(`8`)
-
     if (scopeName !== hostname)       { throw new Error() }
-    console.log(`9`)
-
 
     const {payload} = await database.getPackument({
         baseUrl: baseUrl,
@@ -42,7 +27,7 @@ export const registry = new api.Responder<Input, Output>(async (context) => {
         databaseName: packageName
     })
 
-    console.log(`10-${JSON.stringify(payload)}`)
+    console.log(JSON.stringify(payload?.packument, undefined, 2))
 
     context.native.res.json(payload?.packument)
 })
