@@ -30,7 +30,7 @@ export const reduceVersions = (arg: {
                         minor: version.minor,
                         patch: version.patch,
                         scopeName: arg.scopeName
-                    })
+                    }).url
                 }
             }
         }))
