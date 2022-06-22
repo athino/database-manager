@@ -6,6 +6,7 @@ import {Connection} from 'common/external/database'
 export const publishDatabaseVersion = (connection: Connection) => async (arg: {
   name: string
   id: string
+  scope: string
 }) => {
 
   const result = await database.checkVersionIsUnpublished({
@@ -18,7 +19,7 @@ export const publishDatabaseVersion = (connection: Connection) => async (arg: {
   const {shasum} = await createPackage(connection)({
     databaseName: arg.name,
     id: arg.id,
-    scope: 'database-manager'
+    scope: arg.scope
   })
 
   if (!shasum) { throw new Error() }

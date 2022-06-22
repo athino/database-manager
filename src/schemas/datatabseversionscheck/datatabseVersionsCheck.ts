@@ -15,13 +15,12 @@ export const schema = new Schema<DatatabseVersionsCheck>({
     properties: {
         versions: {
             type: 'object',
-            required: [],
-            additionalProperties: false,
+            required: ['1-0-0'],
             minProperties: 1,
             patternProperties: {
                 '^[1-9]d*-d+-d+$': {
                     type: 'object',
-                    required: [],
+                    required: ['status'],
                     properties: {
                         status: {type: 'string'}
                     }
