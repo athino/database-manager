@@ -21,8 +21,7 @@ export const tarballSource = {
         const e = posMinor
         const f = posPatch
 
-        const path =
-            `/api/tarball/@${a}/${b}/-/${c}-${d}.${e}.${f}.tgz`
+        const path = `/api/tarball/@${a}/${b}/-/${c}-${d}.${e}.${f}.tgz`
 
         return {
             url: `${arg.baseUrl}${path}`
