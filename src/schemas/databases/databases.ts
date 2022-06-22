@@ -12,7 +12,7 @@ type Databases = Array<{
             patch: number
             status: 'unpublished' | 'published' | 'depricated'
             published?: number
-            shasum?: number
+            shasum?: string
         }
     }
 }>
@@ -43,7 +43,7 @@ export const schema = new Schema<Databases>({
                             patch: {type: 'integer', minimum: 0},
                             status: {type: 'string', enum: ['unpublished', 'published', 'depricated']},
                             published: {type: 'integer', nullable: true},
-                            shasum: {type: 'integer', nullable: true}
+                            shasum: {type: 'string', nullable: true}
                         }
                     },
                 }

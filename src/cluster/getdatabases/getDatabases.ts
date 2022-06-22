@@ -15,7 +15,9 @@ export const getDatabases = (connection: Connection) => async (arg: {
 
   const items = result.map(({_id, ...database}) => database)
 
-  if (!schemas.databases.validate(items)) { throw new Error() }
+  console.log(items)
+
+  if (!schemas.databases.validate(items)) { console.log(schemas.databases.validate.errors); throw new Error() }
 
   const databases = objectFromEntries(items, (database) => ({
     key: database.name,
