@@ -22,7 +22,7 @@ export const tarballSource = {
         const f = posPatch
 
         const path =
-            `/api/tarball/${a}/${b}/-/${c}-${d}.${e}.${f}.tgz`
+            `/api/tarball/@${a}/${b}/-/${c}-${d}.${e}.${f}.tgz`
 
         return {
             url: `${arg.baseUrl}${path}`
