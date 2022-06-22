@@ -13,11 +13,17 @@ export const getPackument = (connection: Connection) => async (arg: {
     name: arg.databaseName,
   })
 
-  if (!schemas.datatabseVersionsCheck.validate(database)) { throw new Error() }
+  console.log(`11-${JSON.stringify(database)}`)
+
+  if (!schemas.datatabseVersionsCheck.validate(database)) { console.log(schemas.datatabseVersionsCheck.validate.errors); throw new Error() }
+
+  console.log(`12-${JSON.stringify(database)}`)
 
   const versions = Object.entries(database.versions)
     .map(([_key, value]) => value)
     .filter(({status}) => ['published', 'depricated'].includes(status))
+
+  console.log(`13-${JSON.stringify(versions)}`)
 
   if (!schemas.packumentCheck.validate(versions)) { console.log(schemas.packumentCheck.validate.errors); throw new Error() }
 
@@ -28,6 +34,8 @@ export const getPackument = (connection: Connection) => async (arg: {
     packageName: arg.databaseName,
     versions: versions
   })
+
+  console.log(`14-${JSON.stringify(packument)}`)
 
   return {
     packument
