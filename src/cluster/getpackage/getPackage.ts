@@ -5,9 +5,10 @@ export const getPackage = (connection: Connection) => async (arg: {
 }) => {
   const db = connection().db('8120698a-d5bc-4977-a0f3-9d6752e66780')
   const bucket = new mongodb.GridFSBucket(db, { bucketName: 'fs' })
+  const stream = bucket.openDownloadStreamByName(arg.filename)
 
   return {
-    stream: bucket.openDownloadStreamByName(arg.filename),
+    stream: stream,
     filename: arg.filename
   }
 }
