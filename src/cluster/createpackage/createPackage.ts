@@ -7,14 +7,19 @@ export const createPackage = (connection: Connection) => async (arg: {
   id: string
   scope: string
 }) => {
+  const semver = arg.id.replaceAll('-', '.')
+
   const {tarBuffer, tarShasum} = await createTar({
-      methods: [{
-          name: 'getUser',
-          content: 'foo'
-      }]
+    name: arg.databaseName,
+    scope: arg.scope,
+    semver: semver,
+    methods: [{
+        name: 'getUser',
+        content: 'foo'
+    }]
   })
 
-  const filename = `${arg.databaseName}-${arg.id.replaceAll('-', '.')}.tgz`
+  const filename = `${arg.databaseName}-${semver}.tgz`
 
   const {wasUploaded} = await uploadFile(connection)({
     filename: filename,

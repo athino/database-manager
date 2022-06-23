@@ -8,6 +8,9 @@ type Files = Array<{
 }>
 
 export const createFiles = (arg: {
+  name: string
+  scope: string
+  semver: string
   methods: Array<{
     name: string
     content: string
@@ -16,7 +19,7 @@ export const createFiles = (arg: {
   const files: Files = []
 
   files.push(index$js())
-  files.push(package$json({ name: 'notifier', scope: 'database-manager', semver: '1.0.0' }))
+  files.push(package$json({ name: arg.name, scope: arg.scope, semver: arg.semver }))
   files.push(index$d$ts())
 
   return {

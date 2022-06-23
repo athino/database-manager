@@ -3,6 +3,9 @@ import {createBuffer} from './createBuffer';
 import {createFiles} from './createFiles';
 
 export const createTar = async (arg: {
+  name: string
+  scope: string
+  semver: string
   methods: Array<{
     name: string
     content: string
