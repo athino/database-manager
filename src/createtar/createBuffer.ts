@@ -25,7 +25,7 @@ export const createBuffer = async (arg: {
     })
 
     arg.files.forEach(({name, content}) => {
-      archive.append(content, { name })
+      archive.append(content, { name: `package/${name}` })
     })
   
     archive.finalize()
