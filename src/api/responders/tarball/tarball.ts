@@ -30,9 +30,7 @@ export const tarball = new api.Responder<Input, Output>(async (context) => {
         filename: filename
     })
     
-    context.native.res.setHeader('content-disposition', `attachment; filename=${payload?.filename}`)
     context.native.res.setHeader('content-type', 'application/octet-stream')
-    context.native.res.setHeader('cache-control', 'public, immutable, max-age=31557600')
 
     payload?.stream.pipe(context.native.res) ?? context.native.res.status(500).end()
 })
