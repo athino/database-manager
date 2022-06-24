@@ -61,11 +61,13 @@ export const Content = () => {
 
             <div>
 
+              {version?.status === 'unpublished' && 
               <div style={{display: 'inline-block'}}>
-                <Button onClick={publishDatabase}>
+                <Button onClick={publishDatabase} disabled={version?.isBeingPublished}>
                   {version?.isBeingPublished ? 'Publishing...' : 'Publish Database'}
                 </Button>
               </div>
+              }
 
               <Status>{version?.status}</Status>
 
