@@ -7,6 +7,7 @@ import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
 import {Select} from 'common/components/select'
 import {Table} from './table/table'
+import { Npm } from 'common/components/npm'
 
 export const Content = () => {
   const dispatch = useDispatch()
@@ -137,6 +138,7 @@ export const Content = () => {
               </div>
               <br/>
               <br/>
+              <Npm/>
               <TextInput
                 onChange={() => 1}
                 value={installCommand}/>
