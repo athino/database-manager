@@ -31,9 +31,10 @@ export const Content = () => {
   const scope = global.document?.location?.hostname?.split('.')[0]
   const npmrcLine = `@${scope}:registry=${global.document?.location?.origin}/api/registry`
   const installCommand = `npm install @${scope}/${database?.name}`
-  const authLine = `//${global.document?.location?.origin}/api/registry/:_authToken=<token>`
+  const authLine = `npm config set //${global.document?.location?.origin}/:_authToken 11e7f0f2-314a-45ca-b156-176df2f13e93` // no protocoll!
 
-  // npm config --location=project set @localhost:registry=http://localhost:3000/api/json/registry
+  'npm config set //reg.example.com/:_authToken 11e7f0f2-314a-45ca-b156-176df2f13e93'
+  'npm config rm //reg.example.com/:_authToken'  
 
   const deleteTable = (name: string) => () => {
     if (database && version) {

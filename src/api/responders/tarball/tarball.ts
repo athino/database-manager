@@ -11,6 +11,10 @@ type Output = {
 }
 
 export const tarball = new api.Responder<Input, Output>(async (context) => {
+    console.log(`tarball`)
+    console.log(context.native.req.headers)
+    console.log(`tarball`)
+
     const {scopeName, packageName, databaseName, major, minor, patch} = context.pathVariables()
     const {hostname} = urlInfo.getHostname({ req: context.native.req })
 
