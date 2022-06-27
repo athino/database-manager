@@ -11,10 +11,7 @@ type Output = {
 }
 
 export const registry = new api.Responder<Input, Output>(async (context) => {
-    console.log(`registry`)
-    console.log(context.native.req.headers)
-    console.log(`registry`)
-
+    const bearer = context.native.req.headers.authorization
     const {baseUrl} = urlInfo.getBaseUrl({ req: context.native.req })
     const {hostname} = urlInfo.getHostname({ req: context.native.req })
     const {scopeName, packageName} = context.pathVariables()
