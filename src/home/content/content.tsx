@@ -29,12 +29,9 @@ export const Content = () => {
     }
   }
   const scope = global.document?.location?.hostname?.split('.')[0]
-  const npmrcLine = `@${scope}:registry=${global.document?.location?.origin}/api/registry`
+  const npmrcLine = `npm config set @${scope}:registry ${global.document?.location?.origin}/api/registry --location project`
+  const authLine = `npm config set //${global.document?.location?.host}/:_authToken 11e7f0f2-314a-45ca-b156-176df2f13e93`
   const installCommand = `npm install @${scope}/${database?.name}`
-  const authLine = `npm config set //${global.document?.location?.host}/:_authToken 11e7f0f2-314a-45ca-b156-176df2f13e93` // no protocoll!
-
-  'npm config set //reg.example.com/:_authToken 11e7f0f2-314a-45ca-b156-176df2f13e93'
-  'npm config rm //reg.example.com/:_authToken'  
 
   const deleteTable = (name: string) => () => {
     if (database && version) {
@@ -113,20 +110,6 @@ export const Content = () => {
           <br/>
           <br/>
 
-          <SectionHeaderFrame>
-            <div>
-              <h3>project/.npmrc</h3>
-            </div>
-          </SectionHeaderFrame>
-
-          <TextInput
-            onChange={() => 1}
-            value={npmrcLine}/>
-
-          <br/>
-          <br/>
-          <br/>
-
           {version?.status === 'published' &&
             <>
               <SectionHeaderFrame>
@@ -134,16 +117,31 @@ export const Content = () => {
                   <h3>Install</h3>
                 </div>
               </SectionHeaderFrame>
+              <div style={{display: 'flex'}}>
+                <div style={{display: 'flex'}}>
+                  <Npm/>
+                </div>
+                <div style={{flexGrow: 1}}>
+                  <TextInput
+                    onChange={() => 1}
+                    value={npmrcLine}/>
+                  <br/>
+                  <br/>
+                  <TextInput
+                    onChange={() => 1}
+                    value={authLine}/>
+                  <br/>
+                  <br/>
+                  <TextInput
+                      onChange={() => 1}
+                      value={installCommand}/>
+                  <br/>
+                  <br/>
+                </div>
+              </div>
               <div style={{ display: 'inline-block' }}>
                 <a download href={downloadLink}><Button>Download package</Button></a>
               </div>
-              <br/>
-              <br/>
-              <Npm/>
-              <TextInput
-                onChange={() => 1}
-                value={installCommand}/>
-
               <br/>
               <br/>
               <br/>
