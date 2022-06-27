@@ -58,7 +58,7 @@ export const Content = () => {
               </h1>
             </div>
 
-            <div>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 
               {version?.status === 'unpublished' && 
               <div style={{display: 'inline-block'}}>
