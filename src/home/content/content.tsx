@@ -101,6 +101,8 @@ export const Content = () => {
                   <h3>Install</h3>
                 </div>
               </SectionHeaderFrame>
+              Open your terminal, `cd` into the project directory, and run the following commands:<br/><br/>
+
               <div style={{display: 'flex'}}>
                 <div style={{display: 'flex'}}>
                   <Npm/>
