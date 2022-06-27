@@ -93,22 +93,6 @@ export const Content = () => {
           <Line/>
 
           <br/>
-          <br/>
-          <br/>
-
-          <SectionHeaderFrame>
-            <div>
-              <h3>~/.npmrc</h3>
-            </div>
-          </SectionHeaderFrame>
-
-          <TextInput
-            onChange={() => 1}
-            value={authLine}/>
-
-          <br/>
-          <br/>
-          <br/>
 
           {version?.status === 'published' &&
             <>
