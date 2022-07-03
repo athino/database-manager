@@ -11,9 +11,7 @@ export const PopoverTooltip: FC<Props> = (props) => {
 
     const borderWidth = 1
 
-
     const borderPath = `M0 ${0.5*width} L${0.5*width} ${width}  L${width} ${0.5*width}`
-
 
     const backgroundPath = `M${0} ${0.5*width} L0 ${0.5*width} L${0.5*width} ${width} L${width} ${0.5*width} L${width} ${0.5*width} L${width} ${0} L${0} ${0} Z`
 
