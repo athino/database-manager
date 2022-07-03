@@ -6,8 +6,8 @@ import styled from 'styled-components'
 import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
 import {Select} from 'common/components/select'
-import {Table} from './table/table'
-import { Npm } from 'common/components/npm'
+import {Npm} from 'common/components/npm'
+import { Popover } from 'common/components/popover/popover'
 
 export const Content = () => {
   const dispatch = useDispatch()
@@ -78,6 +78,13 @@ export const Content = () => {
                   {'isCreatingDatabaseVersion' ? 'Creating version...' : 'Create New Version'}
                 </Button>
               </div>
+
+              <Popover
+                target={<Button>Hii</Button>}
+                content={<>efewfw</>}
+                position={'bottom'}
+                escape={2}
+                layer={3}/>
 
               <div>
                 <Button red onClick={() => dispatch(HomeActions.deleteDatabase(database.name))}>

@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useMemo, useRef} from 'react'
 import styled from 'styled-components'
+import { Stack } from './stack/stack'
 
 type Props = {
   target: React.ReactNode
@@ -60,7 +61,9 @@ export const PopoverWrapper: FC<Props> = (props) => {
     <Frame ref={ref}>
       <Overlay>
         <Content style={{ ...style}}>
-          {props.content}
+          <Stack escape={1} layer={1}>
+            {props.content}
+          </Stack>
         </Content>
       </Overlay>
       <Target>
@@ -90,6 +93,7 @@ const Overlay = styled.div`
 
 const Content = styled.div`
   position: absolute;
-  transform: translateZ(100px);
+  display: flex;
+  justify-content: center;
 `
 
