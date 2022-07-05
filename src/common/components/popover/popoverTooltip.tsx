@@ -30,7 +30,7 @@ export const PopoverTooltip: FC<Props> = (props) => {
 
                     <path
                         strokeWidth={0}
-                        fill={'#303030'}
+                        fill={'#00ffff'}
                         d={backgroundPath}/>
 
                     <path
