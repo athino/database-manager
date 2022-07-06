@@ -11,10 +11,10 @@ export default function Lol() {
     const heightMargin = 20
     
     const x1 = 0
-    const y1 = 300.5
+    const y1 = 300
 
     const x2 = x1 + margin
-    const y2 = y1
+    const y2 = y1 + 0.5
 
     const x3 = x2 + radius*Math.sin(angle)
     const y3 = y2 + radius*(1 - Math.cos(angle))
@@ -32,7 +32,7 @@ export default function Lol() {
     const y7 = y2
 
     const x8 = x7 + margin
-    const y8 = y7
+    const y8 = y1
 
     const x9 = x8
     const y9 = 0
@@ -43,15 +43,6 @@ export default function Lol() {
 
     return (
         <Frame>
-            {[...Array(30)].map((_,k) => {
-                return (
-                    <div key={k}>
-                        hei ... jiuo <br/>
-                    </div>
-                )
-            })}
-
-
             <BottomFrame>
                 <SvgFrame>
                     <svg
@@ -68,6 +59,18 @@ export default function Lol() {
                     </svg>
                 </SvgFrame>
             </BottomFrame>
+            <OverlapFrame></OverlapFrame>
+
+            <ContentFrame>
+                {[...Array(30)].map((_,k) => {
+                    return (
+                        <div key={k}>
+                            hei ... jiuo <br/>
+                        </div>
+                    )
+                })}
+            </ContentFrame>
+
         </Frame>
     )
 }
@@ -97,4 +100,19 @@ const SvgFrame = styled.div`
     height: 350px;
     width: 200px;
     margin: 0 auto;
+`
+
+const OverlapFrame = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 6px;
+    background-color: #303030;
+`
+
+const ContentFrame = styled.div`
+    position: relative;
+    z-index: 1;
 `
