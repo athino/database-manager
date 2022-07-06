@@ -4,10 +4,10 @@ import React from 'react'
 export default function Lol() {
 
     const borderWidth = 1
-    const radius = 20
+    const radius = 4
     const margin = 100
     const angle = 45 * 2*Math.PI / 360
-    const k = 10
+    const k = 6
     const heightMargin = 20
     
     const x1 = 0
@@ -83,7 +83,7 @@ const Frame = styled.div`
     margin: 20px auto;
     background-color: #303030;
     box-sizing: border-box;
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .7));
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
     border-radius: 6px;
 
     border: 1px solid #595959;
