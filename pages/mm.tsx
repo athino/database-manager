@@ -3,12 +3,13 @@ import React from 'react'
 
 export default function Lol() {
 
-    const borderWidth = 1
+    const borderWidth = 50
     const radius = 50
     const margin = 100
     const angle = 45 * 2*Math.PI / 360
     const k = 100
-
+    const heightMargin = 20
+    
     const x1 = 0
     const y1 = 300
 
@@ -38,7 +39,7 @@ export default function Lol() {
 
     const path = `M 0 0 L ${x1} ${y1} L ${x2} ${y2} A ${radius} ${radius} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${radius} ${radius} 0 0 0 ${x5} ${y5} L ${x6} ${y6} A ${radius} ${radius} 0 0 1 ${x7} ${y7} L ${x8} ${y8} L ${x9} ${y9} Z`
     const width = x9
-    const height = 700
+    const height = y4 - radius*Math.cos(angle) + radius + 0.5*borderWidth + heightMargin
 
     return (
         <Frame>
@@ -55,7 +56,7 @@ export default function Lol() {
                 left: `calc(50% - ${0.5*width}px)`,
                 top: `calc(100% + ${-300}px)`,
                 width: `${width}px`,
-                height: `${height + 0.5*borderWidth}px`
+                height: `${height}px`
             }}>
                 <svg
                     style={{WebkitTransform: 'translate3d(0,0,0)'}}
@@ -63,7 +64,8 @@ export default function Lol() {
                     height={'100%'}>
 
                     <path
-                        strokeWidth={0}
+                        strokeWidth={50}
+                        stroke="#000000"
                         fill={'#008844'}
                         d={path}/>
 
