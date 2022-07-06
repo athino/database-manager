@@ -11,7 +11,7 @@ export default function Lol() {
     const heightMargin = 20
     
     const x1 = 0
-    const y1 = 300
+    const y1 = 300.5
 
     const x2 = x1 + margin
     const y2 = y1
@@ -51,28 +51,23 @@ export default function Lol() {
                 )
             })}
 
-            <div style={{
-                position: 'absolute',
-                left: `calc(50% - ${0.5*width}px)`,
-                top: `calc(100% + ${1 -0.5*borderWidth -300}px)`,
-                width: `${width}px`,
-                height: `${height}px`
-            }}>
-                <svg
-                    style={{WebkitTransform: 'translate3d(0,0,0)'}}
-                    width={'100%'}
-                    height={'100%'}>
 
-                    <path
-                        strokeWidth={borderWidth}
-                        stroke="#595959"
-                        fill={'#303030'}
-                        d={path}/>
+            <BottomFrame>
+                <SvgFrame>
+                    <svg
+                        style={{WebkitTransform: 'translate3d(0,0,0)'}}
+                        width={'100%'}
+                        height={'100%'}>
 
-                </svg>
-            </div>
+                        <path
+                            strokeWidth={borderWidth}
+                            stroke="#595959"
+                            fill={'#303030'}
+                            d={path}/>
 
-
+                    </svg>
+                </SvgFrame>
+            </BottomFrame>
         </Frame>
     )
 }
@@ -85,7 +80,21 @@ const Frame = styled.div`
     box-sizing: border-box;
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
     border-radius: 6px;
-
     border: 1px solid #595959;
+`
 
+const BottomFrame = styled.div`
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0;
+    height: 300px;
+`
+
+const SvgFrame = styled.div`
+    position: relative;
+    height: 350px;
+    width: 200px;
+    margin: 0 auto;
 `
