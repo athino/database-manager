@@ -3,11 +3,11 @@ import React from 'react'
 
 export default function Lol() {
 
-    const borderWidth = 50
-    const radius = 50
+    const borderWidth = 1
+    const radius = 20
     const margin = 100
     const angle = 45 * 2*Math.PI / 360
-    const k = 100
+    const k = 10
     const heightMargin = 20
     
     const x1 = 0
@@ -54,7 +54,7 @@ export default function Lol() {
             <div style={{
                 position: 'absolute',
                 left: `calc(50% - ${0.5*width}px)`,
-                top: `calc(100% + ${-300}px)`,
+                top: `calc(100% + ${1 -0.5*borderWidth -300}px)`,
                 width: `${width}px`,
                 height: `${height}px`
             }}>
@@ -64,9 +64,9 @@ export default function Lol() {
                     height={'100%'}>
 
                     <path
-                        strokeWidth={50}
-                        stroke="#000000"
-                        fill={'#008844'}
+                        strokeWidth={borderWidth}
+                        stroke="#595959"
+                        fill={'#303030'}
                         d={path}/>
 
                 </svg>
