@@ -5,16 +5,16 @@ export default function Lol() {
 
     const borderWidth = 1
     const radius = 4
-    const margin = 100
+    const margin = 10
     const angle = 45 * 2*Math.PI / 360
     const k = 6
     const heightMargin = 20
     
     const x1 = 0
-    const y1 = 300
+    const y1 = 50
 
     const x2 = x1 + margin
-    const y2 = y1 + 0.5
+    const y2 = y1
 
     const x3 = x2 + radius*Math.sin(angle)
     const y3 = y2 + radius*(1 - Math.cos(angle))
@@ -43,23 +43,11 @@ export default function Lol() {
 
     return (
         <Frame>
-            <BottomFrame>
-                <SvgFrame>
-                    <svg
-                        style={{WebkitTransform: 'translate3d(0,0,0)'}}
-                        width={'100%'}
-                        height={'100%'}>
+            <OverlapFrame/>
+            <OverlapFrame2 path={path}/>
 
-                        <path
-                            strokeWidth={borderWidth}
-                            stroke="#595959"
-                            fill={'#303030'}
-                            d={path}/>
 
-                    </svg>
-                </SvgFrame>
-            </BottomFrame>
-            <OverlapFrame></OverlapFrame>
+
 
             <ContentFrame>
                 {[...Array(30)].map((_,k) => {
@@ -70,7 +58,6 @@ export default function Lol() {
                     )
                 })}
             </ContentFrame>
-
         </Frame>
     )
 }
@@ -83,36 +70,32 @@ const Frame = styled.div`
     box-sizing: border-box;
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
     border-radius: 6px;
-    border: 1px solid #595959;
-`
-
-const BottomFrame = styled.div`
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    bottom: 0;
-    height: 300px;
-`
-
-const SvgFrame = styled.div`
-    position: relative;
-    height: 350px;
-    width: 200px;
-    margin: 0 auto;
 `
 
 const OverlapFrame = styled.div`
     position: absolute;
-    top: 0;
+    height: 100px;
     right: 0;
-    bottom: 0;
+    bottom: -50px;
     left: 0;
-    border-radius: 6px;
-    background-color: #303030;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px"><path stroke="%23595959" fill="%23303030" d="M 0 50 L 100 50 L 100 0 L 0 0 Z "/></svg>');
+    background-repeat: repeat-x;
 `
 
 const ContentFrame = styled.div`
     position: relative;
     z-index: 1;
+`
+
+const OverlapFrame2 = styled.div<{
+    path: string
+}>`
+    position: absolute;
+    height: 100px;
+    right: 0;
+    bottom: -50px;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    background-image: ${({path}) => `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px"><path stroke="%23595959" fill="%23303030" d="${path}"/></svg>')`};
 `
