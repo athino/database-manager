@@ -53,14 +53,13 @@ export default function Lol() {
                         fill="#303030"
                         stroke="#595959"
                         strokeWidth={borderWidth}
-                        x="0"
+                        x="100"
                         y="0"
-                        rx="10"
-                        ry="10"
+  
                         width="100%"
                         height="100%"/>
                         
-                    <path stroke="red" fill="#303030" strokeWidth={1} d="M 50 0 L 75 0 L 100 -10 L 125 0 L 150 0"/>
+                    <path stroke="#595959" fill="none" strokeWidth={1} d="M 0 -10 L 25 0 L 100 0"/>
 
 
                 </Svg>
@@ -78,7 +77,7 @@ const Frame = styled.div`
     //background-color: #303030;
     filter: drop-shadow(0 0 2px black);
 
-    //background-color: red;
+    background-color: #303030;
 `
 
 const SvgFrame = styled.div`
