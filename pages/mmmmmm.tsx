@@ -45,11 +45,14 @@ export default function Lol() {
     
     return (
         <Frame>
-            <SvgFrame>
+            <RightFrame>
                 <Svg>
                     <mask id={'mask'}>
                         <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                        <rect x={x1} y={'-100'} height={'200'} width={width} fill={'black'}/>
+                        <rect x={'-10'} y={'-5%'} height={'110%'} width={10 + 50} fill={'black'}/>
+
+                        <rect x={60} y={'-10'} height={'110'} width={80} fill={'black'}/>
+
                     </mask>
 
                     <rect
@@ -63,13 +66,31 @@ export default function Lol() {
                         ry="10"
                         width="100%"
                         height="100%"/>
-                        
 
-
-                    <path stroke="#595959" fill="#303030" strokeWidth={1} d={path}/>
+                    <path
+                        fill="#303030"
+                        d={'M 60 0 L 75 0 L 100 -20 L 125 0 L 140 0'}
+                        strokeWidth={1}
+                        stroke={'#595959'}/>
 
                 </Svg>
-            </SvgFrame>
+            </RightFrame>
+            <LeftFrame>
+                <LeftFrameInner>
+                    <Svg>
+                        <rect
+                            fill="#303030"
+                            stroke="#595959"
+                            strokeWidth={borderWidth}
+                            x="0"
+                            y="0"
+                            rx="10"
+                            ry="10"
+                            width="100%"
+                            height="100%"/>
+                    </Svg>
+                </LeftFrameInner>
+            </LeftFrame>
 
         </Frame>
     )
@@ -85,19 +106,39 @@ const Frame = styled.div`
     border-radius: 10px;
 `
 
-const SvgFrame = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+const RightFrame = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: calc(50% - 100px);
+    //background-color: blue;
+`
+
+const LeftFrame = styled.div`
+    position: absolute;
+    top: -10px;
+    width: calc(50% - 50px + 10px);
+    bottom: -10px;
+    left: -10px;
+    //background-color: pink;
+    overflow: hidden;
+`
+
+const LeftFrameInner = styled.div`
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: -100px;
+    bottom: 10px;
+    //background-color: orange;
 `
 
 const Svg = styled.svg`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  overflow: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
 `
