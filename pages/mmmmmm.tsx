@@ -45,54 +45,32 @@ export default function Lol() {
     
     return (
         <Frame>
-            <FrameLeft>
-                <FrameLeftInner>
-                    <Svg>
-                        <rect
-                            fill="#303030"
-                            stroke="#595959"
-                            strokeWidth={borderWidth}
-                            x="0"
-                            y="0"
-                            rx="10"
-                            ry="10"
-                            width="100%"
-                            height="100%"/>
-                    </Svg>
-                </FrameLeftInner>
-            </FrameLeft>
-            <Center>
-                <CenterInner>
-                    <Svg>
-                        <rect
-                            fill="#303030"
-                            stroke="#595959"
-                            strokeWidth={borderWidth}
-                            x="0"
-                            y="0"
-                            rx="10"
-                            ry="10"
-                            width="100%"
-                            height="100%"/>
-                    </Svg>
-                </CenterInner>
-            </Center>
-            <FrameRight>
-                <FrameRightInner>
-                    <Svg>
-                        <rect
-                            fill="#303030"
-                            stroke="#595959"
-                            strokeWidth={borderWidth}
-                            x="0"
-                            y="0"
-                            rx="10"
-                            ry="10"
-                            width="100%"
-                            height="100%"/>
-                    </Svg>
-                </FrameRightInner>
-            </FrameRight>
+            <SvgFrame>
+                <Svg>
+                    <mask id={'mask'}>
+                        <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
+                        <rect x={x1} y={'-100'} height={'200'} width={width} fill={'black'}/>
+                    </mask>
+
+                    <rect
+                        fill="#303030"
+                        stroke="#595959"
+                        strokeWidth={borderWidth}
+                        x="0"
+                        y="0"
+                        mask="url(#mask)" 
+                        rx="10"
+                        ry="10"
+                        width="100%"
+                        height="100%"/>
+                        
+
+
+                    <path stroke="#595959" fill="#303030" strokeWidth={1} d={path}/>
+
+                </Svg>
+            </SvgFrame>
+
         </Frame>
     )
 }
@@ -107,61 +85,12 @@ const Frame = styled.div`
     border-radius: 10px;
 `
 
-const FrameLeft = styled.div`
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: calc(50% - 50px);
-    background-color: red;
-    overflow: hidden;
-`
-
-const FrameLeftInner = styled.div`
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: -50px;
-    background-color: cyan;
-`
-
-const FrameRight = styled.div`
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: calc(50% - 50px);
-    background-color: red;
-    overflow: hidden;
-`
-
-const FrameRightInner = styled.div`
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    left: -50px;
-    background-color: cyan;
-`
-
-const Center = styled.div`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100px;
-    left: calc(50% - 50px);
-    overflow: hidden;
-    background-color: orange;
-`
-
-const CenterInner = styled.div`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -50px;
-    right: -50px;
-    background-color: orange;
+const SvgFrame = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `
 
 const Svg = styled.svg`
