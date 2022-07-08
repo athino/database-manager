@@ -56,7 +56,6 @@ export default function Lol() {
                         fill="#303030"
                         stroke="#595959"
                         strokeWidth={borderWidth}
-                        vectorEffect={'non-scaling-stroke'}
                         x="0"
                         y="0"
                         mask="url(#mask)" 
