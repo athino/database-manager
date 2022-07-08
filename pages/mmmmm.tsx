@@ -83,7 +83,6 @@ const Frame = styled.div`
     background-color: #303030;
     filter: drop-shadow(0 0 2px black);
     border-radius: 10px;
-    transform: rotate(180deg);
 `
 
 const SvgFrame = styled.div`
