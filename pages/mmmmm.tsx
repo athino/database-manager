@@ -12,7 +12,7 @@ export default function Lol() {
     const k = 6
     const heightMargin = 20
     
-    const x1 = 50
+    const x1 = 100
     const y1 = 0
 
     const x2 = x1 + margin
@@ -49,7 +49,7 @@ export default function Lol() {
                 <Svg>
                     <mask id={'mask'}>
                         <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                        <rect x={'50'} y={'-100'} height={'200'} width={width} fill={'black'}/>
+                        <rect x={x1} y={'-100'} height={'200'} width={width} fill={'black'}/>
                     </mask>
 
                     <rect
