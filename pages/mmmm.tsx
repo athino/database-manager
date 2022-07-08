@@ -35,7 +35,7 @@ const SvgFrame = styled.div`
   right: ${0.5*borderWidth}px;
   bottom: ${0.5*borderWidth + 100}px;
   left: ${0.5*borderWidth}px;
-  background-color: white;
+  background-color: black;
 `
 
 const Svg = styled.svg`
