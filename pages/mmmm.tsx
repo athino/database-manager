@@ -62,6 +62,7 @@ const Frame = styled.div`
     margin: 20px auto;
     min-height: 500px;
     //background-color: #303030;
+    filter: drop-shadow(0 0 2px black);
 `
 
 const SvgFrame = styled.div`
