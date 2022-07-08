@@ -12,23 +12,23 @@ export default function Lol() {
     const k = 6
     const heightMargin = 20
     
-    const x1 = 0
-    const y1 = 50
+    const x1 = 50
+    const y1 = 0
 
     const x2 = x1 + margin
     const y2 = y1
 
     const x3 = x2 + radius*Math.sin(angle)
-    const y3 = y2 + radius*(1 - Math.cos(angle))
+    const y3 = y2 - radius*(1 - Math.cos(angle))
 
     const x4 = x3 + k
-    const y4 = y3 + k*Math.tan(angle)
+    const y4 = y3 - k*Math.tan(angle)
 
     const x5 = x4 + Math.sqrt(2*radius*radius*(1 - Math.cos(2*angle)))
     const y5 = y4
 
     const x6 = x5 + k
-    const y6 = y5 - k*Math.tan(angle)
+    const y6 = y5 + k*Math.tan(angle)
 
     const x7 = x6 + radius*Math.sin(angle)
     const y7 = y2
@@ -37,10 +37,10 @@ export default function Lol() {
     const y8 = y1
 
     const x9 = x8
-    const y9 = 0
+    const y9 = y1
 
-    const path = `M 0 0 L ${x1} ${y1} L ${x2} ${y2} A ${radius} ${radius} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${radius} ${radius} 0 0 0 ${x5} ${y5} L ${x6} ${y6} A ${radius} ${radius} 0 0 1 ${x7} ${y7} L ${x8} ${y8} L ${x9} ${y9} Z`
-    const width = x9
+    const path = `M ${x1} ${y1} L ${x2} ${y2} A ${radius} ${radius} 0 0 0 ${x3} ${y3} L ${x4} ${y4} A ${radius} ${radius} 0 0 1 ${x5} ${y5} L ${x6} ${y6} A ${radius} ${radius} 0 0 0 ${x7} ${y7} L ${x8} ${y8} L ${x9} ${y9}`
+    const width = x9 - x1
     const height = y4 - radius*Math.cos(angle) + radius + 0.5*borderWidth + heightMargin
     
     return (
@@ -49,7 +49,7 @@ export default function Lol() {
                 <Svg>
                     <mask id={'mask'}>
                         <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                        <rect x={'50'} y={'-10'} height={'100'} width={'100'} fill={'black'}/>
+                        <rect x={'50'} y={'-10'} height={'100'} width={width} fill={'black'}/>
                     </mask>
 
                     <rect
@@ -66,7 +66,7 @@ export default function Lol() {
                         
 
 
-                    <path stroke="#595959" fill="#303030" strokeWidth={1} d="M 50 0 L 75 0 L 100 -10 L 125 0 L 150 0"/>
+                    <path stroke="#595959" fill="#303030" strokeWidth={1} d={path}/>
 
                 </Svg>
             </SvgFrame>
