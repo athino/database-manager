@@ -88,10 +88,10 @@ const Frame = styled.div`
 
 const SvgFrame = styled.div`
   position: absolute;
-  top: ${0.5*borderWidth}px;
-  right: ${0.5*borderWidth}px;
-  bottom: ${0.5*borderWidth}px;
-  left: ${0.5*borderWidth}px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `
 
 const Svg = styled.svg`
