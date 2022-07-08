@@ -79,10 +79,11 @@ const Frame = styled.div`
     position: relative;
     width: 80%;
     margin: 100px auto;
-    min-height: 500px;
+    min-height: 200px;
     background-color: #303030;
     filter: drop-shadow(0 0 2px black);
     border-radius: 10px;
+    transform: rotate(180deg);
 `
 
 const SvgFrame = styled.div`
