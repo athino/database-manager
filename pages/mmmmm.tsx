@@ -56,6 +56,7 @@ export default function Lol() {
                         fill="#303030"
                         stroke="#595959"
                         strokeWidth={borderWidth}
+                        vectorEffect={'non-scaling-stroke'}
                         x="0"
                         y="0"
                         mask="url(#mask)" 
@@ -91,7 +92,6 @@ const SvgFrame = styled.div`
   right: ${0.5*borderWidth}px;
   bottom: ${0.5*borderWidth}px;
   left: ${0.5*borderWidth}px;
-  // background-color: #303030;
 `
 
 const Svg = styled.svg`
@@ -101,17 +101,4 @@ const Svg = styled.svg`
   height: 100%;
   width: 100%;
   overflow: visible;
-`
-
-const OverlapFrame2 = styled.div<{
-    path: string
-}>`
-    position: absolute;
-    height: 100px;
-    right: 0;
-    bottom: -50px;
-    left: 0;
-    background-repeat: no-repeat;
-    background-position: 50% 0%;
-    background-image: ${({path}) => `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px"><path stroke="%23595959" fill="%23303030" d="${path}"/></svg>')`};
 `
