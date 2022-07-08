@@ -47,20 +47,26 @@ export default function Lol() {
         <Frame>
             <SvgFrame>
                 <Svg>
-                    
+                    <mask id={'mask'}>
+                        <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
+                        <rect x={'50'} y={'-10'} height={'100'} width={'100'} fill={'black'}/>
+                    </mask>
 
                     <rect
                         fill="#303030"
                         stroke="#595959"
                         strokeWidth={borderWidth}
-                        x="100"
+                        x="0"
                         y="0"
-  
+                        mask="url(#mask)" 
+                        rx="10"
+                        ry="10"
                         width="100%"
                         height="100%"/>
                         
-                    <path stroke="#595959" fill="none" strokeWidth={1} d="M 0 -10 L 25 0 L 100 0"/>
 
+
+                    <path stroke="#595959" fill="#303030" strokeWidth={1} d="M 50 0 L 75 0 L 100 -10 L 125 0 L 150 0"/>
 
                 </Svg>
             </SvgFrame>
@@ -74,10 +80,9 @@ const Frame = styled.div`
     width: 80%;
     margin: 100px auto;
     min-height: 500px;
-    //background-color: #303030;
-    filter: drop-shadow(0 0 2px black);
-
     background-color: #303030;
+    filter: drop-shadow(0 0 2px black);
+    border-radius: 10px;
 `
 
 const SvgFrame = styled.div`
