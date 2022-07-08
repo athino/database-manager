@@ -12,7 +12,6 @@ export default function Lol() {
                     d={'M 0 0 L 100 0 L 100 100 L 0 100 Z'}
                     fill={'cyan'}
                     vectorEffect={'non-scaling-stroke'}/>
-
             </Svg>
         </Frame>
     )
