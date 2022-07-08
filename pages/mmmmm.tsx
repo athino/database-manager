@@ -49,7 +49,7 @@ export default function Lol() {
                 <Svg>
                     <mask id={'mask'}>
                         <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                        <rect x={'50'} y={'-10'} height={'100'} width={width} fill={'black'}/>
+                        <rect x={'50'} y={'-100'} height={'200'} width={width} fill={'black'}/>
                     </mask>
 
                     <rect
