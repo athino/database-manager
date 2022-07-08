@@ -104,6 +104,7 @@ const Frame = styled.div`
     margin: 100px auto;
     min-height: 200px;
     background-color: #303030;
+    will-change: filter;
     filter: drop-shadow(0 0 2px black);
     border-radius: 10px;
 `
