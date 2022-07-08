@@ -39,10 +39,12 @@ export default function Lol() {
     const x9 = x8
     const y9 = y1
 
-    const path = `M ${x1} ${y1} L ${x2} ${y2} A ${radius} ${radius} 0 0 0 ${x3} ${y3} L ${x4} ${y4} A ${radius} ${radius} 0 0 1 ${x5} ${y5} L ${x6} ${y6} A ${radius} ${radius} 0 0 0 ${x7} ${y7} L ${x8} ${y8} L ${x9} ${y9}`
+    const path2 = `M ${x1} ${y1} L ${x2} ${y2} A ${radius} ${radius} 0 0 0 ${x3} ${y3} L ${x4} ${y4} A ${radius} ${radius} 0 0 1 ${x5} ${y5} L ${x6} ${y6} A ${radius} ${radius} 0 0 0 ${x7} ${y7} L ${x8} ${y8} L ${x9} ${y9}`
     const width = x9 - x1
     const height = y4 - radius*Math.cos(angle) + radius + 0.5*borderWidth + heightMargin
-    
+
+    const path = 'M 60 0 L 75 0 L 100 -20 L 125 0 L 140 0'
+
     return (
         <Frame>
             <RightFrame>
@@ -69,7 +71,7 @@ export default function Lol() {
 
                     <path
                         fill="#303030"
-                        d={'M 60 0 L 75 0 L 100 -20 L 125 0 L 140 0'}
+                        d={path}
                         strokeWidth={1}
                         stroke={'#595959'}/>
 
