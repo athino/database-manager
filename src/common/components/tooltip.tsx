@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import React, {FC} from 'react'
 
 const overflowMargin = 20
@@ -6,10 +6,12 @@ const rightCutoff = 100
 const offset = 50
 
 type Props = {
-
+    arrow?: 'top' | 'bottom'
+    margin?: string
 }
 
 export const Tooltip: FC<Props> = (props) => {
+    const bottom = props.arrow === 'bottom'
     const borderWidth = 1
 
     const X_CENTER = rightCutoff + offset
@@ -53,8 +55,8 @@ export const Tooltip: FC<Props> = (props) => {
     const width = e + 2 * a * Math.sin( c ) + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) ) + 3 * d
 
     return (
-        <Wrapper>
-            <Frame>
+        <Wrapper bottom={bottom} style={{margin: props.margin}}>
+            <Frame bottom={bottom}>
                 <RightFrame>
                     <RightFrameInner>
                         <Svg>
@@ -110,24 +112,27 @@ export const Tooltip: FC<Props> = (props) => {
     )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{
+    bottom: boolean
+}>`
     position: relative;
-    margin: 20px;
-
-    padding-bottom: 20px;
+    padding-bottom: ${({bottom}) => bottom ? '20px' : '0'};
+    padding-top: ${({bottom}) => !bottom ? '20px' : '0'};
 `
 
-const Frame = styled.div`
+const Frame = styled.div<{
+    bottom: boolean
+}>`
     position: absolute;
-    top: 0;
+    top: ${({bottom}) => !bottom ? '20px' : '0'};
     left: 0;
     right: 0;
-    bottom: 20px;
+    bottom: ${({bottom}) => bottom ? '20px' : '0'};
     background-color: #303030;
     will-change: filter;
     filter: drop-shadow(0 0 2px black);
     border-radius: 10px;
-    transform: rotate(180deg);
+    transform: ${({bottom}) => bottom ? 'transform: rotate(180deg)' : 'none'};
 `
 
 
