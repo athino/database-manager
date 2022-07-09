@@ -128,6 +128,7 @@ const Wrapper = styled.div<{
     padding-bottom: ${({bottom}) => bottom ? '20px' : '0'};
     padding-top: ${({bottom}) => !bottom ? '20px' : '0'};
     display: inline-block;
+    min-width: 100%;
 `
 
 const Frame = styled.div<{
