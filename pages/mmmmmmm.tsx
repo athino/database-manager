@@ -7,6 +7,7 @@ const rightCutoff = 100
 const offset = 100
 
 export default function Lol() {
+    const borderWidth = 1
 
     const X_CENTER = rightCutoff + offset
 
@@ -17,13 +18,6 @@ export default function Lol() {
     const e = 10
     const f = X_CENTER
     const g = 0
-
-    const borderWidth = 1
-    const radius = 4
-    const margin = 10
-    const angle = 45 * 2*Math.PI / 360
-    const k = 6
-    const heightMargin = 20
     
     const X1 = f
     const Y1 = g
