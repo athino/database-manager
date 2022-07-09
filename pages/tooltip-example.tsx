@@ -1,7 +1,7 @@
 import React from 'react'
 import {Tooltip} from "common/components/tooltip"
 
-export default function Lol() {
+export default function TooltipExample() {
 
     return (
         <Tooltip margin='20px 30px 10px 50px'>
