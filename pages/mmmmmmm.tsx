@@ -5,7 +5,9 @@ export default function Lol() {
 
     return (
         <Tooltip>
-            efheuwi
+            Hei! <br/><br/>
+
+            Dette er en tooltip...
         </Tooltip>
     )
 }
