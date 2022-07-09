@@ -51,6 +51,9 @@ export const Tooltip: FC<Props> = (props) => {
 
     const path = `M ${X1} ${Y1} L ${X2} ${Y2} A ${a} ${a} 0 0 0 ${X3} ${Y3} L ${X4} ${Y4} A ${b} ${b} 0 0 1 ${X5} ${Y5} L ${X6} ${Y6} A ${a} ${a} 0 0 0 ${X7} ${Y7} L ${X8} ${Y8}`
 
+    const coverPath = `M ${X1} ${Y1} L ${X2} ${Y2} A ${a} ${a} 0 0 0 ${X3} ${Y3} L ${X4} ${Y4} A ${b} ${b} 0 0 1 ${X5} ${Y5} L ${X6} ${Y6} A ${a} ${a} 0 0 0 ${X7} ${Y7} L ${X8} ${Y8} L ${X8} ${20} L ${X1} ${20} Z`
+
+
     const MX = X1
 
     const width = e + 2 * a * Math.sin( c ) + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) ) + 3 * d
@@ -80,7 +83,12 @@ export const Tooltip: FC<Props> = (props) => {
                             <path
                                 transform={`translate(-${0.5*width} 0)`}
                                 fill="#303030"
+                                d={coverPath}/>
+
+                            <path
+                                transform={`translate(-${0.5*width} 0)`}
                                 d={path}
+                                fill={'none'}
                                 strokeLinejoin={'round'}
                                 strokeWidth={1}
                                 stroke={'#595959'}/>
