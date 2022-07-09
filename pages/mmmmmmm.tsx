@@ -15,7 +15,7 @@ export default function Lol() {
     const c = 45 * 2*Math.PI / 360
     const d = 10
     const e = 10
-    const f = X_CENTER - 50
+    const f = X_CENTER
     const g = 0
 
     const borderWidth = 1
