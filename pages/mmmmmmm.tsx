@@ -8,6 +8,16 @@ const offset = 100
 
 export default function Lol() {
 
+    const X_CENTER = rightCutoff + offset
+
+    const a = 10
+    const b = 5
+    const c = 45 * 2*Math.PI / 360
+    const d = 10
+    const e = 10
+    const f = X_CENTER - 50
+    const g = 0
+
     const borderWidth = 1
     const radius = 4
     const margin = 10
@@ -15,55 +25,31 @@ export default function Lol() {
     const k = 6
     const heightMargin = 20
     
-    const x1 = 100
-    const y1 = 0
+    const X1 = f
+    const Y1 = g
 
-    const x2 = x1 + margin
-    const y2 = y1
-
-    const x3 = x2 + radius*Math.sin(angle)
-    const y3 = y2 - radius*(1 - Math.cos(angle))
-
-    const x4 = x3 + k
-    const y4 = y3 - k*Math.tan(angle)
-
-    const x5 = x4 + Math.sqrt(2*radius*radius*(1 - Math.cos(2*angle)))
-    const y5 = y4
-
-    const x6 = x5 + k
-    const y6 = y5 + k*Math.tan(angle)
-
-    const x7 = x6 + radius*Math.sin(angle)
-    const y7 = y2
-
-    const x8 = x7 + margin
-    const y8 = y1
-
-    const x9 = x8
-    const y9 = y1
-
-    const path2 = `M ${x1} ${y1} L ${x2} ${y2} A ${radius} ${radius} 0 0 0 ${x3} ${y3} L ${x4} ${y4} A ${radius} ${radius} 0 0 1 ${x5} ${y5} L ${x6} ${y6} A ${radius} ${radius} 0 0 0 ${x7} ${y7} L ${x8} ${y8} L ${x9} ${y9}`
-    const width = x9 - x1
-    const height = y4 - radius*Math.cos(angle) + radius + 0.5*borderWidth + heightMargin
-
-    const X_CENTER = rightCutoff + offset
-
-    const X1 = X_CENTER - 50
-    const Y1 = 0
-
-    const X2 = X1 + 25
+    const X2 = X1 + e
     const Y2 = Y1
 
-    const X3 = X2 + 25
-    const Y3 = Y1 - 10
+    const X3 = X2 + a * Math.sin( c )
+    const Y3 = Y2 - a * ( 1 - Math.cos( c ) )
 
-    const X4 = X3 + 25
-    const Y4 = 0
+    const X4 = X3 + e
+    const Y4 = Y3 - d * Math.tan( c )
 
-    const X5 = X4 + 25
+    const X5 = X4 + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) )
     const Y5 = Y4
 
-    const path = `M ${X1} ${Y1} L ${X2} ${Y2} L ${X3} ${Y3} L ${X4} ${Y4} L ${X5} ${Y5}`
+    const X6 = X5 + d
+    const Y6 = Y3
+
+    const X7 = X6 + a * Math.sin( c )
+    const Y7 = Y1
+
+    const X8 = X7 + d
+    const Y8 = Y1
+
+    const path = `M ${X1} ${Y1} L ${X2} ${Y2} L ${X3} ${Y3} L ${X4} ${Y4} L ${X5} ${Y5} L ${X6} ${Y6} L ${X7} ${Y7} L ${X8} ${Y8}`
 
     const MX = X1
 
