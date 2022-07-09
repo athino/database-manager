@@ -14,11 +14,11 @@ export const Tooltip: FC<Props> = (props) => {
 
     const X_CENTER = rightCutoff + offset
 
-    const a = 10
-    const b = 5
+    const a = 8
+    const b = 4
     const c = 45 * 2*Math.PI / 360
-    const d = 10
-    const e = 10
+    const d = 5
+    const e = 5
     const f = X_CENTER
     const g = 0
     
@@ -31,7 +31,7 @@ export const Tooltip: FC<Props> = (props) => {
     const X3 = X2 + a * Math.sin( c )
     const Y3 = Y2 - a * ( 1 - Math.cos( c ) )
 
-    const X4 = X3 + e
+    const X4 = X3 + d
     const Y4 = Y3 - d * Math.tan( c )
 
     const X5 = X4 + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) )
