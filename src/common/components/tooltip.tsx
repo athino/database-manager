@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import React, {FC} from 'react'
 
 const overflowMargin = 20
@@ -8,6 +8,7 @@ const offset = 50
 type Props = {
     arrow?: 'top' | 'bottom'
     margin?: string
+    padding?: string
 }
 
 export const Tooltip: FC<Props> = (props) => {
@@ -104,7 +105,7 @@ export const Tooltip: FC<Props> = (props) => {
                 </LeftFrame>
             </Frame>
 
-            <Content>
+            <Content style={{padding: props.padding}}>
                 {props.children}
             </Content>
 
