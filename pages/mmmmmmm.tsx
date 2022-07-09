@@ -70,7 +70,12 @@ export default function Lol() {
             <RightFrame>
                 <RightFrameInner>
                     <Svg>
+                        <mask id={'mask'}>
+                            <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
+                            <rect x={X1} y={'-10'} height={'110'} width={200} fill={'black'}/>
+                        </mask>
                         <rect
+                            mask="url(#mask)" 
                             fill="#303030"
                             stroke="#595959"
                             strokeWidth={borderWidth}
