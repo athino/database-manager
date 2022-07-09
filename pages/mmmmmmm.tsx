@@ -56,7 +56,7 @@ export default function Lol() {
                     <Svg>
                         <mask id={'mask'}>
                             <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                            <rect x={MX} y={'-10'} height={'110'} width={width} fill={'black'}/>
+                            <rect x={MX} y={'-10'} height={'110'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
                         </mask>
                         <rect
                             mask="url(#mask)" 
@@ -71,6 +71,7 @@ export default function Lol() {
                             height="100%"/>
 
                         <path
+                            transform={`translate(-${0.5*width} 0)`}
                             fill="#303030"
                             d={path}
                             strokeLinejoin={'round'}
