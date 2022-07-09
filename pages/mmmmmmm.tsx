@@ -65,6 +65,8 @@ export default function Lol() {
 
     const path = `M ${X1} ${Y1} L ${X2} ${Y2} L ${X3} ${Y3} L ${X4} ${Y4} L ${X5} ${Y5}`
 
+    const MX = X1
+
     return (
         <Frame>
             <RightFrame>
@@ -72,7 +74,7 @@ export default function Lol() {
                     <Svg>
                         <mask id={'mask'}>
                             <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                            <rect x={X1} y={'-10'} height={'110'} width={200} fill={'black'}/>
+                            <rect x={MX} y={'-10'} height={'110'} width={200} fill={'black'}/>
                         </mask>
                         <rect
                             mask="url(#mask)" 
