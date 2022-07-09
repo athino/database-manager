@@ -53,68 +53,81 @@ export const Tooltip: FC<Props> = (props) => {
     const width = e + 2 * a * Math.sin( c ) + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) ) + 3 * d
 
     return (
-        <Frame>
-            <RightFrame>
-                <RightFrameInner>
-                    <Svg>
-                        <mask id={'mask'}>
-                            <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                            <rect x={MX} y={'-10'} height={'20'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
-                        </mask>
-                        <rect
-                            mask="url(#mask)" 
-                            fill="#303030"
-                            stroke="#595959"
-                            strokeWidth={borderWidth}
-                            x="0"
-                            y="0"
-                            rx="4"
-                            ry="4"
-                            width="100%"
-                            height="100%"/>
+        <Wrapper>
+            <Frame>
+                <RightFrame>
+                    <RightFrameInner>
+                        <Svg>
+                            <mask id={'mask'}>
+                                <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
+                                <rect x={MX} y={'-10'} height={'20'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
+                            </mask>
+                            <rect
+                                mask="url(#mask)" 
+                                fill="#303030"
+                                stroke="#595959"
+                                strokeWidth={borderWidth}
+                                x="0"
+                                y="0"
+                                rx="4"
+                                ry="4"
+                                width="100%"
+                                height="100%"/>
 
-                        <path
-                            transform={`translate(-${0.5*width} 0)`}
-                            fill="#303030"
-                            d={path}
-                            strokeLinejoin={'round'}
-                            strokeWidth={1}
-                            stroke={'#595959'}/>
-                    </Svg>
-                </RightFrameInner>
-            </RightFrame>
-            <LeftFrame>
-                <LeftFrameInner>
-                    <Svg>
-                        <rect
-                            fill="#303030"
-                            stroke="#595959"
-                            strokeWidth={borderWidth}
-                            x="0"
-                            y="0"
-                            rx="4"
-                            ry="4"
-                            width="100%"
-                            height="100%"/>
-                    </Svg>
-                </LeftFrameInner>
-            </LeftFrame>
+                            <path
+                                transform={`translate(-${0.5*width} 0)`}
+                                fill="#303030"
+                                d={path}
+                                strokeLinejoin={'round'}
+                                strokeWidth={1}
+                                stroke={'#595959'}/>
+                        </Svg>
+                    </RightFrameInner>
+                </RightFrame>
+                <LeftFrame>
+                    <LeftFrameInner>
+                        <Svg>
+                            <rect
+                                fill="#303030"
+                                stroke="#595959"
+                                strokeWidth={borderWidth}
+                                x="0"
+                                y="0"
+                                rx="4"
+                                ry="4"
+                                width="100%"
+                                height="100%"/>
+                        </Svg>
+                    </LeftFrameInner>
+                </LeftFrame>
+            </Frame>
+
             <Content>
                 {props.children}
             </Content>
 
-        </Frame>
+        </Wrapper>
     )
 }
 
-const Frame = styled.div`
+const Wrapper = styled.div`
     position: relative;
-    margin-top: 20px;
+    margin: 20px;
+`
+
+const Frame = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #303030;
     will-change: filter;
     filter: drop-shadow(0 0 2px black);
     border-radius: 10px;
+    transform: rotate(180deg);
 `
+
 
 const Content = styled.div`
     position: relative;
