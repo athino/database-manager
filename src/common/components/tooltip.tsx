@@ -113,6 +113,8 @@ export const Tooltip: FC<Props> = (props) => {
 const Wrapper = styled.div`
     position: relative;
     margin: 20px;
+
+    padding-bottom: 20px;
 `
 
 const Frame = styled.div`
@@ -120,7 +122,7 @@ const Frame = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 20px;
     background-color: #303030;
     will-change: filter;
     filter: drop-shadow(0 0 2px black);
