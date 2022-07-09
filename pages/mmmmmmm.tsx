@@ -53,6 +53,8 @@ export default function Lol() {
 
     const MX = X1
 
+    const width = e + 2 * a * Math.sin( c ) + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) ) + 3 * d
+
     return (
         <Frame>
             <RightFrame>
@@ -60,7 +62,7 @@ export default function Lol() {
                     <Svg>
                         <mask id={'mask'}>
                             <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                            <rect x={MX} y={'-10'} height={'110'} width={200} fill={'black'}/>
+                            <rect x={MX} y={'-10'} height={'110'} width={width} fill={'black'}/>
                         </mask>
                         <rect
                             mask="url(#mask)" 
