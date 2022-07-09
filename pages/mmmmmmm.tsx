@@ -46,7 +46,9 @@ export default function Lol() {
     const width = x9 - x1
     const height = y4 - radius*Math.cos(angle) + radius + 0.5*borderWidth + heightMargin
 
-    const X1 = rightCutoff + offset - 50
+    const X_CENTER = rightCutoff + offset
+
+    const X1 = X_CENTER - 50
     const Y1 = 0
 
     const X2 = X1 + 25
