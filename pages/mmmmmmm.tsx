@@ -73,6 +73,7 @@ export default function Lol() {
                         <path
                             fill="#303030"
                             d={path}
+                            strokeLinejoin={'round'}
                             strokeWidth={1}
                             stroke={'#595959'}/>
                     </Svg>
