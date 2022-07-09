@@ -4,7 +4,7 @@ import React from 'react'
 const overflowMargin = 20
 const borderWidth = 1
 const rightCutoff = 100
-const offset = 100
+const offset = 50
 
 export default function Lol() {
     const borderWidth = 1
@@ -116,7 +116,7 @@ const RightFrame = styled.div`
     width: calc(50% + ${offset}px + ${overflowMargin}px);
     bottom: -${overflowMargin}px;
     right: -${overflowMargin}px;
-    background-color: pink;
+    //background-color: pink;
     overflow: hidden;
 `
 
@@ -126,16 +126,16 @@ const RightFrameInner = styled.div`
     right: ${overflowMargin}px;
     left: -${rightCutoff}px;
     bottom: ${overflowMargin}px;
-    background-color: blue;
+    //background-color: blue;
 `
 
 const LeftFrame = styled.div`
     position: absolute;
     top: -${overflowMargin}px;
-    width: calc(50% - 50px + ${overflowMargin}px);
+    width: calc(50% - ${offset}px + ${overflowMargin}px);
     bottom: -${overflowMargin}px;
     left: -${overflowMargin}px;
-    background-color: green;
+    //background-color: green;
     overflow: hidden;
 `
 
