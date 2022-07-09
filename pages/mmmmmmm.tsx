@@ -1,7 +1,10 @@
 import styled from "styled-components"
 import React from 'react'
 
+const overflowMargin = 20
 const borderWidth = 1
+const rightCutoff = 100
+const offset = 100
 
 export default function Lol() {
 
@@ -43,7 +46,22 @@ export default function Lol() {
     const width = x9 - x1
     const height = y4 - radius*Math.cos(angle) + radius + 0.5*borderWidth + heightMargin
 
-    const path = `M ${150} 0 L ${175} 0 L ${200} -20 L ${225} 0 L ${250} 0`
+    const X1 = rightCutoff + offset - 50
+    const Y1 = 0
+
+    const X2 = X1 + 25
+    const Y2 = Y1
+
+    const X3 = X2 + 25
+    const Y3 = Y1 - 10
+
+    const X4 = X3 + 25
+    const Y4 = 0
+
+    const X5 = X4 + 25
+    const Y5 = Y4
+
+    const path = `M ${X1} ${Y1} L ${X2} ${Y2} L ${X3} ${Y3} L ${X4} ${Y4} L ${X5} ${Y5}`
 
     return (
         <Frame>
@@ -101,43 +119,41 @@ const Frame = styled.div`
     border-radius: 10px;
 `
 
-const kk = 20
-
 const RightFrame = styled.div`
     position: absolute;
-    top: -${kk}px;
-    width: calc(50% + 100px + ${kk}px);
-    bottom: -${kk}px;
-    right: -${kk}px;
+    top: -${overflowMargin}px;
+    width: calc(50% + ${offset}px + ${overflowMargin}px);
+    bottom: -${overflowMargin}px;
+    right: -${overflowMargin}px;
     background-color: pink;
     overflow: hidden;
 `
 
 const RightFrameInner = styled.div`
     position: absolute;
-    top: ${kk}px;
-    right: ${kk}px;
-    left: -100px;
-    bottom: ${kk}px;
+    top: ${overflowMargin}px;
+    right: ${overflowMargin}px;
+    left: -${rightCutoff}px;
+    bottom: ${overflowMargin}px;
     background-color: blue;
 `
 
 const LeftFrame = styled.div`
     position: absolute;
-    top: -${kk}px;
-    width: calc(50% - 50px + ${kk}px);
-    bottom: -${kk}px;
-    left: -${kk}px;
+    top: -${overflowMargin}px;
+    width: calc(50% - 50px + ${overflowMargin}px);
+    bottom: -${overflowMargin}px;
+    left: -${overflowMargin}px;
     background-color: green;
     overflow: hidden;
 `
 
 const LeftFrameInner = styled.div`
     position: absolute;
-    top: ${kk}px;
-    left: ${kk}px;
+    top: ${overflowMargin}px;
+    left: ${overflowMargin}px;
     right: -100px;
-    bottom: ${kk}px;
+    bottom: ${overflowMargin}px;
     //background-color: orange;
 `
 
