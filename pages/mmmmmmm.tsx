@@ -49,7 +49,7 @@ export default function Lol() {
     const X8 = X7 + d
     const Y8 = Y1
 
-    const path = `M ${X1} ${Y1} L ${X2} ${Y2} L ${X3} ${Y3} L ${X4} ${Y4} L ${X5} ${Y5} L ${X6} ${Y6} L ${X7} ${Y7} L ${X8} ${Y8}`
+    const path = `M ${X1} ${Y1} L ${X2} ${Y2} A ${a} ${a} 0 0 0 ${X3} ${Y3} L ${X4} ${Y4} A ${b} ${b} 0 0 1 ${X5} ${Y5} L ${X6} ${Y6} A ${a} ${a} 0 0 0 ${X7} ${Y7} L ${X8} ${Y8}`
 
     const MX = X1
 
