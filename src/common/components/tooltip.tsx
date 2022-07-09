@@ -132,7 +132,7 @@ const Frame = styled.div<{
     will-change: filter;
     filter: drop-shadow(0 0 2px black);
     border-radius: 10px;
-    transform: ${({bottom}) => bottom ? 'transform: rotate(180deg)' : 'none'};
+    transform: ${({bottom}) => bottom ? 'rotate(180deg)' : 'none'};
 `
 
 
