@@ -59,65 +59,67 @@ export const Tooltip: FC<Props> = (props) => {
     const width = e + 2 * a * Math.sin( c ) + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) ) + 3 * d
 
     return (
-        <Wrapper bottom={bottom} style={{margin: props.margin}}>
-            <Frame bottom={bottom}>
-                <RightFrame>
-                    <RightFrameInner>
-                        <Svg>
-                            <mask id={'mask'}>
-                                <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                                <rect x={MX} y={'-10'} height={'20'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
-                            </mask>
-                            <rect
-                                mask="url(#mask)" 
-                                fill="#303030"
-                                stroke="#595959"
-                                strokeWidth={borderWidth}
-                                x="0"
-                                y="0"
-                                rx="4"
-                                ry="4"
-                                width="100%"
-                                height="100%"/>
+        <div style={{margin: props.margin}}>
+            <Wrapper bottom={bottom}>
+                <Frame bottom={bottom}>
+                    <RightFrame>
+                        <RightFrameInner>
+                            <Svg>
+                                <mask id={'mask'}>
+                                    <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
+                                    <rect x={MX} y={'-10'} height={'20'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
+                                </mask>
+                                <rect
+                                    mask="url(#mask)" 
+                                    fill="#303030"
+                                    stroke="#595959"
+                                    strokeWidth={borderWidth}
+                                    x="0"
+                                    y="0"
+                                    rx="4"
+                                    ry="4"
+                                    width="100%"
+                                    height="100%"/>
 
-                            <path
-                                transform={`translate(-${0.5*width} 0)`}
-                                fill="#303030"
-                                d={coverPath}/>
+                                <path
+                                    transform={`translate(-${0.5*width} 0)`}
+                                    fill="#303030"
+                                    d={coverPath}/>
 
-                            <path
-                                transform={`translate(-${0.5*width} 0)`}
-                                d={path}
-                                fill={'none'}
-                                strokeLinejoin={'round'}
-                                strokeWidth={1}
-                                stroke={'#595959'}/>
-                        </Svg>
-                    </RightFrameInner>
-                </RightFrame>
-                <LeftFrame>
-                    <LeftFrameInner>
-                        <Svg>
-                            <rect
-                                fill="#303030"
-                                stroke="#595959"
-                                strokeWidth={borderWidth}
-                                x="0"
-                                y="0"
-                                rx="4"
-                                ry="4"
-                                width="100%"
-                                height="100%"/>
-                        </Svg>
-                    </LeftFrameInner>
-                </LeftFrame>
-            </Frame>
+                                <path
+                                    transform={`translate(-${0.5*width} 0)`}
+                                    d={path}
+                                    fill={'none'}
+                                    strokeLinejoin={'round'}
+                                    strokeWidth={1}
+                                    stroke={'#595959'}/>
+                            </Svg>
+                        </RightFrameInner>
+                    </RightFrame>
+                    <LeftFrame>
+                        <LeftFrameInner>
+                            <Svg>
+                                <rect
+                                    fill="#303030"
+                                    stroke="#595959"
+                                    strokeWidth={borderWidth}
+                                    x="0"
+                                    y="0"
+                                    rx="4"
+                                    ry="4"
+                                    width="100%"
+                                    height="100%"/>
+                            </Svg>
+                        </LeftFrameInner>
+                    </LeftFrame>
+                </Frame>
 
-            <Content style={{padding: props.padding}}>
-                {props.children}
-            </Content>
+                <Content style={{padding: props.padding}}>
+                    {props.children}
+                </Content>
 
-        </Wrapper>
+            </Wrapper>
+        </div>
     )
 }
 
