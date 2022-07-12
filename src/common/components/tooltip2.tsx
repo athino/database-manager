@@ -59,138 +59,97 @@ export const Tooltip2: FC<Props> = (props) => {
     const width = e + 2 * a * Math.sin( c ) + Math.sqrt( 2 * b * b * ( 1 - Math.cos( 2 * c ) ) ) + 3 * d
 
     return (
-        <div style={{margin: props.margin}}>
-            <Wrapper bottom={bottom}>
-                <Frame bottom={bottom}>
-                    <RightFrame>
-                        <RightFrameInner>
-                            <Svg>
-                                <mask id={'mask'}>
-                                    <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                                    <rect x={MX} y={'-10'} height={'20'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
-                                </mask>
-                                <rect
-                                    mask="url(#mask)" 
-                                    fill="#303030"
-                                    stroke="#595959"
-                                    strokeWidth={borderWidth}
-                                    x="0"
-                                    y="0"
-                                    rx="4"
-                                    ry="4"
-                                    width="100%"
-                                    height="100%"/>
+            <Frame>
+                <RightFrame>
+                    <Svg>
+                        <mask id={'mask'}>
+                            <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
+                            <rect x={MX} y={'-10'} height={'20'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
+                        </mask>
+                        <rect
+                            mask="url(#mask)" 
+                            fill="#303030"
+                            stroke="#595959"
+                            strokeWidth={borderWidth}
+                            x="0"
+                            y="0"
+                            rx="4"
+                            ry="4"
+                            width="100%"
+                            height="100%"/>
 
-                                <path
-                                    transform={`translate(-${0.5*width} 0)`}
-                                    fill="#303030"
-                                    d={coverPath}/>
+                        <path
+                            transform={`translate(-${0.5*width} 0)`}
+                            fill="#303030"
+                            d={coverPath}/>
 
-                                <path
-                                    transform={`translate(-${0.5*width} 0)`}
-                                    d={path}
-                                    fill={'none'}
-                                    strokeLinejoin={'round'}
-                                    strokeWidth={1}
-                                    stroke={'#595959'}/>
-                            </Svg>
-                        </RightFrameInner>
-                    </RightFrame>
-                    <LeftFrame>
-                        <LeftFrameInner>
-                            <Svg>
-                                <rect
-                                    fill="#303030"
-                                    stroke="#595959"
-                                    strokeWidth={borderWidth}
-                                    x="0"
-                                    y="0"
-                                    rx="4"
-                                    ry="4"
-                                    width="100%"
-                                    height="100%"/>
-                            </Svg>
-                        </LeftFrameInner>
-                    </LeftFrame>
-                </Frame>
+                        <path
+                            transform={`translate(-${0.5*width} 0)`}
+                            d={path}
+                            fill={'none'}
+                            strokeLinejoin={'round'}
+                            strokeWidth={1}
+                            stroke={'#595959'}/>
+                    </Svg>
+                </RightFrame>
+                <LeftFrame>
+                    <Svg>
+                        <mask id={'mask2'}>
+                            <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
+                            <rect x={'-10'} y={'-5%'} height={'110%'} width={'110'} fill={'black'}/>
+                        </mask>
+                        <rect
+                            fill="#303030"
+                            stroke="#595959"
+                            strokeWidth={borderWidth}
+                            x="0"
+                            mask="url(#mask2)"
+                            y="0"
+                            rx="4"
+                            ry="4"
+                            width="100%"
+                            height="100%"/>
+                    </Svg>
+                </LeftFrame>
 
-                <Content style={{padding: props.padding}}>
-                    {props.children}
-                </Content>
 
-            </Wrapper>
-        </div>
+            </Frame>
     )
 }
 
-const Wrapper = styled.div<{
-    bottom: boolean
-}>`
+const Frame = styled.div`
     position: relative;
-    padding-bottom: ${({bottom}) => bottom ? '20px' : '0'};
-    padding-top: ${({bottom}) => !bottom ? '20px' : '0'};
-    display: inline-block;
-    min-width: 100%;
+    width: 80%;
+    height: 500px;
+
+    background-color: red;
+    margin: 50px auto;
 `
 
-const Frame = styled.div<{
-    bottom: boolean
-}>`
+const RightFrame = styled.div`
     position: absolute;
-    top: ${({bottom}) => !bottom ? '20px' : '0'};
-    left: 0;
+    top: 0;
+    width: calc(50% + 100px + 100px);
+    bottom: 0;
     right: 0;
-    bottom: ${({bottom}) => bottom ? '20px' : '0'};
-    background-color: #303030;
-    will-change: filter;
-    filter: drop-shadow(0 0 2px black);
-    border-radius: 10px;
-    transform: ${({bottom}) => bottom ? 'rotate(180deg)' : 'none'};
+
+    background-color: orange;
 `
 
+const LeftFrame = styled.div`
+    position: absolute;
+    top: 0;
+    width: calc(50% - 100px);
+    bottom: 0;
+    left: 0;
+    
+    background-color: green;
+`
 
 const Content = styled.div`
     position: relative;
     min-height: 20px;
     min-width: 100px;
-`
-
-const RightFrame = styled.div`
-    position: absolute;
-    top: -${overflowMargin}px;
-    width: calc(50% + ${offset}px + ${overflowMargin}px);
-    bottom: -${overflowMargin}px;
-    right: -${overflowMargin}px;
-    //background-color: pink;
-    overflow: hidden;
-`
-
-const RightFrameInner = styled.div`
-    position: absolute;
-    top: ${overflowMargin}px;
-    right: ${overflowMargin}px;
-    left: -${rightCutoff}px;
-    bottom: ${overflowMargin}px;
-    //background-color: blue;
-`
-
-const LeftFrame = styled.div`
-    position: absolute;
-    top: -${overflowMargin}px;
-    width: calc(50% - ${offset}px + ${overflowMargin}px);
-    bottom: -${overflowMargin}px;
-    left: -${overflowMargin}px;
-    //background-color: green;
-    overflow: hidden;
-`
-
-const LeftFrameInner = styled.div`
-    position: absolute;
-    top: ${overflowMargin}px;
-    left: ${overflowMargin}px;
-    right: -100px;
-    bottom: ${overflowMargin}px;
-    //background-color: orange;
 `
 
 const Svg = styled.svg`
