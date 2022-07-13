@@ -85,6 +85,7 @@ const Frame = styled.div`
     height: 500px;
 
     margin: 50px auto;
+    filter: drop-shadow(0 0 2px black);
 `
 
 const RootSvg = styled.svg`
