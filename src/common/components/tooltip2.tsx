@@ -36,12 +36,10 @@ const Left = styled.div`
     left: 0;
     top: 0;
     bottom: 0;
-    width: calc(50% + ${100 + 0.5*100}px);
+    width: calc(50% + ${100}px);
     background-color: orange;
 
-
-    clip-path: polygon(-10px -10px, calc(100% - ${100 + 100}px) -10px, calc(100% - ${100 + 100}px) ${20}px, calc(100% - ${100}px) ${20}px, calc(100% - ${100}px) 110%, -10px 110%);
-
+    clip-path: polygon(-10px -10px, calc(100% - ${100}px) -10px, calc(100% - ${100}px) 110%, -10px 110%);
 `
 
 const Right = styled.div`
@@ -49,13 +47,10 @@ const Right = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    width: calc(50% + ${100 + 0.5*100}px);
-    //clip-path: polygon(110% -10px, 300px -10px, 300px 20px, 100px 20px, 100px 110%, 110% 110%);
+    width: calc(50% + ${100}px);
 
-
-    clip-path: polygon(100px -10px, 110% -10px, 110% 110%, 200px 110%, 200px ${20}px, 100px ${20}px);
-
-    background-color: blue;
+    clip-path: polygon(100px -10px, 110% -10px, 110% 110%, 100px 110%);
+    background-color: cyan;
 
 
 `
