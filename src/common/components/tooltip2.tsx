@@ -60,59 +60,21 @@ export const Tooltip2: FC<Props> = (props) => {
 
     return (
             <Frame>
-                <RightFrame>
-                    <Svg>
-                        <mask id={'mask'}>
-                            <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                            <rect x={MX} y={'-10'} height={'20'} width={width} fill={'black'} transform={`translate(-${0.5*width} 0)`}/>
-                        </mask>
-                        <rect
-                            mask="url(#mask)" 
-                            fill="#303030"
-                            stroke="#595959"
-                            strokeWidth={borderWidth}
-                            x="0"
-                            y="0"
-                            rx="4"
-                            ry="4"
-                            width="100%"
-                            height="100%"/>
+                <RootSvg>
+                    
+                    <FillSvg x="50%" y="0">
+                        <path x="0" y="0" d="M -60 0 L -25 0 L 0 -10 L 25 0 L 60 0 L 60 30 L -60 30 Z"  fill="#303030"/>
+                    </FillSvg>
 
-                        <path
-                            transform={`translate(-${0.5*width} 0)`}
-                            fill="#303030"
-                            d={coverPath}/>
+                    <BackgroundSvg y="0" x="0" width="100%" height="100%">
+                        <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" stroke="#595959" fill="#303030"/>
+                    </BackgroundSvg>
 
-                        <path
-                            transform={`translate(-${0.5*width} 0)`}
-                            d={path}
-                            fill={'none'}
-                            strokeLinejoin={'round'}
-                            strokeWidth={1}
-                            stroke={'#595959'}/>
-                    </Svg>
-                </RightFrame>
-                <LeftFrame>
-                    <Svg>
-                        <mask id={'mask2'}>
-                            <rect x={'-5%'} y={'-5%'} height={'110%'} width={'110%'} fill={'white'}/>
-                            <rect x={'-10'} y={'-5%'} height={'110%'} width={'110'} fill={'black'}/>
-                        </mask>
-                        <rect
-                            fill="#303030"
-                            stroke="#595959"
-                            strokeWidth={borderWidth}
-                            x="0"
-                            mask="url(#mask2)"
-                            y="0"
-                            rx="4"
-                            ry="4"
-                            width="100%"
-                            height="100%"/>
-                    </Svg>
-                </LeftFrame>
+                    <PathSvg x="50%" y="0">
+                        <path x="0" y="0" d="M -50 0 L -25 0 L 0 -10 L 25 0 L 50 0" stroke="#595959" fill="#303030"/>
+                    </PathSvg>
 
-
+                </RootSvg>
             </Frame>
     )
 }
@@ -122,41 +84,33 @@ const Frame = styled.div`
     width: 80%;
     height: 500px;
 
-    background-color: red;
     margin: 50px auto;
 `
 
-const RightFrame = styled.div`
-    position: absolute;
-    top: 0;
-    width: calc(50% + 100px + 100px);
-    bottom: 0;
-    right: 0;
-
-    background-color: orange;
-`
-
-const LeftFrame = styled.div`
-    position: absolute;
-    top: 0;
-    width: calc(50% - 100px);
-    bottom: 0;
-    left: 0;
-    
-    background-color: green;
-`
-
-const Content = styled.div`
-    position: relative;
-    min-height: 20px;
-    min-width: 100px;
-`
-
-const Svg = styled.svg`
+const RootSvg = styled.svg`
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     overflow: visible;
+`
+
+const BackgroundSvg = styled.svg`
+    clip-path: polygon(-10% -10%, calc(50% - 50px) -10%, calc(50% - 50px) 20px, calc(50% + 50px) 20px, calc(50% + 50px) -10%, 110% -10%, 110% 110%, -10% 110%);
+    overflow: visible;
+`
+
+const PathSvg = styled.svg`
+    overflow: visible;
+`
+
+const FillSvg = styled.svg`
+    overflow: visible;
+`
+
+const Content = styled.div`
+    position: relative;
+    min-height: 20px;
+    min-width: 100px;
 `
