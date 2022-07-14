@@ -7,9 +7,9 @@ export default function TooltipExample() {
         <>
             <Tooltip
                 padding={'10px'}
-                margin={'20px 30px 0 50px'}
+                margin={'20px 30px 20px 50px'}
                 arrow={'bottom'}>
-                Hei! <br/><br/>
+                Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>
 
                 Dette er en tooltip...
             </Tooltip>
