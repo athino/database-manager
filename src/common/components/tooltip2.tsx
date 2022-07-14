@@ -22,21 +22,20 @@ export const Tooltip2: FC<Props> = (props) => {
                 </Svg>
             </Right>
             <Center>
-                <div style={{width: '100px'}}>
-                    <Svg x="0" y="0" width="100%" height="100%">
+                <Svg x="0" y="0" width="100%" height="100%">
+                    <Svg x="50%">
                         <path
                             fill="#303030"
-                            d={'M 0 0 L 25 0 L 50 -20 L 75 0 L 100 0 L 100 50 L 0 50 Z'}/>
+                            d={'M -50 0 L -25 0 L 0 -20 L 25 0 L 50 0 L 50 50 L 0 50 Z'}/>
 
                         <path
-                            d={'M 0 0 L 25 0 L 50 -20 L 75 0 L 100 0'}
+                            d={'M -50 0 L -25 0 L 0 -20 L 25 0 L 50 0'}
                             fill={'none'}
                             strokeLinejoin={'round'}
                             strokeWidth={1}
                             stroke={'#595959'}/>
-
                     </Svg>
-                </div>
+                </Svg>
             </Center>
         </Frame>
     )
@@ -75,13 +74,6 @@ const Center = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    display: flex;
-    justify-content: center;
-    > div {
-        position: relative;
-        width: 100px;
-        height: 100%;
-    }
 `
 
 const Svg = styled.svg`
