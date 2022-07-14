@@ -42,9 +42,8 @@ const Frame = styled.div`
     margin: 50px auto;
     width: 80%;
     height: 300px;
-
-    //background-color: red;
-
+    border-radius: 10px;
+    background-color: #303030;
 `
 
 const Left = styled.div`
@@ -53,8 +52,6 @@ const Left = styled.div`
     top: 0;
     bottom: 0;
     width: calc(50% + ${100}px);
-    background-color: orange;
-
     clip-path: polygon(-10px -10px, calc(100% - ${100 + 50}px) -10px, calc(100% - ${100 + 50}px) 20px, calc(100% - ${100}px) 20px, calc(100% - ${100}px) 110%, -10px 110%);
 `
 
@@ -64,11 +61,7 @@ const Right = styled.div`
     top: 0;
     bottom: 0;
     width: calc(50% + ${100}px);
-
     clip-path: polygon(${100 + 50}px -10px, 110% -10px, 110% 110%, 100px 110%, 100px ${20}px, ${100 + 50}px ${20}px);
-    background-color: cyan;
-
-
 `
 
 const Center = styled.div`
@@ -79,13 +72,10 @@ const Center = styled.div`
     right: 0;
     display: flex;
     justify-content: center;
-
     > div {
         position: relative;
         width: 100px;
         height: 100%;
-
-        //background-color: red;
     }
 `
 
