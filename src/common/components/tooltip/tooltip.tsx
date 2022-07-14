@@ -14,18 +14,18 @@ export const Tooltip: FC<Props> = (props) => {
         <Frame style={{ margin: props.margin }}>
             <Wrapper style={{ transform: bottom ? 'rotate(180deg)' : 'none' }}>
                 <Left>
-                    <Svg x="0" y="0" width="100%" height="100%">
-                        <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" stroke="#595959" fill="#303030"/>
+                    <Svg x={'0'} y={'0'} width={'100%'} height={'100%'}>
+                        <rect x={'0'} y={'0'} rx={'10'} ry={'10'} width={'100%'} height={'100%'} stroke={'#595959'} fill={'#303030'}/>
                     </Svg>
                 </Left>
                 <Right>
-                    <Svg x="0" y="0" width="100%" height="100%">
-                        <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" stroke="#595959" fill="#303030"/>
+                    <Svg x={'0'} y={'0'} width={'100%'} height={'100%'}>
+                        <rect x={'0'} y={'0'} rx={'10'} ry={'10'} width={'100%'} height={'100%'} stroke={'#595959'} fill={'#303030'}/>
                     </Svg>
                 </Right>
                 <Center>
-                    <Svg x="0" y="0" width="100%" height="100%">
-                        <Svg x="50%">
+                    <Svg x={'0'} y={'0'} width={'100%'} height={'100%'}>
+                        <Svg x={'50%'}>
                             <path
                                 fill="#303030"
                                 d={'M -50 0 L -25 0 L 0 -20 L 25 0 L 50 0 L 50 50 L 0 50 Z'}/>
