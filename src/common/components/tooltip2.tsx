@@ -47,6 +47,7 @@ const Frame = styled.div`
     width: 80%;
     height: 300px;
     border-radius: 10px;
+    //transform: rotate(180deg);
     background-color: #303030;
     filter: drop-shadow(0 0 2px black);
 `
