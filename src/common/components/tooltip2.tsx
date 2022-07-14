@@ -11,7 +11,10 @@ export const Tooltip: FC<Props> = (props) => {
     const bottom = props.arrow === 'bottom'
 
     return (
-        <Frame style={{transform: bottom ? 'rotate(180deg)' : 'none'}}>
+        <Frame style={{
+            transform: bottom ? 'rotate(180deg)' : 'none',
+            margin: props.margin
+        }}>
             <Left>
                 <Svg x="0" y="0" width="100%" height="100%">
                     <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" stroke="#595959" fill="#303030"/>
