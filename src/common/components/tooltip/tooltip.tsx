@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 import React, {FC} from 'react'
 
 type Props = {
