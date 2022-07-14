@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Tooltip} from "common/components/tooltip2"
+import {Tooltip} from "common/components/tooltip/tooltip"
 
 export default function TooltipExample() {
     const [nox, setNox] = useState('')
