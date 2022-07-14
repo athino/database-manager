@@ -40,7 +40,7 @@ export const Tooltip: FC<Props> = (props) => {
                     </Svg>
                 </Center>
             </Wrapper>
-            <Content>
+            <Content style={{ padding: props.padding }}>
                 {props.children}
             </Content>
         </Frame>
