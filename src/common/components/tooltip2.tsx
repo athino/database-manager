@@ -48,6 +48,7 @@ const Frame = styled.div`
     height: 300px;
     border-radius: 10px;
     background-color: #303030;
+    filter: drop-shadow(0 0 2px black);
 `
 
 const Left = styled.div`
