@@ -8,9 +8,10 @@ type Props = {
 }
 
 export const Tooltip: FC<Props> = (props) => {
+    const bottom = props.arrow === 'bottom'
 
     return (
-        <Frame>
+        <Frame style={{transform: bottom ? 'rotate(180deg)' : 'none'}}>
             <Left>
                 <Svg x="0" y="0" width="100%" height="100%">
                     <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" stroke="#595959" fill="#303030"/>
@@ -47,7 +48,6 @@ const Frame = styled.div`
     width: 80%;
     height: 300px;
     border-radius: 10px;
-    //transform: rotate(180deg);
     background-color: #303030;
     filter: drop-shadow(0 0 2px black);
 `
