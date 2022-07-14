@@ -21,6 +21,18 @@ export const Tooltip2: FC<Props> = (props) => {
                     <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" stroke="#595959" fill="#303030"/>
                 </Svg>
             </Right>
+            <Center>
+                <div style={{width: '100px'}}>
+                    <Svg x="0" y="0" width="100%" height="100%">
+                        <path
+                            d={'M 0 0 L 25 0 L 50 -20 L 75 0 L 100 0'}
+                            fill={'none'}
+                            strokeLinejoin={'round'}
+                            strokeWidth={1}
+                            stroke={'#595959'}/>
+                    </Svg>
+                </div>
+            </Center>
         </Frame>
     )
 }
@@ -43,7 +55,7 @@ const Left = styled.div`
     width: calc(50% + ${100}px);
     background-color: orange;
 
-    clip-path: polygon(-10px -10px, calc(100% - ${100}px) -10px, calc(100% - ${100}px) 110%, -10px 110%);
+    clip-path: polygon(-10px -10px, calc(100% - ${100 + 50}px) -10px, calc(100% - ${100 + 50}px) 20px, calc(100% - ${100}px) 20px, calc(100% - ${100}px) 110%, -10px 110%);
 `
 
 const Right = styled.div`
@@ -53,10 +65,28 @@ const Right = styled.div`
     bottom: 0;
     width: calc(50% + ${100}px);
 
-    clip-path: polygon(100px -10px, 110% -10px, 110% 110%, 100px 110%);
+    clip-path: polygon(${100 + 50}px -10px, 110% -10px, 110% 110%, 100px 110%, 100px ${20}px, ${100 + 50}px ${20}px);
     background-color: cyan;
 
 
+`
+
+const Center = styled.div`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+
+    > div {
+        position: relative;
+        width: 100px;
+        height: 100%;
+
+        //background-color: red;
+    }
 `
 
 const Svg = styled.svg`
