@@ -7,7 +7,7 @@ type Props = {
     padding?: string
 }
 
-export const Tooltip2: FC<Props> = (props) => {
+export const Tooltip: FC<Props> = (props) => {
 
     return (
         <Frame>
