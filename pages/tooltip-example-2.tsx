@@ -21,7 +21,6 @@ export default function TooltipExample() {
 
                 Dette er en tooltip...
             </Tooltip>
-
         </>
     )
 }
