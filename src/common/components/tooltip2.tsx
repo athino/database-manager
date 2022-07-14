@@ -25,11 +25,16 @@ export const Tooltip2: FC<Props> = (props) => {
                 <div style={{width: '100px'}}>
                     <Svg x="0" y="0" width="100%" height="100%">
                         <path
+                            fill="#303030"
+                            d={'M 0 0 L 25 0 L 50 -20 L 75 0 L 100 0 L 100 50 L 0 50 Z'}/>
+
+                        <path
                             d={'M 0 0 L 25 0 L 50 -20 L 75 0 L 100 0'}
                             fill={'none'}
                             strokeLinejoin={'round'}
                             strokeWidth={1}
                             stroke={'#595959'}/>
+
                     </Svg>
                 </div>
             </Center>
