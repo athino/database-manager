@@ -19,7 +19,7 @@ export default function TooltipExample() {
                 arrow={'bottom'}>
                 Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>Hei! <br/><br/>
 
-                Dette er en tooltip...{nox}
+                Dette er en tooltip...
             </Tooltip>
 
         </>
