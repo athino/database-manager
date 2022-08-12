@@ -5,7 +5,10 @@ export default function TooltipExample() {
 
     return (
         <>
-            <Tooltip margin={'20px'} padding={'10px'}>
+            <Tooltip
+                arrowPosition={'bottom'}
+                margin={'20px'}
+                padding={'10px'}>
                 Hei! <br/><br/>
 
                 Dette er en tooltip...
