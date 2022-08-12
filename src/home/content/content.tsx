@@ -7,7 +7,7 @@ import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
 import {Select} from 'common/components/select'
 import {Npm} from 'common/components/npm'
-import { Popover } from 'common/components/popover/popover'
+import {Popover} from 'common/components/popover/popover'
 
 export const Content = () => {
   const dispatch = useDispatch()
