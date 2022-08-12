@@ -5,13 +5,13 @@ export default function TooltipExample() {
 
     return (
         <>
-            <Tooltip margin={'20px'}>
+            <Tooltip margin={'20px'} padding={'10px'}>
                 Hei! <br/><br/>
 
                 Dette er en tooltip...
             </Tooltip>
 
-            <Tooltip margin={'20px'}>
+            <Tooltip margin={'20px'} padding={'10px'}>
                 Hei! <br/><br/>
 
                 Dette er en tooltip...
