@@ -6,6 +6,7 @@ export default function TooltipExample() {
     return (
         <>
             <Popover
+                margin={'20px'}
                 escape={5}
                 layer={5}
                 target={<button>ewfhuwiefhiuweh</button>}

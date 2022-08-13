@@ -5,6 +5,7 @@ import { Stack } from './stack/stack'
 type Props = {
   target: React.ReactNode
   content: React.ReactNode
+  margin?: string
   options?: {
     preserve3dTransformStyleOnParents?: boolean
     position: 'top' | 'bottom'
@@ -58,7 +59,7 @@ export const PopoverWrapper: FC<Props> = (props) => {
   }, [props.options?.position])
 
   return (
-    <Frame ref={ref}>
+    <Frame ref={ref} style={{margin: props.margin}}>
       <Overlay>
         <Content style={{ ...style}}>
           <Stack escape={1} layer={1}>

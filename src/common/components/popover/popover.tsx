@@ -8,12 +8,14 @@ type Props = {
     position?: 'top' | 'bottom'
     escape: number
     layer: number
+    margin?: string
 }
 
 export const Popover: FC<Props> = (props) => {
 
     return (
         <PopoverWrapper
+            margin={props.margin}
             options={{
                 position: 'bottom'
             }}
