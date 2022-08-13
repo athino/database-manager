@@ -25,7 +25,7 @@ const TargetButton = (props: TargetProps) => {
     }
 
     return (
-        <Button onClick={onClick}>Select database: {props.popoverIsOpen ? 'open' : 'closed'}</Button>
+        <Button onClick={onClick}>Select database</Button>
     )
 
 }
