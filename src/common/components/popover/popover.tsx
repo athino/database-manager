@@ -9,7 +9,7 @@ export type TargetProps = {
 }
 
 export type ClickOutsideOptions = TargetProps & {
-    target: HTMLElement
+    target: EventTarget
 }
 
 type Props = {
@@ -36,6 +36,8 @@ export const Popover: FC<Props> = (props) => {
         <PopoverWrapper
             clickOutside={props.clickOutside}
             popoverIsOpen={popoverIsOpen}
+            closePopover={() => setPopoverIsOpen(false)}
+            openPopover={() => setPopoverIsOpen(true)}
             margin={props.margin}
             options={{
                 position: 'bottom'

@@ -2,12 +2,15 @@ import React, {FC, useEffect, useMemo, useRef} from 'react'
 import styled from 'styled-components'
 import {ClickOutsideOptions} from './popover'
 import {Stack} from './stack/stack'
+import { useClickExclusion } from './useClickExclusion'
 
 type Props = {
   target: React.ReactNode
   content: React.ReactNode
   margin?: string
   popoverIsOpen: boolean
+  closePopover(): void
+  openPopover(): void
   clickOutside?(options: ClickOutsideOptions): void
   options?: {
     preserve3dTransformStyleOnParents?: boolean
@@ -42,6 +45,16 @@ export const PopoverWrapper: FC<Props> = (props) => {
   }, [])
 
   const targetRef = useRef<HTMLDivElement>(null)
+
+  useClickExclusion([targetRef], (event) => {
+    if (!event.target) return
+    props.clickOutside?.({
+      target: event.target,
+      popoverIsOpen: props.popoverIsOpen,
+      closePopover: props.closePopover,
+      openPopover: props.openPopover
+    })
+  })
 
   const style = useMemo(() => {
     switch (props.options?.position) {
