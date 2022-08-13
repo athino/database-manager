@@ -25,7 +25,10 @@ const TargetButton = (props: TargetProps) => {
     }
 
     return (
-        <Button onClick={onClick}>Select database</Button>
+        <Button
+            onClick={onClick}>
+            Select database
+        </Button>
     )
 
 }
