@@ -8,6 +8,10 @@ export type TargetProps = {
     openPopover(): void
 }
 
+export type ClickOutsideOptions = TargetProps & {
+    target: HTMLElement
+}
+
 type Props = {
     target: (props: TargetProps) => ReactNode
     content: ReactNode
@@ -15,6 +19,7 @@ type Props = {
     escape: number
     layer: number
     margin?: string
+    clickOutside?(options: ClickOutsideOptions): void
 }
 
 export const Popover: FC<Props> = (props) => {
@@ -29,6 +34,7 @@ export const Popover: FC<Props> = (props) => {
 
     return (
         <PopoverWrapper
+            clickOutside={props.clickOutside}
             popoverIsOpen={popoverIsOpen}
             margin={props.margin}
             options={{

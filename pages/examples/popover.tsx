@@ -10,6 +10,7 @@ export default function TooltipExample() {
                 margin={'20px'}
                 escape={5}
                 layer={5}
+                clickOutside={({closePopover}) => closePopover()}
                 target={TargetButton}
                 content={'h yg ygygu ef'.repeat(10)}/>
         </>

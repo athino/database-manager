@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useMemo, useRef} from 'react'
 import styled from 'styled-components'
+import {ClickOutsideOptions} from './popover'
 import {Stack} from './stack/stack'
 
 type Props = {
@@ -7,6 +8,7 @@ type Props = {
   content: React.ReactNode
   margin?: string
   popoverIsOpen: boolean
+  clickOutside?(options: ClickOutsideOptions): void
   options?: {
     preserve3dTransformStyleOnParents?: boolean
     position: 'top' | 'bottom'
@@ -39,6 +41,8 @@ export const PopoverWrapper: FC<Props> = (props) => {
     }
   }, [])
 
+  const targetRef = useRef<HTMLDivElement>(null)
+
   const style = useMemo(() => {
     switch (props.options?.position) {
       case 'bottom': {
@@ -68,7 +72,7 @@ export const PopoverWrapper: FC<Props> = (props) => {
             </Stack>
           </Content>
         </Overlay>
-      <Target>
+      <Target ref={targetRef}>
         {props.target}
       </Target>
     </Frame>
