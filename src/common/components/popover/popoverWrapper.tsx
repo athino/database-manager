@@ -61,7 +61,7 @@ export const PopoverWrapper: FC<Props> = (props) => {
 
   return (
     <Frame ref={ref} style={{margin: props.margin}}>
-        <Overlay style={!props.popoverIsOpen ? {opacity: '0', pointerEvents: 'none'} : {}}>
+        <Overlay style={!props.popoverIsOpen ? {opacity: '0', pointerEvents: 'none', transition: 'opacity .25s'} : {}}>
           <Content style={{ ...style}}>
             <Stack escape={1} layer={1}>
               {props.content}
@@ -87,7 +87,6 @@ const Target = styled.div`
 
 const Overlay = styled.div`
   position: absolute;
-  transition: 0.2s;
   top: 0;
   right: 0;
   bottom: 0;
