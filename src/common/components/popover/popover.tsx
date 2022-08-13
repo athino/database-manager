@@ -46,7 +46,8 @@ export const Popover: FC<Props> = (props) => {
             content={(
                 <Tooltip
                     padding="10px"
-                    marginOffset={{top: 'fromDoubleArrowLength'}}>
+                    margin="20px 0 0 0"
+                    marginOffset={{top: 'fromBase'}}>
                     {props.content}
                 </Tooltip>
             )}/>
