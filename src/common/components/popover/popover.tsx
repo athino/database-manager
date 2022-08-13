@@ -1,6 +1,6 @@
 import {ReactNode, FC} from "react"
-import {PopoverTooltip} from "./popoverTooltip"
 import {PopoverWrapper} from "./popoverWrapper"
+import {Tooltip} from '@athino/tooltip'
 
 type Props = {
     target: ReactNode
@@ -15,13 +15,13 @@ export const Popover: FC<Props> = (props) => {
     return (
         <PopoverWrapper
             options={{
-                position: 'top'
+                position: 'bottom'
             }}
             target={props.target}
             content={(
-                <PopoverTooltip>
+                <Tooltip>
                     {props.content}
-                </PopoverTooltip>
+                </Tooltip>
             )}/>
 
     )

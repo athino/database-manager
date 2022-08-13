@@ -75,6 +75,7 @@ export const PopoverWrapper: FC<Props> = (props) => {
 
 const Frame = styled.div`
   position: relative;
+  display: inline-block;
   transform-style: preserve-3d;
 `
 
