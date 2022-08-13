@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useMemo, useRef} from 'react'
 import styled from 'styled-components'
-import { Stack } from './stack/stack'
+import {Stack} from './stack/stack'
 
 type Props = {
   target: React.ReactNode
