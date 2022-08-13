@@ -1,5 +1,5 @@
 import {Button} from 'common/components/button'
-import {Popover} from 'common/components/popover/popover'
+import {Popover, TargetProps} from 'common/components/popover/popover'
 import React from 'react'
 
 export default function TooltipExample() {
@@ -10,8 +10,22 @@ export default function TooltipExample() {
                 margin={'20px'}
                 escape={5}
                 layer={5}
-                target={<Button>Select database gy gyug guyg u</Button>}
+                target={TargetButton}
                 content={'h yg ygygu ef'.repeat(10)}/>
         </>
     )
+}
+
+const TargetButton = (props: TargetProps) => {
+
+    const onClick = () => {
+        props.popoverIsOpen
+            ? props.closePopover()
+            : props.openPopover()
+    }
+
+    return (
+        <Button onClick={onClick}>Select database</Button>
+    )
+
 }
