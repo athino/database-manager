@@ -29,6 +29,7 @@ export const Popover: FC<Props> = (props) => {
 
     return (
         <PopoverWrapper
+            popoverIsOpen={popoverIsOpen}
             margin={props.margin}
             options={{
                 position: 'bottom'

@@ -6,6 +6,7 @@ type Props = {
   target: React.ReactNode
   content: React.ReactNode
   margin?: string
+  popoverIsOpen: boolean
   options?: {
     preserve3dTransformStyleOnParents?: boolean
     position: 'top' | 'bottom'
@@ -60,13 +61,15 @@ export const PopoverWrapper: FC<Props> = (props) => {
 
   return (
     <Frame ref={ref} style={{margin: props.margin}}>
-      <Overlay>
-        <Content style={{ ...style}}>
-          <Stack escape={1} layer={1}>
-            {props.content}
-          </Stack>
-        </Content>
-      </Overlay>
+      {props.popoverIsOpen && (
+        <Overlay>
+          <Content style={{ ...style}}>
+            <Stack escape={1} layer={1}>
+              {props.content}
+            </Stack>
+          </Content>
+        </Overlay>
+      )}
       <Target>
         {props.target}
       </Target>
