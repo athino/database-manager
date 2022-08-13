@@ -11,7 +11,7 @@ export default function TooltipExample() {
                 margin={'20px'}
                 escape={5}
                 layer={5}
-                target={<Button>ewfhuwiefhiuweh</Button>}
+                target={<Button>Select database</Button>}
                 content={'h yg ygygu ef'.repeat(10)}/>
         </>
     )
