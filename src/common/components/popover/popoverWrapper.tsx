@@ -45,8 +45,9 @@ export const PopoverWrapper: FC<Props> = (props) => {
   }, [])
 
   const targetRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
 
-  useClickExclusion([targetRef], (event) => {
+  useClickExclusion([targetRef, contentRef], (event) => {
     if (!event.target) return
     props.clickOutside?.({
       target: event.target,
@@ -81,7 +82,9 @@ export const PopoverWrapper: FC<Props> = (props) => {
         <Overlay style={!props.popoverIsOpen ? {opacity: '0', pointerEvents: 'none', transition: 'opacity .25s'} : {}}>
           <Content style={{ ...style}}>
             <Stack escape={1} layer={1}>
-              {props.content}
+              <div ref={contentRef}>
+                {props.content}
+              </div>
             </Stack>
           </Content>
         </Overlay>
