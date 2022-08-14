@@ -79,7 +79,7 @@ export const PopoverWrapper: FC<Props> = (props) => {
 
   return (
     <Frame ref={ref} style={{margin: props.margin}}>
-        <Overlay>
+        <Overlay style={!props.popoverIsOpen ? {pointerEvents: 'none'} : {}}>
           <Content style={{ ...style}}>
             <Stack escape={1} layer={1}>
               <div ref={contentRef} style={{transformStyle: 'preserve-3d', transform: `translateZ(10px)`}}>

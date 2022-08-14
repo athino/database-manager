@@ -1,6 +1,6 @@
 import {Button} from 'common/components/button'
 import {Popover, TargetProps} from 'common/components/popover/popover'
-import React from 'react'
+import React, { Fragment } from 'react'
 
 export default function TooltipExample() {
 
@@ -12,8 +12,8 @@ export default function TooltipExample() {
                 layer={5}
                 clickOutside={({closePopover}) => closePopover()}
                 target={TargetButton}
-                content={'h yg ygygu ef'.repeat(10)}/>
-                <Button style={{position: 'relative'}}>gui</Button>
+                content={<>{[...Array(10)].map((_, key) => <Fragment key={key}>{`vers-1.0.${key}`}<br/></Fragment>)}</>}/>
+                <Button style={{position: 'relative'}}>Select database</Button>
         </>
     )
 }
@@ -29,7 +29,7 @@ const TargetButton = (props: TargetProps) => {
     return (
         <Button
             onClick={onClick}>
-            Select database
+            Select version
         </Button>
     )
 
