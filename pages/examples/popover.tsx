@@ -8,11 +8,12 @@ export default function TooltipExample() {
         <>
             <Popover
                 margin={'20px'}
-                escape={5}
+                escape={0}
                 layer={5}
                 clickOutside={({closePopover}) => closePopover()}
                 target={TargetButton}
                 content={'h yg ygygu ef'.repeat(10)}/>
+                <Button style={{position: 'relative'}}>gui</Button>
         </>
     )
 }
