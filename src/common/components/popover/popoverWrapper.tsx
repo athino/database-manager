@@ -2,7 +2,7 @@ import React, {FC, useEffect, useMemo, useRef} from 'react'
 import styled from 'styled-components'
 import {ClickOutsideOptions} from './popover'
 import {Stack} from './stack/stack'
-import { useClickExclusion } from './useClickExclusion'
+import {useClickExclusion} from './useClickExclusion'
 
 type Props = {
   target: React.ReactNode
