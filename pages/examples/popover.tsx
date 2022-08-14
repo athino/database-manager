@@ -13,7 +13,7 @@ export default function TooltipExample() {
                 clickOutside={({closePopover}) => closePopover()}
                 target={TargetButton}
                 content={<>{[...Array(10)].map((_, key) => <Fragment key={key}>{`vers-1.0.${key}`}<br/></Fragment>)}</>}/>
-                <Button style={{position: 'relative'}}>Select database</Button>
+                <Button style={{position: 'relative'}} onClick={() => alert(10)}>Select database</Button>
         </>
     )
 }
