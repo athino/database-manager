@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux'
 import {Content} from './content/content'
 import {HomeActions} from './homeActions'
 
-export default function Home() {
+export const Home = () => {
 
   const dispatch = useDispatch()
 
