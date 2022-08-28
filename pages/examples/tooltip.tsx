@@ -6,7 +6,7 @@ export default function TooltipExample() {
     return (
         <>
             <Tooltip
-                arrowPosition={'bottom'}
+                arrowPosition={'top center'}
                 margin={'20px'}
                 padding={'10px'}>
                 Hei! <br/><br/>
