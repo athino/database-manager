@@ -10,15 +10,16 @@ type Props = {
 export const Accordion = (props: Props) => {
     const ref = useRef<HTMLDivElement>(null)
     const scrollHeight = ref.current?.scrollHeight
+    const expandedHeight = scrollHeight ? `${scrollHeight}px`: 'auto'
 
-    const height = props.expanded ? scrollHeight : 0
+    const height = props.expanded ? expandedHeight : '0px'
 
     return (
         <Frame>
             <Header>
                 {props.header()}
             </Header>
-            <Content ref={ref} style={{height: `${height}px`}}>
+            <Content ref={ref} style={{height}}>
                 {props.content()}
             </Content>
         </Frame>
