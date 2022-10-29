@@ -3,7 +3,7 @@ import { Accordion } from "common/components/accordion/accordion"
 
 export default function Page () {
 
-    const [expanded, setExpanded] = useState(false)
+    const [expanded, setExpanded] = useState(true)
 
     return (
         <div>
