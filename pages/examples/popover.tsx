@@ -1,36 +1,21 @@
-import {Button} from 'common/components/button'
-import {Popover, TargetProps} from 'common/components/popover/popover'
-import React, { Fragment } from 'react'
+import React, {useState} from 'react'
+import {Popover} from '@athino/popover'
 
 export default function TooltipExample() {
+
+    const [open, setOpen] = useState(false)
 
     return (
         <>
             <Popover
                 margin={'20px'}
-                escape={0}
-                layer={5}
-                clickOutside={({closePopover}) => closePopover()}
-                target={TargetButton}
-                content={<>{[...Array(10)].map((_, key) => <Fragment key={key}>{`vers-1.0.${key}`}<br/></Fragment>)}</>}/>
-                <Button style={{position: 'relative'}} onClick={() => alert(10)}>Select database</Button>
+                open={open}
+                target={(
+                    <button onClick={() => setOpen((prev) => !prev)}>Hello</button>
+                )}
+                content={(
+                    <button>Hello</button>
+                )}/>
         </>
     )
-}
-
-const TargetButton = (props: TargetProps) => {
-
-    const onClick = () => {
-        props.popoverIsOpen
-            ? props.closePopover()
-            : props.openPopover()
-    }
-
-    return (
-        <Button
-            onClick={onClick}>
-            Select version
-        </Button>
-    )
-
 }
