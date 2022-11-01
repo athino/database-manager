@@ -3,7 +3,7 @@ import {Popover} from '@athino/popover'
 
 export default function TooltipExample() {
 
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(true)
 
     return (
         <>
