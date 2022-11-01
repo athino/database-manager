@@ -6,7 +6,7 @@ export default function StackExample() {
     return (
         <div>
             <div>
-                <Stack escape={10} layer={12}>
+                <Stack onEscaped={() => console.log(2)}>
                     <button>Hello</button>
                 </Stack>
             </div>
