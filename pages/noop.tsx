@@ -4,10 +4,14 @@ import {Select} from '@athino/select'
 
 export default function Home() {
 
-
   return (
     <Frame>
-      <Select selected={'1'} options={[]} onChange={() => 1}/>
+
+      <Select
+        placeholder={'Velg database'}
+        selected={'1'}
+        options={[]}
+        onChange={() => 1}/>
     </Frame>
   )
 }
@@ -17,5 +21,5 @@ export const Frame = styled.div`
   margin: 50px;
   height: 500px;
   width: 500px;
-  background-color: orange;
+  background-color: black;
 `
