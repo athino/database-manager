@@ -27,8 +27,8 @@ export default function Home() {
 
 export const Frame = styled.div`
   position: relative;
-  margin: 50px;
-  height: 500px;
-  width: 500px;
+  height: 100vh;
+  width: 100%;
   background-color: black;
+  padding: 50px;
 `
