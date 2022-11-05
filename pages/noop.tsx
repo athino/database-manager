@@ -15,7 +15,7 @@ const options = [{
 
 export default function Home() {
   
-  const [selected, setSelected] = useState('1')
+  const [selected, setSelected] = useState('0')
 
   return (
     <Frame>
