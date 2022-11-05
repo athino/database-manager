@@ -3,11 +3,14 @@ import styled from 'styled-components'
 import {Select} from '@athino/select'
 
 const options = [{
+  id: '0',
+  value: '1.0.0'
+},{
   id: '1',
-  value: 'Users'
+  value: '1.0.1'
 },{
   id: '2',
-  value: 'Templates'
+  value: '1.0.2'
 }]
 
 export default function Home() {
