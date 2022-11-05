@@ -13,9 +13,10 @@ export const getDatabases = (connection: Connection) => async (arg: {
     .limit(arg.limit ?? NaN)
     .toArray()
 
+
   const items = result.map(({_id, ...database}) => database)
 
-  if (!schemas.databases.validate(items)) { throw new Error() }
+  // if (!schemas.databases.validate(items)) { throw new Error() }
 
   const databases = objectFromEntries(items, (database) => ({
     key: database.name,

@@ -38,3 +38,4 @@ export const Frame = styled.div`
   background-color: #121212;
   padding: 50px;
 `
+
