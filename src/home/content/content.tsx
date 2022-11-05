@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux'
 import styled from 'styled-components'
 import {Button} from 'common/components/button'
 import {TextInput} from 'common/components/textInput'
-import {Select} from 'common/components/select'
+import {Select} from '@athino/select'
 import {Npm} from 'common/components/npm'
 
 export const Content = () => {
@@ -69,9 +69,11 @@ export const Content = () => {
 
               <Status>{version?.status}</Status>
 
-              <Select>
-                {Object.entries(database.versions).map(([_key, {semver}]) => <option key={semver}>version {semver}</option>)}
-              </Select>
+              <Select
+                selected=''
+                placeholder={'Velg version'}
+                options={Object.entries(database.versions).map(([_key, {semver}]) => ({ id: _key, value: semver }))}
+                onChange={() => 1 }/>
               <div style={{display: 'inline-block'}}>
                 <Button onClick={() => dispatch(HomeActions.createDatabaseVersion(database.name))}>
                   {'isCreatingDatabaseVersion' ? 'Creating version...' : 'Create New Version'}
