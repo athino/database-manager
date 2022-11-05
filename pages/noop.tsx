@@ -21,7 +21,9 @@ export default function Home() {
         placeholder={'Velg database'}
         selected={selected}
         options={options}
-        onChange={({option}) => setSelected(option.id)}/>
+        onChange={({option}) => {
+          setSelected(option.id)
+        }}/>
     </Frame>
   )
 }
