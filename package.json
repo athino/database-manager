@@ -10,7 +10,7 @@
   "dependencies": {
     "@athino/loader": "^1.0.1",
     "@athino/popover": "^1.0.8",
-    "@athino/select": "^1.0.21",
+    "@athino/select": "^1.0.29",
     "@athino/stack": "^1.0.4",
     "@athino/tooltip": "^1.0.14",
     "@babel/plugin-proposal-decorators": "^7.15.8",
