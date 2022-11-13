@@ -3,6 +3,7 @@
 # dependencies
 /.pnp
 .pnp.js
+.npmrc
 
 **/node_modules/*
 !**/node_modules/@athino/env-check
