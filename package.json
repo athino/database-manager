@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "auth": "athino authenticate",
     "predev": "env-check",
     "dev": "next",
     "build": "next build",
