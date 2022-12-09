@@ -3,6 +3,7 @@
   "scripts": {
     "auth": "athino authenticate",
     "predev": "env-check",
+    "preinstall": "athino auth",
     "dev": "next",
     "build": "next build",
     "start": "next start",
