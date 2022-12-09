@@ -68,9 +68,8 @@ export const Content = () => {
               }
 
               <Status>{version?.status}</Status>
-
               <Select
-                selected=''
+                selected='1-0-0'
                 placeholder={'Velg version'}
                 options={Object.entries(database.versions).map(([_key, {semver}]) => ({ id: _key, value: semver }))}
                 onChange={() => 1 }/>
